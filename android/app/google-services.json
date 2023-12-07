@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "567486310574",
+    "project_id": "greenboom-55eb3",
+    "storage_bucket": "greenboom-55eb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567486310574:android:cab5aea3c192e39398653f",
+        "android_client_info": {
+          "package_name": "com.greenboom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjKdLZlnGfOvKbLDo5hn9i-sVsoiBpJV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
