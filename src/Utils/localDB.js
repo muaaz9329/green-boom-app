@@ -1,11 +1,25 @@
 // import {splashTwo} from '../Assets';
+import {splashOne, splashThree, splashTwo} from '../Assets';
 
 export const onBoardinData = [
   {
     id: 0,
-    heading: 'test',
-    description: 'test description',
+    heading: 'View Members Real Time Location',
+    description:
+      'Empower your person search with App, and know where they actually are in the realtime.',
+    image: splashOne,
+  },
+  {
+    id: 1,
+    heading: 'Send Alert to your Group Members',
+    description: 'Empower your person search with App, ',
     image: splashTwo,
+  },
+  {
+    id: 2,
+    heading: 'test',
+    description: 'Empower your person ',
+    image: splashThree,
   },
 ];
 

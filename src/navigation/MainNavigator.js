@@ -1,16 +1,15 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LoginScreen from '../Screens/LoginScreen';
-import RegisterScreen from '../Screens/RegisterScreen';
-import HomeScreen from '../Screens/HomeScreen';
 import useReduxStore from '../Hooks/UseReduxStore';
 import NavigationService from '../Services/NavigationService';
+import * as Screens from '../Screens/index';
 
 const Stack = createNativeStackNavigator();
 
 function MainNavigator() {
   const {getState} = useReduxStore();
+  const {onboarding} = getState('onboarding');
   const {isLogin} = getState('Auth');
 
   return (
@@ -25,15 +24,24 @@ function MainNavigator() {
           headerTitle: null,
           headerShown: false,
         }}>
+        {!onboarding && (
+          <Stack.Screen
+            name="OnBoardScreen"
+            component={Screens.OnBoardScreen}
+          />
+        )}
         {!isLogin && (
           <>
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+            <Stack.Screen name="LoginScreen" component={Screens.LoginScreen} />
+            <Stack.Screen
+              name="RegisterScreen"
+              component={Screens.RegisterScreen}
+            />
           </>
         )}
         {isLogin && (
           <>
-            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="HomeScreen" component={Screens.HomeScreen} />
           </>
         )}
       </Stack.Navigator>

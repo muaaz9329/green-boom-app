@@ -77,7 +77,7 @@ const LoginScreen = ({navigation}) => {
         <View style={styles.rememberSec}>
           <Touchable style={styles.rememberInner} onPress={rememberValue}>
             <Image
-              source={remember ? rememberImg : rememberEmpty}
+              source={remember ? rememberEmpty : rememberImg}
               style={styles.tickIcon}
             />
             <Text style={styles.tickText}>Remember me</Text>

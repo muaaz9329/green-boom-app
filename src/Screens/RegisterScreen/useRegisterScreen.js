@@ -32,6 +32,11 @@ const useRegister = ({navigate, goBack}) => {
   };
   const loginNav = () => navigate('LoginScreen');
 
+  const [policy, setPolicy] = useState(true);
+  const PolicyValue = () => {
+    setPolicy(!policy);
+  };
+
   return {
     handleSubmit,
     errors,
@@ -47,6 +52,8 @@ const useRegister = ({navigate, goBack}) => {
     goBack,
     loginNav,
     signUpButton,
+    PolicyValue,
+    policy,
   };
 };
 

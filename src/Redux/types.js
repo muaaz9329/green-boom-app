@@ -1,4 +1,5 @@
 export const types = {
+  onBoardFinished: 'onBoardFinished',
   isLoadingTrue: 'isLoadingTrue',
   isLoadingFalse: 'isLoadingFalse',
   isAlertTrue: 'isAlertTrue',

@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {useRoute} from '@react-navigation/native';
-import {Touchable} from '../Components/Touchable';
-import {logOutUser} from '../Redux/Action/AuthAction';
-import useReduxStore from '../Hooks/UseReduxStore';
+import {Touchable} from '../../Components/Touchable';
+import {logOutUser} from '../../Redux/Action/AuthAction';
+import useReduxStore from '../../Hooks/UseReduxStore';
 
 const HomeScreen = () => {
   const {dispatch} = useReduxStore();

@@ -3,7 +3,19 @@ import {View, Text, Image, ScrollView} from 'react-native';
 import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
 import ThemeButton from '../../Components/ThemeButton';
-import {email, lock, userIcon, phone, arrowBack} from '../../Assets';
+import {
+  email,
+  lock,
+  userIcon,
+  phone,
+  logo,
+  rememberImg,
+  rememberEmpty,
+  username,
+  emailIcon,
+  passwordIcon,
+  company,
+} from '../../Assets';
 import {InputComponent} from '../../Components/InputComponent';
 import {Controller} from 'react-hook-form';
 import {Touchable} from '../../Components/Touchable';
@@ -19,26 +31,62 @@ const RegisterScreen = ({navigation}) => {
     goBack,
     loginNav,
     signUpButton,
+    PolicyValue,
+    policy,
   } = useRegister(navigation);
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
       contentContainerStyle={styles.logInMain}>
-      <Touchable style={styles.backMain} onPress={goBack}>
-        <TextComponent text={'Back'} styles={styles.backBtn} />
-      </Touchable>
-
-      <TextComponent text={'Register'} styles={styles.createAcc} />
+      <View style={styles.loginTop}>
+        <TextComponent text={'Register to'} styles={styles.signInText} />
+        <Image source={logo} style={styles.logo} resizeMode="contain" />
+      </View>
+      <View style={{flexDirection: 'row'}}>
+        <View>
+          <InputComponent
+            {...{
+              name: 'name',
+              handleSubmit,
+              errors,
+              reset,
+              control,
+              getValues,
+              placeholder: 'First Name',
+              isImage: username,
+              defaultValue: '',
+              viewStyle: styles.firstNameStyle,
+              inputIconStyle: styles.userIconStyle,
+              textStyle: styles.userInputStyle,
+            }}
+          />
+        </View>
+        <View>
+          <InputComponent
+            {...{
+              name: 'last',
+              handleSubmit,
+              errors,
+              reset,
+              control,
+              getValues,
+              placeholder: 'Last Name',
+              defaultValue: '',
+              viewStyle: styles.nameStyle,
+            }}
+          />
+        </View>
+      </View>
       <InputComponent
         {...{
-          name: 'name',
+          name: 'company',
           handleSubmit,
           errors,
           reset,
           control,
           getValues,
-          placeholder: 'Name',
-          isImage: userIcon,
+          placeholder: 'Type Company',
+          isImage: company,
           defaultValue: '',
         }}
       />
@@ -50,21 +98,8 @@ const RegisterScreen = ({navigation}) => {
           reset,
           control,
           getValues,
-          placeholder: 'Email',
-          isImage: email,
-          defaultValue: '',
-        }}
-      />
-      <InputComponent
-        {...{
-          name: 'number',
-          handleSubmit,
-          errors,
-          reset,
-          control,
-          getValues,
-          placeholder: 'Contact Number',
-          isImage: phone,
+          placeholder: 'Email*',
+          isImage: emailIcon,
           defaultValue: '',
         }}
       />
@@ -76,8 +111,8 @@ const RegisterScreen = ({navigation}) => {
           reset,
           control,
           getValues,
-          placeholder: 'Password',
-          isImage: lock,
+          placeholder: 'Password*',
+          isImage: passwordIcon,
           defaultValue: '',
           isSecure: true,
           inputIconStyle: styles.lockstyle,
@@ -91,21 +126,34 @@ const RegisterScreen = ({navigation}) => {
           reset,
           control,
           getValues,
-          placeholder: 'Password',
-          isImage: lock,
+          placeholder: 'Confirm Password*',
+          isImage: passwordIcon,
           defaultValue: '',
           isSecure: true,
           inputIconStyle: styles.lockstyle,
         }}
       />
-      <ThemeButton
-        title={'Sign up'}
-        onPress={handleSubmit(signUpButton)}
-        btnStyle={styles.buttonStyle}
-      />
-      <Touchable onPress={loginNav}>
-        <Text>Login</Text>
+      <Touchable style={styles.rememberInner} onPress={PolicyValue}>
+        <Image
+          source={policy ? rememberEmpty : rememberImg}
+          style={styles.tickIcon}
+        />
+        <Text style={styles.tickText}>Agree to our terms & conditions.</Text>
       </Touchable>
+      <ThemeButton
+        title={'Register'}
+        onPress={handleSubmit(signUpButton)}
+        style={styles.buttonStyle}
+      />
+      <View style={styles.dontHave}>
+        <TextComponent
+          text={'Already have an account?'}
+          styles={styles.dontHaveText}
+        />
+        <Touchable onPress={loginNav}>
+          <Text style={styles.signUpText}>Log In</Text>
+        </Touchable>
+      </View>
     </ScrollView>
   );
 };

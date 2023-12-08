@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
     textAlign: 'center',
     // marginLeft: wp('3'),
-    fontWeight: 500,
+    fontWeight: 400,
   },
   linearGradient: {
     borderRadius: 10,
