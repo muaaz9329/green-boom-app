@@ -10,29 +10,37 @@ import {
 import useOnboardScreen from './useOnboardScreen';
 import {styles} from './styles';
 import {keyExtractor} from '../../Utils';
-import {hp} from '../../Config/responsive';
+import {hp, wp} from '../../Config/responsive';
 import {TextComponent} from '../../Components/TextComponent';
 import ThemeButton from '../../Components/ThemeButton';
+import {Touchable} from '../../Components/Touchable';
+import {arrow} from '../../Assets';
 
 const OnboardScreen = ({navigation}) => {
-  const {onBoardinData, currentIndex, onSnapToItem, goNext} =
+  const {onBoardingData, currentIndex, onSnapToItem, goNext, flatListRef} =
     useOnboardScreen(navigation);
   const renderItem = useCallback(
     ({item, index}) => {
       return (
         currentIndex == index && (
-          <View style={styles.centerMainView}>
-            <ImageBackground
-              style={styles.bannerImg}
-              // resizeMode="contain"
-              source={item?.image}>
+          <ImageBackground
+            style={styles.bannerImg}
+            // resizeMode="contain"
+            source={item?.image}>
+            <View style={styles.centerMainView}>
+              <Image
+                source={item?.splashImage}
+                resizeMode="contain"
+                style={styles.splashImg}
+              />
+              <TextComponent text={item?.heading} styles={styles.hdStyle} />
               <TextComponent
                 text={item?.description}
                 styles={styles.descStyle}
               />
-              <ThemeButton title={'next'} onPress={goNext} />
-            </ImageBackground>
-          </View>
+              {/* <ThemeButton title={'next'} onPress={goNext} /> */}
+            </View>
+          </ImageBackground>
         )
       );
     },
@@ -47,12 +55,19 @@ const OnboardScreen = ({navigation}) => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={{backgroundColor: 'white', flex: 1, paddingBottom: hp('10')}}>
+      contentContainerStyle={{
+        // flex: 1,
+        position: 'relative',
+        // width: wp('100'),
+        // height: hp('100'),
+        // paddingBottom: hp('10'),
+      }}>
       <FlatList
         refreshing={false}
-        data={onBoardinData}
+        ref={flatListRef}
+        data={onBoardingData}
         renderItem={renderItem}
-        showsHorizontalScrollIndicator={false}
+        showsHorizontalScrollIndicator={true}
         horizontal
         onMomentumScrollEnd={onSnapToItem}
         keyExtractor={keyExtractor}
@@ -63,7 +78,8 @@ const OnboardScreen = ({navigation}) => {
         }}
         style={{paddingBottom: 0}}
       />
-      {/* <FlatList
+      <View style={styles.bottomContainer}>
+        {/* <FlatList
         refreshing={false}
         data={[0, 1]}
         renderItem={renderItemDots}
@@ -76,7 +92,7 @@ const OnboardScreen = ({navigation}) => {
         style={{alignSelf: 'center'}}
       /> */}
 
-      {/* {currentIndex == 1 ? (
+        {/* {currentIndex == 1 ? (
         // <Animatable.View animation={'bounceIn'}>
         <ButtonWithIcon
           title={'Get Start'}
@@ -91,6 +107,20 @@ const OnboardScreen = ({navigation}) => {
           onPress={goNext}
         />
       )} */}
+        <FlatList
+          data={onBoardingData} // Use the same data for the dots
+          renderItem={renderItemDots}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.dotList}
+          style={{alignSelf: 'flex-start', marginTop: hp('2')}}
+        />
+
+        <Touchable style={styles.btnArrow} onPress={goNext}>
+          <TextComponent text={'Next'} styles={styles.arrowText} />
+          <Image source={arrow} resizeMode="contain" style={{width: wp('5')}} />
+        </Touchable>
+      </View>
     </ScrollView>
   );
 };

@@ -1,38 +1,36 @@
 // import {splashTwo} from '../Assets';
-import {splashOne, splashThree, splashTwo} from '../Assets';
+import {
+  splashIndustrial,
+  splashLand,
+  splashMarine,
+  splashOne,
+  splashThree,
+  splashTwo,
+} from '../Assets';
 
-export const onBoardinData = [
+export const onBoardingData = [
   {
     id: 0,
-    heading: 'View Members Real Time Location',
+    heading: 'MARINE',
     description:
-      'Empower your person search with App, and know where they actually are in the realtime.',
+      'Green Boom products are lightweight and float on top of the water to absorb oil sheens without absorbing a drop of water.',
     image: splashOne,
+    splashImage: splashMarine,
   },
   {
     id: 1,
-    heading: 'Send Alert to your Group Members',
-    description: 'Empower your person search with App, ',
+    heading: 'LAND',
+    description:
+      'Green Boom’s patented lightweight absorbents are easier, safer, and more eco friendly than the clay-based competitors.',
     image: splashTwo,
+    splashImage: splashLand,
   },
   {
     id: 2,
-    heading: 'test',
-    description: 'Empower your person ',
+    heading: 'INDUSTRIAL',
+    description:
+      'Green Boom’s tear-resistant moldable socks help control everyday leaks with our most shape-hugging sock.',
     image: splashThree,
+    splashImage: splashIndustrial,
   },
-];
-
-export const tripProfileColors = [
-  '#FFD700',
-  '#DAA520',
-  '#FF7F50',
-  '#9ACD32',
-  '#90EE90',
-  '#66CDAA',
-  '#00FFFF',
-  '#48D1CC',
-  '#6495ED',
-  '#4169E1',
-  '#00BFFF',
 ];
