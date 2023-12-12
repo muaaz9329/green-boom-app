@@ -30,7 +30,6 @@ const useOnboardingScreen = ({navigate, params}) => {
     const currentIndex = Math.round(
       contentOffsetX / Dimensions.get('window').width,
     );
-    console.log(contentOffsetX, currentIndex, 'asldkladkjskljas');
     setCurrentIndex(currentIndex);
   };
 

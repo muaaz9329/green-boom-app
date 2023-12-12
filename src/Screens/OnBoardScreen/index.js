@@ -67,7 +67,7 @@ const OnboardScreen = ({navigation}) => {
         ref={flatListRef}
         data={onBoardingData}
         renderItem={renderItem}
-        showsHorizontalScrollIndicator={true}
+        showsHorizontalScrollIndicator={false}
         horizontal
         onMomentumScrollEnd={onSnapToItem}
         keyExtractor={keyExtractor}
@@ -113,7 +113,6 @@ const OnboardScreen = ({navigation}) => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.dotList}
-          style={{alignSelf: 'flex-start', marginTop: hp('2')}}
         />
 
         <Touchable style={styles.btnArrow} onPress={goNext}>

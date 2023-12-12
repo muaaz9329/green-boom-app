@@ -83,10 +83,12 @@ export const styles = StyleSheet.create({
   // ----
   dotList: {
     flexDirection: 'row',
-    width: wp('18'),
+    width: wp('25'),
     // height: hp('15'),
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    alignSelf: 'flex-start',
+    // marginTop: hp('0'),
   },
   bottomContainer: {
     flexDirection: 'row',
@@ -131,14 +133,14 @@ export const styles = StyleSheet.create({
     height: Dimensions.get('window').width * 0.016,
     width:
       currentIndex == index
-        ? Dimensions.get('window').width * 0.08
+        ? Dimensions.get('window').width * 0.09
         : Dimensions.get('window').width * 0.04,
     backgroundColor: currentIndex == index ? Colors.primaryColor : Colors.white,
     borderWidth: currentIndex == index ? 1 : 1,
     borderColor: currentIndex == index ? Colors.primaryColor : Colors.black,
   }),
   bannerImg: {
-    flex: 1,
+    flex: 0.5,
     alignItems: 'center',
     justifyContent: 'center',
     height: hp('97'),

@@ -42,7 +42,7 @@ const RegisterScreen = ({navigation}) => {
         <TextComponent text={'Register to'} styles={styles.signInText} />
         <Image source={logo} style={styles.logo} resizeMode="contain" />
       </View>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row', position: 'relative'}}>
         <View>
           <InputComponent
             {...{
@@ -61,7 +61,7 @@ const RegisterScreen = ({navigation}) => {
             }}
           />
         </View>
-        <View>
+        <View style={styles.lastNameSt}>
           <InputComponent
             {...{
               name: 'last',

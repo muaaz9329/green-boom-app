@@ -2,14 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View, ImageBackground, LogBox} from 'react-native';
 import MainNavigator from './src/navigation/MainNavigator';
 import {logoScreen} from './src/Assets';
+import Overlay from './src/Components/Overlay';
+import useReduxStore from './src/Hooks/UseReduxStore';
 
 const App = () => {
   const [isVisible, setIsVisible] = useState(true);
   const Hide_Splash_Screen = () => {
     setIsVisible(false);
   };
-
-  // const {isloading} = getState('isloading');
+  const {getState, dispatch} = useReduxStore();
+  const {isloading} = getState('isloading');
+  console.log('load', isloading);
   const time = () => {
     return 3000;
   };
@@ -42,6 +45,7 @@ const App = () => {
   return (
     <>
       {isVisible === true ? Splash_Screen : <MainNavigator />}
+      {isloading && <Overlay />}
       {/* <StackNavigatior />; */}
     </>
   );

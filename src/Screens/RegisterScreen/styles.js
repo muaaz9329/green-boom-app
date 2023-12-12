@@ -79,4 +79,8 @@ export const styles = StyleSheet.create({
     color: Colors.primaryColor,
     fontSize: hp('1.9'),
   },
+  lastNameSt: {
+    position: 'absolute',
+    right: wp('0'),
+  },
 });
