@@ -5,6 +5,7 @@ import {loadingFalse, loadingTrue} from '../Redux/Action/isloadingAction';
 import {Platform} from 'react-native';
 import {logOutUser} from '../Redux/Action/AuthAction';
 import {types} from '../Redux/types';
+import moment from 'moment';
 
 const API = create({
   baseURL,
@@ -94,6 +95,70 @@ const formDataFunc = (url, body, imageKey, isArray) => {
     });
 };
 
-export {formDataFunc};
+const timeLayout = time => {
+  return moment(time).format('hh:mm A');
+};
+
+const AMPMLayout = time => {
+  return Boolean(moment(time).format('A') == 'AM');
+};
+
+const contentTime = (time, format = false) => {
+  if (!format) {
+    const hour = moment.utc(time * 1000).format('HH');
+    const minute = moment.utc(time * 1000).format('mm');
+    const second = moment.utc(time * 1000).format('ss');
+    return hour == '00' ? `${minute}:${second}` : `${hour}:${minute}:${second}`;
+  }
+  const hour = moment.utc(time * 1000).format('HH');
+  const minute = moment.utc(time * 1000).format('mm');
+  const second = moment.utc(time * 1000).format('ss');
+  const hoursFormatted = hour !== '00' ? `${hour} hour ` : '';
+  const minutesFormatted = minute !== '00' ? `${minute} minutes` : '';
+  const secondFormatted = second !== '00' ? `${second} seconds` : '';
+  return [hoursFormatted, minutesFormatted, secondFormatted].join('');
+};
+
+export const secondsToTime = timeInSeconds => {
+  const hours = Math.floor(timeInSeconds / 3600)
+    .toString()
+    .padStart(2, '0');
+  const minutes = Math.floor((timeInSeconds % 3600) / 60)
+    .toString()
+    .padStart(2, '0');
+  const seconds = Math.floor(timeInSeconds % 60)
+    .toString()
+    .padStart(2, '0');
+  return {seconds, minutes, hours};
+};
+
+const randomNanoIdGenerator = () => nanoid();
+const keyExtractor = item => item?.id;
+
+const durationAsString = date => {
+  const start = new Date();
+  const currentTime = new Date(date);
+  currentTime.setDate(start.getDate());
+  if (start.getTime() > currentTime.getTime())
+    currentTime.setDate(start.getDate() + 1);
+
+  const duration = moment.duration(moment(currentTime).diff(moment(start)));
+
+  //Get Days
+  const days = Math.floor(duration.asDays()); // .asDays returns float but we are interested in full days only
+  const daysFormatted = days ? `${days}day ` : ''; // if no full days then do not display it at all
+
+  //Get Hours
+  const hours = duration.hours();
+  const hoursFormatted = hours ? `${hours}hr ` : '';
+
+  //Get Minutes
+  const minutes = duration.minutes();
+  const minutesFormatted = minutes ? `${minutes}min` : '';
+
+  return [daysFormatted, hoursFormatted, minutesFormatted].join('');
+};
+
+export {formDataFunc, contentTime};
 
 export default API;

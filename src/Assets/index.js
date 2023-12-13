@@ -10,6 +10,7 @@ export {default as splashThree} from './Images/splashThree.jpg';
 export {default as splashMarine} from './Images/Marine.png';
 export {default as splashLand} from './Images/Land.png';
 export {default as splashIndustrial} from './Images/Industrial.png';
+export {default as introVideo} from './Images/introVideo.png';
 
 //  Icons
 
