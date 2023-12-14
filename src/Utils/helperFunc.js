@@ -108,7 +108,7 @@ const contentTime = (time, format = false) => {
     const hour = moment.utc(time * 1000).format('HH');
     const minute = moment.utc(time * 1000).format('mm');
     const second = moment.utc(time * 1000).format('ss');
-    return hour == '00' ? `${minute}:${second}` : `${hour}:${minute}:${second}`;
+    return hour == '00' ? `${minute}:${second}` : `${minute}:${second}`;
   }
   const hour = moment.utc(time * 1000).format('HH');
   const minute = moment.utc(time * 1000).format('mm');
