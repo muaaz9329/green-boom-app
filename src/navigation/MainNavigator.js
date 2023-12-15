@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import useReduxStore from '../Hooks/UseReduxStore';
 import NavigationService from '../Services/NavigationService';
 import * as Screens from '../Screens/index';
 import MybottomTabs from './bottomNavigation';
+import Orientation from 'react-native-orientation-locker';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,7 +44,12 @@ function MainNavigator() {
         {isLogin && (
           <>
             <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
-            {/* <Stack.Screen name="HomeScreen" component={Screens.HomeScreen} /> */}
+            <Stack.Screen
+              name="TrainingScreen"
+              component={Screens.TrainingScreen}
+            />
+
+            {/* // <Stack.Screen name="HomeScreen" component={Screens.HomeScreen} /> */}
           </>
         )}
       </Stack.Navigator>

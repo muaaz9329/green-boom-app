@@ -17,23 +17,16 @@ import {styles} from './styles';
 import ThemeButtonWithIcon from '../../Components/ThemeButtonWithIcon';
 import {Touchable} from '../../Components/Touchable';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const {dispatch} = useReduxStore();
-  const {homeScreenBtns} = useHomeScreen();
-  const functionObject = {
-    onPressItem1: () => alert('Pressed item 1'),
-    onPressItem2: () => alert('Pressed item 2'),
-    onPressItem3: () => alert('Pressed item 3'),
-    onPressItem4: () => alert('Pressed item 4'),
-    onPressItem5: () => alert('Pressed item 5'),
-    onPressItem6: () => alert('Pressed item 6'),
-    // Add more functions as needed
-  };
+  const {homeScreenBtns, onPress} = useHomeScreen(navigation);
+
   const renderItem = useCallback(({item, index}) => {
-    const onPressFunction = functionObject[`onPressItem${item.id}`];
     return (
       <View style={styles.card}>
-        <Touchable style={styles.cardBtn} onPress={onPressFunction}>
+        <Touchable
+          style={styles.cardBtn}
+          onPress={() => onPress(item?.routeName, item)}>
           <ImageBackground
             source={item?.image}
             resizeMode="contain"

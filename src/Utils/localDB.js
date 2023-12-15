@@ -18,6 +18,7 @@ import {
   splashOne,
   splashThree,
   splashTwo,
+  trainingPDFIcon,
 } from '../Assets';
 
 export const onBoardingData = [
@@ -52,35 +53,100 @@ export const homeScreenBtns = [
     title: 'Training',
     image: bg1,
     icon: icon1,
+    routeName: 'TrainingScreen',
+    category: [
+      {
+        id: 1,
+        title: 'Training 101',
+      },
+      {
+        id: 2,
+        title: 'Training 101',
+      },
+      {
+        id: 1,
+        title: 'Training 101',
+      },
+    ],
   },
   {
     id: 2,
     title: 'Videos',
     image: bg2,
     icon: icon2,
+    routeName: 'VideoScreen',
   },
   {
     id: 3,
     title: 'Order a Demo Kit',
     image: bg3,
     icon: icon3,
+    routeName: 'OrderDemoKitScreen',
   },
   {
     id: 4,
     title: 'MSDS Sheets',
     image: bg4,
     icon: icon4,
+    routeName: 'MSDSheetScreen',
   },
   {
     id: 5,
     title: 'Products',
     image: bg5,
     icon: icon5,
+    routeName: 'ProductScreen',
   },
   {
     id: 6,
     title: 'Perfect Sales Pitch',
     image: bg6,
     icon: icon6,
+    routeName: 'PerfectSaleScreen',
+  },
+];
+
+export const trainingPDFData = [
+  {
+    id: 1,
+    title: 'Loose Sorbent Product Demo',
+    description:
+      'Our light, loose absorbent will float on top of water and pick up any oil or sheen - no water!',
+    image: trainingPDFIcon,
+  },
+  {
+    id: 2,
+    title: 'Loose Sorbent Product Demo',
+    description:
+      'Our light, loose absorbent will float on top of water and pick up any oil or sheen - no water!',
+    image: trainingPDFIcon,
+  },
+  {
+    id: 3,
+    title: 'Loose Sorbent Product Demo',
+    description:
+      'Our light, loose absorbent will float on top of water and pick up any oil or sheen - no water!',
+    image: trainingPDFIcon,
+  },
+  {
+    id: 4,
+    title: 'Loose Sorbent Product Demo',
+    description:
+      'Our light, loose absorbent will float on top of water and pick up any oil or sheen - no water!',
+    image: trainingPDFIcon,
+  },
+  {
+    id: 5,
+    title: 'Loose Sorbent Product Demo',
+    description:
+      'Our light, loose absorbent will float on top of water and pick up any oil or sheen - no water!',
+    image: trainingPDFIcon,
+  },
+  {
+    id: 6,
+    title: 'Loose Sorbent Product Demo',
+    description:
+      'Our light, loose absorbent will float on top of water and pick up any oil or sheen - no water!',
+    image: trainingPDFIcon,
   },
 ];

@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {View, Platform, Dimensions, StyleSheet, Image} from 'react-native';
 import * as Screens from '../Screens/index';
 import {Colors} from '../Theme/Variables';
 import {hp, wp} from '../Config/responsive';
-import {home2, profile1, notification1, setting1} from '../Assets';
-
+import {
+  home2,
+  profile1,
+  notification1,
+  setting1,
+  home1,
+  profile2,
+  notification2,
+  setting2,
+} from '../Assets';
+import Orientation from 'react-native-orientation-locker';
 globalStyles = {};
 const isIOS = Boolean(Platform.OS == 'ios');
 const tabarComponent = (activeImage, unActiveImage, ImageStyle) => {
@@ -24,7 +33,27 @@ const tabarComponent = (activeImage, unActiveImage, ImageStyle) => {
 };
 
 const Tab = createBottomTabNavigator();
+
 function MybottomTabs() {
+  const [isPortrait, setIsPortrait] = useState(true);
+  useEffect(() => {
+    const handleOrientationChange = orientation => {
+      setIsPortrait(orientation === 'PORTRAIT');
+    };
+
+    // Set initial orientation
+    handleOrientationChange(Orientation.getInitialOrientation());
+
+    // Add listener for orientation change
+    Orientation.addOrientationListener(handleOrientationChange);
+
+    // Clean up on component unmount
+    return () => {
+      Orientation.removeOrientationListener(handleOrientationChange);
+    };
+  }, []);
+  // console.log({isPortrait});
+
   return (
     <Tab.Navigator
       initialRouteName="HomeScreen"
@@ -56,27 +85,28 @@ function MybottomTabs() {
           borderRadius: 10,
           // zIndex: -1,
           // overflow: 'hidden',
+          display: !isPortrait ? 'none' : 'flex',
         },
       })}>
       <Tab.Screen
         name="HomeScreen"
-        options={tabarComponent(home2, profile1)}
+        options={tabarComponent(home2, home1)}
         component={Screens.HomeScreen}
       />
       <Tab.Screen
         name="FavourateScreen"
-        options={tabarComponent(home2, profile1)}
+        options={tabarComponent(profile2, profile1)}
         component={Screens.HomeScreen}
       />
 
       <Tab.Screen
         name="ChatScreen"
-        options={tabarComponent(home2, notification1)}
+        options={tabarComponent(notification2, notification1)}
         component={Screens.HomeScreen}
       />
       <Tab.Screen
         name="AccountScreen"
-        options={tabarComponent(home2, setting1)}
+        options={tabarComponent(setting2, setting1)}
         component={Screens.HomeScreen}
       />
     </Tab.Navigator>
