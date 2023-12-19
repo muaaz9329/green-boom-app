@@ -19,6 +19,7 @@ import {
   splashThree,
   splashTwo,
   trainingPDFIcon,
+  videoThumb,
 } from '../Assets';
 
 export const onBoardingData = [
@@ -61,11 +62,23 @@ export const homeScreenBtns = [
       },
       {
         id: 2,
+        title: 'Videos',
+      },
+      {
+        id: 3,
+        title: 'Content',
+      },
+      {
+        id: 4,
         title: 'Training 101',
       },
       {
-        id: 1,
-        title: 'Training 101',
+        id: 5,
+        title: 'Videos',
+      },
+      {
+        id: 6,
+        title: 'Content',
       },
     ],
   },
@@ -74,7 +87,34 @@ export const homeScreenBtns = [
     title: 'Videos',
     image: bg2,
     icon: icon2,
-    routeName: 'VideoScreen',
+    routeName: 'TrainingScreen',
+    isVideo: true,
+    category: [
+      {
+        id: 1,
+        title: 'General',
+      },
+      {
+        id: 2,
+        title: 'Booms',
+      },
+      {
+        id: 3,
+        title: 'Pillows',
+      },
+      {
+        id: 4,
+        title: 'Socks',
+      },
+      {
+        id: 5,
+        title: 'General',
+      },
+      {
+        id: 6,
+        title: 'Content',
+      },
+    ],
   },
   {
     id: 3,
@@ -150,3 +190,43 @@ export const trainingPDFData = [
     image: trainingPDFIcon,
   },
 ];
+
+export const videosData = {
+  banner: {},
+  category: [
+    {
+      id: 1,
+      videoUrl: './test.mp4',
+      videoTitle: 'Green Boom Informational Session | Dr. Sudhir Sharma',
+      videoDesc:
+        'Join Green Boom CEO Dr. Sudhir Sharma for a short informational session on plastic waste and the importance of choosing biodegradable oil spill',
+      videoThumb: videoThumb,
+    },
+    {
+      id: 1,
+      videoUrl: './test.mp4',
+      videoTitle: 'Green Boom Informational Session | Dr. Sudhir Sharma',
+      videoDesc:
+        'Join Green Boom CEO Dr. Sudhir Sharma for a short informational session on plastic waste and the importance of choosing biodegradable oil spill',
+      videoThumb: videoThumb,
+    },
+    {
+      id: 1,
+      videoUrl: './test.mp4',
+      videoTitle: 'Green Boom Informational Session | Dr. Sudhir Sharma',
+      videoDesc:
+        'Join Green Boom CEO Dr. Sudhir Sharma for a short informational session on plastic waste and the importance of choosing biodegradable oil spill',
+      videoThumb: videoThumb,
+    },
+    {
+      id: 1,
+      videoUrl: './test.mp4',
+      videoTitle: 'Green Boom Informational Session | Dr. Sudhir Sharma',
+      videoDesc:
+        'Join Green Boom CEO Dr. Sudhir Sharma for a short informational session on plastic waste and the importance of choosing biodegradable oil spill',
+      videoThumb: videoThumb,
+    },
+  ],
+};
+
+// ./test.mp4

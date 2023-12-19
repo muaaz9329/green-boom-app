@@ -3,7 +3,16 @@ import {hp, wp} from '../../Config/responsive';
 import {Colors} from '../../Theme/Variables';
 
 export const styles = StyleSheet.create({
-  card: {},
+  card: {
+    shadowColor: 'gray',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+  },
   cardBtn: {},
   imageStyle: {
     width: wp('44'),

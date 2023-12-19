@@ -48,6 +48,7 @@ function MainNavigator() {
               name="TrainingScreen"
               component={Screens.TrainingScreen}
             />
+            {/* <Stack.Screen name="VideoScreen" component={Screens.VideoScreen} /> */}
 
             {/* // <Stack.Screen name="HomeScreen" component={Screens.HomeScreen} /> */}
           </>

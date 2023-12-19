@@ -502,7 +502,7 @@ class VideoPlayer extends React.Component {
           <TouchableWithoutFeedback onPress={this.handlePlayButtonPress}>
             <View>
               <Image
-                source={introVideo} // Pass thumbnail source as a prop
+                source={this.props.VideoThumb} // Pass thumbnail source as a prop
                 style={styles.thumbnail}
               />
             </View>

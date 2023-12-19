@@ -16,6 +16,8 @@ export {default as bg3} from './Images/bg3.png';
 export {default as bg4} from './Images/bg4.png';
 export {default as bg5} from './Images/bg5.png';
 export {default as bg6} from './Images/bg6.png';
+export {default as boom} from './Images/boom.png';
+export {default as videoThumb} from './Images/videoThumb.png';
 
 //  Icons
 
@@ -33,7 +35,7 @@ export {default as icon2} from './Icons/icon2.png';
 export {default as icon3} from './Icons/icon3.png';
 export {default as icon4} from './Icons/icon4.png';
 export {default as icon5} from './Icons/icon5.png';
-export {default as home1} from './Icons/home1.png';
+export {default as icon6} from './Icons/icon6.png';
 export {default as profile1} from './Icons/profile1.png';
 export {default as notification1} from './Icons/notification1.png';
 export {default as setting1} from './Icons/setting1.png';
