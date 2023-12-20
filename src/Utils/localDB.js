@@ -129,6 +129,7 @@ export const homeScreenBtns = [
     image: bg4,
     icon: icon4,
     routeName: 'MSDSheetScreen',
+    isVideo: true,
   },
   {
     id: 5,
@@ -228,5 +229,37 @@ export const videosData = {
     },
   ],
 };
-
-// ./test.mp4
+export const msdsData = [
+  {
+    image: trainingPDFIcon,
+    title: 'General Product Safety',
+  },
+  {
+    image: trainingPDFIcon,
+    title: 'Loose Sorbent',
+  },
+  {
+    image: trainingPDFIcon,
+    title: 'Socks',
+  },
+  {
+    image: trainingPDFIcon,
+    title: 'Pillow',
+  },
+  {
+    image: trainingPDFIcon,
+    title: 'Booms',
+  },
+  {
+    image: trainingPDFIcon,
+    title: 'Remediation Agent',
+  },
+  {
+    image: trainingPDFIcon,
+    title: 'Absorbent Sweeping Compound',
+  },
+  {
+    image: trainingPDFIcon,
+    title: 'Loose Sorbent Compound with Grit',
+  },
+];

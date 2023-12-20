@@ -57,27 +57,27 @@ class VideoPlayer extends React.Component {
 
   hideFullScreen = () => {
     const {fullScreen} = this.state;
-    if (!fullScreen) {
-      // Orientation.lockToPortrait();
-      Orientation.lockToLandscape();
-      this.setState({fullScreen: true});
-      // Orientation.addDeviceOrientationListener(type => {
-      //   console.log('true', type);
-      // });
-      // this.props.checkFullScreen(false, this.state.currentTime);
-    } else {
+    if (fullScreen) {
       this.setState({fullScreen: false});
       Orientation.lockToPortrait();
       setTimeout(() => {
         console.log(fullScreen, 'full');
       }, 1000);
-
+      // Orientation.lockToPortrait();
+      // Orientation.lockToLandscape();
+      // this.setState({fullScreen: true});
       // Orientation.addDeviceOrientationListener(type => {
       //   console.log('true', type);
       // });
       // this.props.checkFullScreen(false, this.state.currentTime);
-      // this.props.navigation.goBack();
     }
+
+    // Orientation.addDeviceOrientationListener(type => {
+    //   console.log('true', type);
+    // });
+    // this.props.checkFullScreen(false, this.state.currentTime);
+    // this.props.navigation.goBack();
+
     return true;
   };
 
@@ -261,7 +261,7 @@ class VideoPlayer extends React.Component {
   };
   render() {
     // const {data, fullScreen, showVideo} = this.props;
-    // console.log('datadatadatadata', data);
+    // console.log('datadatadatadata', fullScreen);
 
     const {
       currentTime,
@@ -283,14 +283,20 @@ class VideoPlayer extends React.Component {
           <View
             style={{
               backgroundColor: Colors.black,
-              width: fullScreen ? '100%' : '94%',
-              marginHorizontal: fullScreen ? 0 : '3%',
+              width: fullScreen ? '100%' : '92%',
+              // marginHorizontal: fullScreen ? 0 : '3%',
               borderRadius: fullScreen ? 0 : 10,
               height: fullScreen ? '100%' : hp('28'),
               // height: hp('28'),
               marginTop: fullScreen ? 0 : '3%',
               position: fullScreen ? 'absolute' : 'relative',
               zIndex: 99999,
+              borderRadius: fullScreen ? 0 : 20,
+              // marginHorizontal: wp('4'),
+              alignItems: 'center',
+              alignSelf: 'center',
+
+              ...this.props.VideoMainStyle,
             }}>
             {/* <Image source={} /> */}
             <Video
@@ -304,8 +310,9 @@ class VideoPlayer extends React.Component {
                 left: 0,
                 bottom: 0,
                 right: 0,
-                borderRadius: fullScreen ? 0 : 10,
+                borderRadius: fullScreen ? 0 : 20,
                 position: 'absolute',
+                ...this.props.VideoStyle,
                 // position: !fullScreen ? 'absolute' : 'relative',
                 // width: fullScreen ? widthPercentageToDP('100') : '100%',
                 // height: fullScreen ? heightPercentageToDP() : height * 0.27,
@@ -500,10 +507,13 @@ class VideoPlayer extends React.Component {
           </View>
         ) : (
           <TouchableWithoutFeedback onPress={this.handlePlayButtonPress}>
-            <View>
+            <View style={styles.thumbImageinner(fullScreen)}>
               <Image
                 source={this.props.VideoThumb} // Pass thumbnail source as a prop
-                style={styles.thumbnail}
+                style={{
+                  ...styles.thumbnail,
+                  ...this.props.thumStyleProp,
+                }}
               />
             </View>
           </TouchableWithoutFeedback>
@@ -516,6 +526,18 @@ class VideoPlayer extends React.Component {
 export default VideoPlayer;
 
 const styles = StyleSheet.create({
+  // videoCompMain: {
+  //   marginHorizontal: wp('4'),
+  //   flex: 1,
+  // },
+  thumbImageinner: fullScreen => ({
+    // marginHorizontal: wp('4'),
+    width: '92%',
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginTop: fullScreen ? 0 : '3%',
+  }),
+
   container: {
     // flex: 1,
     marginTop: '5%',
@@ -525,12 +547,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   thumbnail: {
-    width: wp('94'),
+    resizeMode: 'cover',
+    width: '100%',
     height: hp('28'),
-    marginTop: '3%',
-    marginHorizontal: '3%',
+    // marginTop: '3%',
     alignSelf: 'center',
     borderRadius: 20,
+    // marginHorizontal: wp('5'),
   },
   overlay: {
     // ...StyleSheet.absoluteFillObject,
@@ -578,7 +601,7 @@ const styles = StyleSheet.create({
     right: 0,
     position: 'absolute',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 20,
     overflow: 'hidden',
     // marginHorizontal: '5%',
   },

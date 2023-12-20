@@ -3,6 +3,10 @@ import {hp, wp} from '../../Config/responsive';
 import {Colors} from '../../Theme/Variables';
 
 export const styles = StyleSheet.create({
+  homeMain: {
+    flex: 1,
+    // marginTop: hp('2'),
+  },
   card: {
     shadowColor: 'gray',
     shadowOffset: {
@@ -43,5 +47,8 @@ export const styles = StyleSheet.create({
   button: {
     marginHorizontal: wp('4'),
     marginTop: hp('.7'),
+  },
+  homeIntroVideo: {
+    // marginHorizontal: wp('5'),
   },
 });

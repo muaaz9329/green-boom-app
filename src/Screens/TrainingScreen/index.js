@@ -7,8 +7,8 @@ import useTraining from './useTrainingScreen';
 import {goBack} from '../../Utils';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
-import {trainingPDFData, videosData} from '../../Utils/localDB';
-import {hp} from '../../Config/responsive';
+import {msdsData, trainingPDFData, videosData} from '../../Utils/localDB';
+import {hp, wp} from '../../Config/responsive';
 import {boom} from '../../Assets';
 import {CategoryIntro} from '../../Components/CategoryIntro';
 import VideoComponent from './VideoComponent';
@@ -36,15 +36,30 @@ const TrainingScreen = ({route, navigation}) => {
   });
 
   const renderVideos = useCallback(({item, index}) => {
-    console.log('duurruru', item);
+    // console.log('duurruru', item);
     return (
       <VideoComponent
         // videoUrl={item?.category[index]?.videoUrl}
         videoUrl={require('../HomeScreen/test.mp4')}
-        videoThumb={item?.category[index]?.videoThumb}
-        videoTitle={item?.category[index]?.videoTitle}
-        videoDesc={item?.category[index]?.videoDesc}
+        videoThumb={item?.videoThumb}
+        videoTitle={item?.videoTitle}
+        videoDesc={item?.videoDesc}
       />
+    );
+  });
+
+  const renderMSDSItem = useCallback(({item, index}) => {
+    return (
+      <View style={styles.card}>
+        <Touchable
+          style={styles.cardBtn}
+          onPress={() => onPress(item?.routeName, item)}>
+          <View style={styles.imageStyle}>
+            <Image source={item?.image} style={styles.iconStyle} />
+            <TextComponent text={item?.title} styles={styles.titleStyle} />
+          </View>
+        </Touchable>
+      </View>
     );
   });
 
@@ -58,7 +73,7 @@ const TrainingScreen = ({route, navigation}) => {
       />
       <ScrollView>
         {isVideo ? (
-          <View>
+          <View style={styles.videoMain}>
             <CategoryIntro
               introImage={boom}
               introTitle={'Booms'}
@@ -68,11 +83,21 @@ const TrainingScreen = ({route, navigation}) => {
             />
             <FlatList
               refreshing={false}
-              data={videosData}
+              data={videosData.category}
               renderItem={renderVideos}
+              contentContainerStyle={
+                {
+                  // alignItems: 'center',
+                }
+              }
+            />
+            <FlatList
+              refreshing={false}
+              data={msdsData}
+              numColumns={2}
+              renderItem={renderMSDSItem}
               contentContainerStyle={{
-                // alignItems: 'center',
-                marginTop: hp('2'),
+                alignItems: 'center',
               }}
             />
           </View>

@@ -52,6 +52,7 @@ const HomeScreen = ({navigation}) => {
         videoSource={require('./test.mp4')}
         VideoThumb={introVideo}
       />
+
       <View>
         <FlatList
           refreshing={false}

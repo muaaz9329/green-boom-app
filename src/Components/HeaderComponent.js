@@ -66,14 +66,16 @@ export const HeaderComponent = ({
 const styles = StyleSheet.create({
   headerTop: {
     backgroundColor: Colors.black,
-    borderRadius: 20,
+    borderRadius: 15,
+    borderTopStartRadius: 0,
+    borderTopEndRadius: 0,
   },
   headerInner: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: wp('5'),
-    paddingTop: hp('4.5'),
-    paddingBottom: hp('3.5'),
+    paddingTop: hp('4'),
+    paddingBottom: hp('3'),
     // verticalAlign: 'middle',
   },
   heading: {
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
   tabs: {
     // width: '110%',
     marginRight: wp('2.2'),
-    marginBottom: hp('3'),
+    marginBottom: hp('2.5'),
   },
   btnMain: {
     marginLeft: wp('5'),

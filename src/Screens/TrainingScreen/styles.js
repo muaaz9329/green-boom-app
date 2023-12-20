@@ -29,6 +29,44 @@ export const styles = StyleSheet.create({
   pdfDesc: {
     color: Colors.lightGray,
     fontSize: hp('1.6'),
-    marginTop: hp('1'),
+    marginTop: hp('.6'),
+  },
+  videoMain: {
+    // paddingHorizontal: wp('2'),
+    flex: 1,
+  },
+  // msds card
+  card: {
+    paddingHorizontal: wp('2'),
+    shadowColor: 'gray',
+  },
+  cardBtn: {},
+  imageStyle: {
+    width: wp('36'),
+    height: hp('20'),
+    alignItems: 'center',
+    justifyContent: 'center',
+    // marginVertical: hp('1'),
+    marginHorizontal: wp('2'),
+    marginBottom: hp('2'),
+    shadowColor: 'gray',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+  },
+
+  iconStyle: {
+    width: wp('13'),
+    height: hp('6'),
+    marginBottom: hp('2'),
+  },
+  titleStyle: {
+    fontSize: hp('1.8'),
+    textAlign: 'center',
+    height: hp('10'),
   },
 });

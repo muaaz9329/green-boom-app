@@ -20,9 +20,10 @@ export default TabButton;
 const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.primaryColor,
-    height: hp('6'),
-    paddingHorizontal: wp('5'),
-    borderRadius: 10,
+    // height: hp('5'),
+    paddingVertical: hp('1.1'),
+    paddingHorizontal: wp('3.7'),
+    borderRadius: 5,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -35,6 +36,6 @@ const styles = StyleSheet.create({
     fontWeight: 400,
   },
   linearGradient: {
-    borderRadius: 10,
+    borderRadius: 7,
   },
 });
