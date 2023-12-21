@@ -128,7 +128,7 @@ export const homeScreenBtns = [
     title: 'MSDS Sheets',
     image: bg4,
     icon: icon4,
-    routeName: 'MSDSheetScreen',
+    routeName: 'MSDScreen',
     isVideo: true,
   },
   {
@@ -185,6 +185,13 @@ export const trainingPDFData = [
   },
   {
     id: 6,
+    title: 'Loose Sorbent Product Demo',
+    description:
+      'Our light, loose absorbent will float on top of water and pick up any oil or sheen - no water!',
+    image: trainingPDFIcon,
+  },
+  {
+    id: 7,
     title: 'Loose Sorbent Product Demo',
     description:
       'Our light, loose absorbent will float on top of water and pick up any oil or sheen - no water!',
