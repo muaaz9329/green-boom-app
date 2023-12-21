@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Image, Platform, StyleSheet, Text, View} from 'react-native';
 import {hp, wp} from '../Config/responsive';
 import {Colors} from '../Theme/Variables';
 import {TextComponent} from './TextComponent';
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: wp('5'),
-    paddingTop: hp('4'),
+    paddingTop: Platform.OS == 'ios' ? hp('7') : hp('4'),
     paddingBottom: hp('3'),
     // verticalAlign: 'middle',
   },

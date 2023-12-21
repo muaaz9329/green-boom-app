@@ -7,6 +7,7 @@ import {
   Image,
   ImageBackground,
   TouchableWithoutFeedback,
+  Platform,
 } from 'react-native';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {hp, wp} from '../../Config/responsive';
@@ -47,7 +48,8 @@ const HomeScreen = ({navigation}) => {
     //   </Touchable>
     // </View>
 
-    <View style={{flex: 1}}>
+    <View
+      style={{flex: 1, paddingTop: Platform.OS == 'ios' ? hp('5') : hp('1.5')}}>
       <VideoPlayer
         videoSource={require('./test.mp4')}
         VideoThumb={introVideo}

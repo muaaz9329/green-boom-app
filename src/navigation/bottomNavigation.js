@@ -128,11 +128,13 @@ const styles = StyleSheet.create({
   tabarView: (focused, last) => ({
     width: 'auto',
     backgroundColor: 'transparent',
-    bottom: hp('0.5'),
+    // bottom: hp('0.5'),
   }),
 
   imgstyle: {
     resizeMode: 'contain',
     width: wp('7'),
+    height: hp('4'),
+    top: Platform.OS == 'ios' ? hp('1.5') : 0,
   },
 });

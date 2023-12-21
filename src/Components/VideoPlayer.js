@@ -320,11 +320,10 @@ class VideoPlayer extends React.Component {
               }}
               source={this.props.videoSource}
               resizeMode="contain"
-              // fullscreen={fullScreen}
+              fullscreen={Platform.OS == 'ios' ? fullScreen : undefined}
               fullscreenOrientation="all"
               // fullscreenAutorotate
               controls={false}
-              onFull
               // onPointerCancel={this.setFullScreen}
               // onVideoFullscreenPlayerDidDismiss={this.setFullScreen}
               // onFullscreenPlayerDidPresent={this.setFullScreen}
@@ -335,6 +334,11 @@ class VideoPlayer extends React.Component {
               onLoadStart={this.videoLoadStart}
               onProgress={this.videoProgress}
               onEnd={this.videoEnd}
+              {
+                ...{
+                  // fullscreen:fullScreen
+                }
+              }
             />
 
             {/* {!overlay && (

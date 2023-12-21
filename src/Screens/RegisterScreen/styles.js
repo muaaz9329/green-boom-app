@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
     marginTop: hp('1'),
     flex: 1,
     marginBottom: hp('3.5'),
+    alignItems: 'center',
   },
   tickIcon: {
     marginRight: wp('2'),
