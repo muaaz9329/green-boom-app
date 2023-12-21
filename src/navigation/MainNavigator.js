@@ -53,6 +53,18 @@ function MainNavigator() {
               name="SingleVideoScreen"
               component={Screens.SingleVideoScreen}
             />
+            <Stack.Screen
+              name="DemoKitScreen"
+              component={Screens.DemoKitScreen}
+            />
+            <Stack.Screen
+              name="ProductScreen"
+              component={Screens.ProductScreen}
+            />
+            <Stack.Screen
+              name="CatalogScreen"
+              component={Screens.CatalogScreen}
+            />
           </>
         )}
       </Stack.Navigator>

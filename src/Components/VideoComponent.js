@@ -1,13 +1,18 @@
 import {StyleSheet, View} from 'react-native';
-import {TextComponent} from '../../Components/TextComponent';
-import VideoPlayer from '../../Components/VideoPlayer';
-import {hp, wp} from '../../Config/responsive';
+import {TextComponent} from './TextComponent';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import VideoPlayer from './VideoPlayer';
+import {hp, wp} from '../Config/responsive';
 
 const VideoComponent = ({videoUrl, videoTitle, videoDesc, videoThumb}) => {
   return (
     <View style={{flex: 1}}>
-      <VideoPlayer videoSource={videoUrl} VideoThumb={videoThumb} />
+      <VideoPlayer
+        showVideo={true}
+        pause={false}
+        videoSource={videoUrl}
+        VideoThumb={videoThumb}
+      />
       <View style={styles.videoMainComp}>
         <TextComponent text={videoTitle} styles={styles.videoTitle} />
         <TextComponent text={videoDesc} styles={styles.videoDesc} />

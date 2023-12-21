@@ -35,14 +35,14 @@ class VideoPlayer extends React.Component {
     this.state = {
       currentTime: 0,
       duration: 0,
-      paused: true,
+      paused: this.props.pause ?? true,
       // paused: true,
       overlay: false,
       buffer: false,
       mute: false,
       fullScreen: false,
       hitFirst: false,
-      showVideo: false,
+      showVideo: this.props.showVideo ?? false,
       fullScreenNew: false,
     };
   }
@@ -286,7 +286,7 @@ class VideoPlayer extends React.Component {
               width: fullScreen ? '100%' : '92%',
               // marginHorizontal: fullScreen ? 0 : '3%',
               borderRadius: fullScreen ? 0 : 10,
-              height: fullScreen ? '100%' : hp('28'),
+              height: fullScreen ? '105%' : hp('28'),
               // height: hp('28'),
               marginTop: fullScreen ? 0 : '3%',
               position: fullScreen ? 'absolute' : 'relative',
@@ -323,6 +323,7 @@ class VideoPlayer extends React.Component {
               fullscreen={Platform.OS == 'ios' ? fullScreen : undefined}
               fullscreenOrientation="all"
               // fullscreenAutorotate
+
               controls={false}
               // onPointerCancel={this.setFullScreen}
               // onVideoFullscreenPlayerDidDismiss={this.setFullScreen}

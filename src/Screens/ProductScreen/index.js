@@ -1,26 +1,31 @@
 import React, {memo, useCallback} from 'react';
-import {View, Text, Image, ScrollView, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  FlatList,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
-import useMSDS from './useMSDScreen';
+import useProductScreen from './useProductScreen';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
-import {msdsData} from '../../Utils/localDB';
+import {productData} from '../../Utils/localDB';
 
-const MSDScreen = ({route, navigation}) => {
-  const {title} = useMSDS(navigation, route);
+const ProductScreen = ({route, navigation}) => {
+  const {title} = useProductScreen(navigation, route);
 
   const renderMSDSItem = useCallback(({item, index}) => {
     return (
       <View style={styles.card}>
-        <Touchable
-          style={styles.cardBtn}
-          onPress={() => onPress(item?.routeName, item)}>
+        <TouchableWithoutFeedback style={styles.cardBtn}>
           <View style={styles.imageStyle}>
             <Image source={item?.image} style={styles.iconStyle} />
             <TextComponent text={item?.title} styles={styles.titleStyle} />
           </View>
-        </Touchable>
+        </TouchableWithoutFeedback>
       </View>
     );
   });
@@ -34,7 +39,7 @@ const MSDScreen = ({route, navigation}) => {
         <View style={styles.videoMain}>
           <FlatList
             refreshing={false}
-            data={msdsData}
+            data={productData}
             numColumns={2}
             renderItem={renderMSDSItem}
             contentContainerStyle={{
@@ -46,4 +51,4 @@ const MSDScreen = ({route, navigation}) => {
     </View>
   );
 };
-export default memo(MSDScreen);
+export default memo(ProductScreen);

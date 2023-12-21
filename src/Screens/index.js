@@ -5,3 +5,6 @@ export {default as HomeScreen} from './HomeScreen';
 export {default as TrainingScreen} from './TrainingScreen';
 export {default as MSDScreen} from './MSDScreen';
 export {default as SingleVideoScreen} from './SingleVideoScreen';
+export {default as DemoKitScreen} from './DemoKitScreen';
+export {default as ProductScreen} from './ProductScreen';
+export {default as CatalogScreen} from './CatalogScreen';

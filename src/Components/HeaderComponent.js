@@ -15,6 +15,7 @@ export const HeaderComponent = ({
   searchFunction,
   isCategory,
   categoryData,
+  headerShow,
 }) => {
   const renderItem = useCallback(({item, index}) => {
     return (
@@ -25,7 +26,7 @@ export const HeaderComponent = ({
   });
 
   return (
-    <View style={styles.headerTop}>
+    <View style={{...styles.headerTop, ...headerShow}}>
       <View style={styles.headerInner}>
         <Touchable onPress={goBack}>
           <Image

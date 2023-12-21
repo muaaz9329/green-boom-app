@@ -4,6 +4,7 @@ import {View, Platform, Dimensions, StyleSheet, Image} from 'react-native';
 import * as Screens from '../Screens/index';
 import {Colors} from '../Theme/Variables';
 import {hp, wp} from '../Config/responsive';
+import Orientation from 'react-native-orientation-locker';
 import {
   home2,
   profile1,
@@ -14,7 +15,6 @@ import {
   notification2,
   setting2,
 } from '../Assets';
-import Orientation from 'react-native-orientation-locker';
 globalStyles = {};
 const isIOS = Boolean(Platform.OS == 'ios');
 const tabarComponent = (activeImage, unActiveImage, ImageStyle) => {

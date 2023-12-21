@@ -1,12 +1,18 @@
-import {StyleSheet, View, Image} from 'react-native';
+import {StyleSheet, View, Image, TouchableWithoutFeedback} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {TextComponent} from './TextComponent';
 import {hp, wp} from '../Config/responsive';
 
-const VideoThumbComponent = ({videoTitle, videoDesc, videoThumb}) => {
+const VideoThumbComponent = ({videoTitle, videoDesc, videoThumb, onPress}) => {
   return (
-    <View style={{flex: 1}}>
-      <Image source={videoThumb} style={styles.videoThumbnail} />
+    <View style={styles.mainThumb}>
+      <TouchableWithoutFeedback onPress={onPress}>
+        <Image
+          source={videoThumb}
+          style={styles.videoThumbnail}
+          resizeMode="contain"
+        />
+      </TouchableWithoutFeedback>
       <View style={styles.videoMainComp}>
         <TextComponent text={videoTitle} styles={styles.videoTitle} />
         <TextComponent text={videoDesc} styles={styles.videoDesc} />
@@ -17,13 +23,22 @@ const VideoThumbComponent = ({videoTitle, videoDesc, videoThumb}) => {
 export default VideoThumbComponent;
 
 const styles = StyleSheet.create({
+  mainThumb: {
+    flex: 1,
+    alignItems: 'center',
+    // marginHorizontal: wp('5'),
+    width: wp('94'),
+    margin: 0,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
   videoMainComp: {
-    marginHorizontal: wp('5'),
+    // marginHorizontal: wp('5'),
     marginBottom: hp('3'),
   },
   videoThumbnail: {
-    width: wp('100'),
-    height: hp('28'),
+    width: wp('94'),
+    height: hp('19'),
   },
   videoTitle: {
     fontWeight: '500',

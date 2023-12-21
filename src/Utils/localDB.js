@@ -6,12 +6,20 @@ import {
   bg4,
   bg5,
   bg6,
+  demokit,
+  downloadIcon,
   icon1,
   icon2,
   icon3,
   icon4,
   icon5,
   icon6,
+  pBoom,
+  pKits,
+  pMat,
+  pPillow,
+  pSock,
+  pSorbent,
   splashIndustrial,
   splashLand,
   splashMarine,
@@ -121,7 +129,7 @@ export const homeScreenBtns = [
     title: 'Order a Demo Kit',
     image: bg3,
     icon: icon3,
-    routeName: 'OrderDemoKitScreen',
+    routeName: 'DemoKitScreen',
   },
   {
     id: 4,
@@ -204,7 +212,7 @@ export const videosData = {
   category: [
     {
       id: 1,
-      videoUrl: './test.mp4',
+      videoUrl: require('./test.mp4'),
       videoTitle: 'Green Boom Informational Session | Dr. Sudhir Sharma',
       videoDesc:
         'Join Green Boom CEO Dr. Sudhir Sharma for a short informational session on plastic waste and the importance of choosing biodegradable oil spill',
@@ -212,7 +220,7 @@ export const videosData = {
     },
     {
       id: 1,
-      videoUrl: './test.mp4',
+      videoUrl: require('./test.mp4'),
       videoTitle: 'Green Boom Informational Session | Dr. Sudhir Sharma',
       videoDesc:
         'Join Green Boom CEO Dr. Sudhir Sharma for a short informational session on plastic waste and the importance of choosing biodegradable oil spill',
@@ -220,7 +228,7 @@ export const videosData = {
     },
     {
       id: 1,
-      videoUrl: './test.mp4',
+      videoUrl: require('./test.mp4'),
       videoTitle: 'Green Boom Informational Session | Dr. Sudhir Sharma',
       videoDesc:
         'Join Green Boom CEO Dr. Sudhir Sharma for a short informational session on plastic waste and the importance of choosing biodegradable oil spill',
@@ -228,7 +236,7 @@ export const videosData = {
     },
     {
       id: 1,
-      videoUrl: './test.mp4',
+      videoUrl: require('./test.mp4'),
       videoTitle: 'Green Boom Informational Session | Dr. Sudhir Sharma',
       videoDesc:
         'Join Green Boom CEO Dr. Sudhir Sharma for a short informational session on plastic waste and the importance of choosing biodegradable oil spill',
@@ -268,5 +276,79 @@ export const msdsData = [
   {
     image: trainingPDFIcon,
     title: 'Loose Sorbent Compound with Grit',
+  },
+];
+export const demoKit = [
+  {
+    image: demokit,
+    title: 'Sample Kit',
+    description: 'Green Boom’s pillows provide rapid absorption in marine.',
+  },
+  {
+    image: demokit,
+    title: 'Sample Kit',
+    description: 'Green Boom’s pillows provide rapid absorption in marine.',
+  },
+  {
+    image: demokit,
+    title: 'Sample Kit',
+    description: 'Green Boom’s pillows provide rapid absorption in marine.',
+  },
+  {
+    image: demokit,
+    title: 'Sample Kit',
+    description: 'Green Boom’s pillows provide rapid absorption in marine.',
+  },
+];
+export const productData = [
+  {
+    image: pBoom,
+    title: 'Booms',
+  },
+  {
+    image: pPillow,
+    title: 'Pillows',
+  },
+  {
+    image: pSock,
+    title: 'Socks',
+  },
+  {
+    image: pMat,
+    title: 'Mat',
+  },
+  {
+    image: pSorbent,
+    title: 'Loose Sorbent',
+  },
+  {
+    image: pKits,
+    title: 'Spill Kits',
+  },
+];
+export const catData = [
+  {
+    title: 'EU Catalog',
+    image: trainingPDFIcon,
+  },
+  {
+    title: 'US Catalog',
+    image: trainingPDFIcon,
+  },
+  {
+    title: 'MENA Catalog',
+    image: trainingPDFIcon,
+  },
+  {
+    title: '1 Page Brochure',
+    image: trainingPDFIcon,
+  },
+  {
+    title: '4 Page Brochure',
+    image: trainingPDFIcon,
+  },
+  {
+    title: '4 Page Arabic Brochure',
+    image: trainingPDFIcon,
   },
 ];

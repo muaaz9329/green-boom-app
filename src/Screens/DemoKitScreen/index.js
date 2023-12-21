@@ -2,24 +2,29 @@ import React, {memo, useCallback} from 'react';
 import {View, Text, Image, ScrollView, FlatList} from 'react-native';
 import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
-import useMSDS from './useMSDScreen';
+import useDemoKitScreen from './useDemoKitScreen';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
-import {msdsData} from '../../Utils/localDB';
+import {demoKit} from '../../Utils/localDB';
+import {arrowrightblack} from '../../Assets';
 
-const MSDScreen = ({route, navigation}) => {
-  const {title} = useMSDS(navigation, route);
+const DemoKitScreen = ({route, navigation}) => {
+  const {title} = useDemoKitScreen(navigation, route);
 
   const renderMSDSItem = useCallback(({item, index}) => {
     return (
       <View style={styles.card}>
-        <Touchable
-          style={styles.cardBtn}
-          onPress={() => onPress(item?.routeName, item)}>
+        <Touchable style={styles.cardBtn}>
+          <Image source={item?.image} style={styles.iconStyle} />
           <View style={styles.imageStyle}>
-            <Image source={item?.image} style={styles.iconStyle} />
             <TextComponent text={item?.title} styles={styles.titleStyle} />
+            <TextComponent text={item?.description} styles={styles.descStyle} />
           </View>
+          <Image
+            source={arrowrightblack}
+            style={styles.arrowRight}
+            resizeMode="contain"
+          />
         </Touchable>
       </View>
     );
@@ -27,23 +32,24 @@ const MSDScreen = ({route, navigation}) => {
 
   return (
     <View style={styles.trainingMain}>
-      <HeaderComponent title={title} search={true} />
+      <HeaderComponent title={title} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}>
-        <View style={styles.videoMain}>
+        <View style={styles.proMain}>
           <FlatList
             refreshing={false}
-            data={msdsData}
-            numColumns={2}
+            data={demoKit}
             renderItem={renderMSDSItem}
-            contentContainerStyle={{
-              alignItems: 'center',
-            }}
+            contentContainerStyle={
+              {
+                // alignItems: 'center',
+              }
+            }
           />
         </View>
       </ScrollView>
     </View>
   );
 };
-export default memo(MSDScreen);
+export default memo(DemoKitScreen);

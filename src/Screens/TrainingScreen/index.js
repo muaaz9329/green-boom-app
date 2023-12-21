@@ -48,6 +48,7 @@ const TrainingScreen = ({route, navigation}) => {
         videoTitle={item?.videoTitle}
         videoDesc={item?.videoDesc}
         videoThumb={item?.videoThumb}
+        onPress={() => navigation.navigate('SingleVideoScreen', item)}
       />
     );
   });

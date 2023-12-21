@@ -18,6 +18,13 @@ export {default as bg5} from './Images/bg5.png';
 export {default as bg6} from './Images/bg6.png';
 export {default as boom} from './Images/boom.png';
 export {default as videoThumb} from './Images/videoThumb.png';
+export {default as demokit} from './Images/demokit.png';
+export {default as pBoom} from './Images/pBoom.png';
+export {default as pPillow} from './Images/pPillow.png';
+export {default as pSock} from './Images/pSock.png';
+export {default as pMat} from './Images/pMat.png';
+export {default as pSorbent} from './Images/pSorbent.png';
+export {default as pKits} from './Images/pKits.png';
 
 //  Icons
 
@@ -47,3 +54,5 @@ export {default as documentDownload} from './Icons/documentDownload.png';
 export {default as backIcon} from './Icons/back.png';
 export {default as searchIcon} from './Icons/search.png';
 export {default as trainingPDFIcon} from './Icons/trainingPDFIcon.png';
+export {default as arrowrightblack} from './Icons/arrowrightblack.png';
+export {default as downloadIcon} from './Icons/downloadIcon.png';

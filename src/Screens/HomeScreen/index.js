@@ -67,7 +67,10 @@ const HomeScreen = ({navigation}) => {
           }}
         />
         <View style={styles.button}>
-          <ThemeButtonWithIcon title={'Download Catalogs & Brochures'} />
+          <ThemeButtonWithIcon
+            onPress={() => navigation.navigate('CatalogScreen')}
+            title={'Download Catalogs & Brochures'}
+          />
         </View>
       </View>
     </View>
