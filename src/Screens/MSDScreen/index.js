@@ -18,7 +18,11 @@ const MSDScreen = ({route, navigation}) => {
           onPress={() => onPress(item?.routeName, item)}>
           <View style={styles.imageStyle}>
             <Image source={item?.image} style={styles.iconStyle} />
-            <TextComponent text={item?.title} styles={styles.titleStyle} />
+            <TextComponent
+              text={item?.title}
+              numberOfLines={2}
+              styles={styles.titleStyle}
+            />
           </View>
         </Touchable>
       </View>

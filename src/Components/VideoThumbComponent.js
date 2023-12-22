@@ -1,7 +1,8 @@
 import {StyleSheet, View, Image, TouchableWithoutFeedback} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+// import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {TextComponent} from './TextComponent';
 import {hp, wp} from '../Config/responsive';
+import {Colors} from '../Theme/Variables';
 
 const VideoThumbComponent = ({videoTitle, videoDesc, videoThumb, onPress}) => {
   return (

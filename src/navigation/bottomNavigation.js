@@ -105,9 +105,9 @@ function MybottomTabs() {
         component={Screens.HomeScreen}
       />
       <Tab.Screen
-        name="AccountScreen"
+        name="SettingScreen"
         options={tabarComponent(setting2, setting1)}
-        component={Screens.HomeScreen}
+        component={Screens.SettingScreen}
       />
     </Tab.Navigator>
   );

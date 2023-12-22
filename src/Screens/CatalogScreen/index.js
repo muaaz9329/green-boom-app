@@ -1,5 +1,5 @@
 import React, {memo, useCallback} from 'react';
-import {View, Text, Image, ScrollView, FlatList, Touchable} from 'react-native';
+import {View, Text, Image, ScrollView, FlatList} from 'react-native';
 import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
 import useCatalogScreen from './useCatalogScreen';
@@ -7,6 +7,7 @@ import {catData} from '../../Utils/localDB';
 import {downloadIcon} from '../../Assets';
 import {hp} from '../../Config/responsive';
 import {HeaderComponent} from '../../Components/HeaderComponent';
+import {Touchable} from '../../Components/Touchable';
 
 const CatalogScreen = ({navigation}) => {
   const {} = useCatalogScreen(navigation);
@@ -14,9 +15,7 @@ const CatalogScreen = ({navigation}) => {
     return (
       <Touchable style={styles.cardBtn}>
         <Image source={item?.image} style={styles.iconStyle} />
-        <View style={styles.imageStyle}>
-          <TextComponent text={item?.title} styles={styles.titleStyle} />
-        </View>
+        <TextComponent text={item?.title} styles={styles.titleStyle} />
         <Image
           source={downloadIcon}
           style={styles.arrowRight}
@@ -28,15 +27,17 @@ const CatalogScreen = ({navigation}) => {
   return (
     <ScrollView>
       <HeaderComponent title={'Catalogs & Brochures'} />
-      <FlatList
-        refreshing={false}
-        data={catData}
-        renderItem={renderItem}
-        contentContainerStyle={{
-          // alignItems: 'center',
-          marginTop: hp('2'),
-        }}
-      />
+      <View style={styles.catMain}>
+        <FlatList
+          refreshing={false}
+          data={catData}
+          renderItem={renderItem}
+          contentContainerStyle={{
+            // alignItems: 'center',
+            marginTop: hp('2'),
+          }}
+        />
+      </View>
     </ScrollView>
   );
 };

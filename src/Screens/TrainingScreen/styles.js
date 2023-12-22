@@ -9,9 +9,13 @@ export const styles = StyleSheet.create({
   },
   pdfMain: {
     flexDirection: 'row',
-    marginHorizontal: wp('7'),
+    marginHorizontal: wp('5'),
     marginVertical: hp('2.5'),
+    paddingHorizontal: wp('3'),
+    paddingVertical: hp('1.5'),
     flexWrap: 'wrap',
+    backgroundColor: Colors.white,
+    borderRadius: 10,
   },
   PDFImage: {
     width: wp('15'),

@@ -1,11 +1,13 @@
 // import {splashTwo} from '../Assets';
 import {
+  about,
   bg1,
   bg2,
   bg3,
   bg4,
   bg5,
   bg6,
+  contact,
   demokit,
   downloadIcon,
   icon1,
@@ -14,18 +16,23 @@ import {
   icon4,
   icon5,
   icon6,
+  locksetting,
+  logout,
   pBoom,
   pKits,
   pMat,
   pPillow,
   pSock,
   pSorbent,
+  privacy,
+  profile,
   splashIndustrial,
   splashLand,
   splashMarine,
   splashOne,
   splashThree,
   splashTwo,
+  terms,
   trainingPDFIcon,
   videoThumb,
 } from '../Assets';
@@ -350,5 +357,36 @@ export const catData = [
   {
     title: '4 Page Arabic Brochure',
     image: trainingPDFIcon,
+  },
+];
+
+export const settingData = [
+  {
+    title: 'My Profile',
+    image: profile,
+  },
+  {
+    title: 'Change Password',
+    image: locksetting,
+  },
+  {
+    title: 'About Green Boom',
+    image: about,
+  },
+  {
+    title: 'Privacy Policy',
+    image: privacy,
+  },
+  {
+    title: 'Terms and Conditions',
+    image: terms,
+  },
+  {
+    title: 'Contact us',
+    image: contact,
+  },
+  {
+    title: 'Log out',
+    image: logout,
   },
 ];

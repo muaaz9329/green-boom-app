@@ -47,5 +47,6 @@ const styles = StyleSheet.create({
   introDes: {
     color: Colors.lightGray,
     fontSize: hp('1.8'),
+    fontWeight: '300',
   },
 });

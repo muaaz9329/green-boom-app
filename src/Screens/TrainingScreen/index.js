@@ -1,5 +1,5 @@
 import React, {memo, useCallback} from 'react';
-import {View, Text, Image, ScrollView, FlatList} from 'react-native';
+import {View, Text, Image, ScrollView, FlatList, Linking} from 'react-native';
 import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
 import useTraining from './useTrainingScreen';
@@ -9,20 +9,27 @@ import {trainingPDFData, videosData} from '../../Utils/localDB';
 import {hp, wp} from '../../Config/responsive';
 import {boom} from '../../Assets';
 import {CategoryIntro} from '../../Components/CategoryIntro';
-import VideoComponent from './VideoComponent';
 import VideoThumbComponent from '../../Components/VideoThumbComponent';
+import {imageUrl} from '../../Utils/Urls';
 
 const TrainingScreen = ({route, navigation}) => {
-  const {isCategory, categoryData, title, isVideo} = useTraining(
-    navigation,
-    route,
-  );
+  const {
+    isCategory,
+    categoryData,
+    title,
+    isVideo,
+    category,
+    subCategory,
+    iconType,
+  } = useTraining(navigation, route);
   console.log('first', isVideo);
   const renderItem = useCallback(({item, index}) => {
     return (
-      <Touchable style={styles.pdfMain}>
+      <Touchable
+        style={styles.pdfMain}
+        onPress={() => Linking.openURL(imageUrl(item?.file))}>
         <Image
-          source={item?.image}
+          source={iconType[item?.file_type]}
           style={styles.PDFImage}
           resizeMode="contain"
         />
@@ -59,7 +66,7 @@ const TrainingScreen = ({route, navigation}) => {
         title={title}
         search={true}
         isCategory={isCategory}
-        categoryData={categoryData}
+        categoryData={category}
       />
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -87,7 +94,7 @@ const TrainingScreen = ({route, navigation}) => {
         ) : (
           <FlatList
             refreshing={false}
-            data={trainingPDFData}
+            data={subCategory}
             renderItem={renderItem}
             contentContainerStyle={{
               // alignItems: 'center',

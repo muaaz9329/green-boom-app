@@ -2,13 +2,13 @@ const getCredentials = () => {
   if (__DEV__)
     return {
       baseURL: 'https://virtualrealitycreators.com/green-boom/api',
-      imageURL: 'https://virtualrealitycreators.com/green-boom/public',
+      imageURL: 'https://virtualrealitycreators.com/green-boom/',
     };
   else {
     console.log = () => {};
     return {
       baseURL: 'https://virtualrealitycreators.com/green-boom/api',
-      imageURL: 'https://virtualrealitycreators.com/green-boom/public/',
+      imageURL: 'https://virtualrealitycreators.com/green-boom/',
     };
   }
 };
@@ -28,3 +28,4 @@ export const registerUrl = '/register';
 export const loginUrl = '/login-user';
 export const logoutUrl = 'auth/logout';
 export const getAgoraTokenUrl = 'getAccessToken/';
+export const sendType = 'customer/send-type';
