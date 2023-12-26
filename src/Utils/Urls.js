@@ -29,3 +29,6 @@ export const loginUrl = '/login-user';
 export const logoutUrl = 'auth/logout';
 export const getAgoraTokenUrl = 'getAccessToken/';
 export const sendType = 'customer/send-type';
+export const tabButtonType = 'customer/training-media/';
+export const msdSheets = 'customer/msdsSheet-list/';
+export const catalogBroucher = 'customer/catalogBrouchers-list/';

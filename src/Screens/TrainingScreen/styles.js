@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   pdfMain: {
     flexDirection: 'row',
     marginHorizontal: wp('5'),
-    marginVertical: hp('2.5'),
+    marginVertical: hp('1.5'),
     paddingHorizontal: wp('3'),
     paddingVertical: hp('1.5'),
     flexWrap: 'wrap',

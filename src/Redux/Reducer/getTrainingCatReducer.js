@@ -8,6 +8,8 @@ const initial_state = {
   Video: {
     subCat: new Set([]),
   },
+  msdSheets: new Set([]),
+  catalog: new Set([]),
 };
 
 const actionMap = {

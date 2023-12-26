@@ -65,6 +65,10 @@ function MainNavigator() {
               name="CatalogScreen"
               component={Screens.CatalogScreen}
             />
+            <Stack.Screen
+              name="ContactScreen"
+              component={Screens.ContactScreen}
+            />
           </>
         )}
       </Stack.Navigator>

@@ -9,12 +9,13 @@ import {hp} from '../../Config/responsive';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
 import Icon from 'react-native-vector-icons/Feather';
+import {AlertDesign} from '../../Components/AlertDesign';
 
 const SettingScreen = ({navigation}) => {
-  const {} = useSettingScreen(navigation);
+  const {onCancel, onConfirm, tabScreen, alert} = useSettingScreen(navigation);
   const renderItem = useCallback(({item, index}) => {
     return (
-      <Touchable style={styles.cardBtn}>
+      <Touchable style={styles.cardBtn} onPress={() => tabScreen(item)}>
         <Image source={item?.image} style={styles.iconStyle} />
         <TextComponent text={item?.title} styles={styles.titleStyle} />
         <Icon name="chevron-right" size={25} style={styles.arrowRight} />
@@ -34,6 +35,14 @@ const SettingScreen = ({navigation}) => {
               // alignItems: 'center',
               marginTop: hp('2'),
             }}
+          />
+          <AlertDesign
+            isVisible={alert}
+            onCancel={onCancel}
+            onConfirm={onConfirm}
+            title={'Log Out?'}
+            message={'Are you sure, you want to log out ?'}
+            confirmText={'Log Out'}
           />
         </View>
       </ScrollView>

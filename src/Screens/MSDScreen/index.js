@@ -1,23 +1,27 @@
 import React, {memo, useCallback} from 'react';
-import {View, Text, Image, ScrollView, FlatList} from 'react-native';
+import {View, Text, Image, ScrollView, FlatList, Linking} from 'react-native';
 import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
 import useMSDS from './useMSDScreen';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
 import {msdsData} from '../../Utils/localDB';
+import {imageUrl} from '../../Utils/Urls';
 
 const MSDScreen = ({route, navigation}) => {
-  const {title} = useMSDS(navigation, route);
+  const {title, category, iconType} = useMSDS(navigation, route);
 
   const renderMSDSItem = useCallback(({item, index}) => {
     return (
       <View style={styles.card}>
         <Touchable
           style={styles.cardBtn}
-          onPress={() => onPress(item?.routeName, item)}>
+          onPress={() => Linking.openURL(imageUrl(item?.file))}>
           <View style={styles.imageStyle}>
-            <Image source={item?.image} style={styles.iconStyle} />
+            <Image
+              source={iconType[item?.file_type]}
+              style={styles.iconStyle}
+            />
             <TextComponent
               text={item?.title}
               numberOfLines={2}
@@ -38,7 +42,7 @@ const MSDScreen = ({route, navigation}) => {
         <View style={styles.videoMain}>
           <FlatList
             refreshing={false}
-            data={msdsData}
+            data={category}
             numColumns={2}
             renderItem={renderMSDSItem}
             contentContainerStyle={{

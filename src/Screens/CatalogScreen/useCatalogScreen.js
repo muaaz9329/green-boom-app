@@ -1,7 +1,26 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import useReduxStore from '../../Hooks/UseReduxStore';
+import {getcatalog} from '../../Redux/Action/contentAction';
+import {trainingPDFIcon, wordIcon} from '../../Assets';
 
 const useCatalogScreen = ({navigate, goBack}) => {
-  return {};
+  const iconType = {
+    pdf: trainingPDFIcon,
+    word: wordIcon,
+  };
+  const {dispatch, getState} = useReduxStore();
+  const titleData = getState('getCategory');
+  const category = titleData['catalog'] ?? [];
+  console.log('cat', category);
+
+  useEffect(() => {
+    dispatch(getcatalog());
+  }, []);
+
+  return {
+    category,
+    iconType,
+  };
 };
 
 export default useCatalogScreen;

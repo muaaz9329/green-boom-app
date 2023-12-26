@@ -21,6 +21,8 @@ const TrainingScreen = ({route, navigation}) => {
     category,
     subCategory,
     iconType,
+    onCategory,
+    activeBtn,
   } = useTraining(navigation, route);
   console.log('first', isVideo);
   const renderItem = useCallback(({item, index}) => {
@@ -67,6 +69,8 @@ const TrainingScreen = ({route, navigation}) => {
         search={true}
         isCategory={isCategory}
         categoryData={category}
+        activeBtn={activeBtn}
+        onPress={item => onCategory(item)}
       />
       <ScrollView
         showsVerticalScrollIndicator={false}

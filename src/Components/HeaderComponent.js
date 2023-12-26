@@ -16,11 +16,16 @@ export const HeaderComponent = ({
   isCategory,
   categoryData,
   headerShow,
+  activeBtn,
 }) => {
   const renderItem = useCallback(({item, index}) => {
     return (
       <View>
-        <TabButton style={styles.tabs} title={item.title} />
+        <TabButton
+          onPress={() => onPress(item)}
+          style={styles.tabs(Boolean(activeBtn == item.id))}
+          title={item.title}
+        />
       </View>
     );
   });
@@ -91,11 +96,14 @@ const styles = StyleSheet.create({
     width: wp('5'),
     height: hp('3.5'),
   },
-  tabs: {
+  tabs: isActive => ({
     // width: '110%',
     marginRight: wp('2.2'),
     marginBottom: hp('2.5'),
-  },
+    backgroundColor: isActive
+      ? Colors.primaryColor
+      : 'rgba(255, 255, 255, 0.1)',
+  }),
   btnMain: {
     marginLeft: wp('5'),
   },

@@ -9,3 +9,4 @@ export {default as DemoKitScreen} from './DemoKitScreen';
 export {default as ProductScreen} from './ProductScreen';
 export {default as CatalogScreen} from './CatalogScreen';
 export {default as SettingScreen} from './SettingScreen';
+export {default as ContactScreen} from './ContactScreen';

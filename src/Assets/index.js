@@ -25,6 +25,11 @@ export {default as pSock} from './Images/pSock.png';
 export {default as pMat} from './Images/pMat.png';
 export {default as pSorbent} from './Images/pSorbent.png';
 export {default as pKits} from './Images/pKits.png';
+export {default as linaProfile} from './Images/lina.png';
+export {default as parkerProfile} from './Images/parker.png';
+export {default as hadylProfile} from './Images/hadyl.png';
+export {default as asenaProfile} from './Images/asena.png';
+export {default as tindraProfile} from './Images/asena.png';
 
 //  Icons
 
@@ -58,7 +63,6 @@ export {default as trainingPDFIcon} from './Icons/trainingPDFIcon.png';
 export {default as arrowrightblack} from './Icons/arrowrightblack.png';
 export {default as downloadIcon} from './Icons/downloadIcon.png';
 export {default as arrowrightsmall} from './Icons/arrowrightsmall.png';
-
 export {default as profile} from './Icons/profile.png';
 export {default as locksetting} from './Icons/lock.png';
 export {default as about} from './Icons/about.png';
@@ -66,3 +70,5 @@ export {default as privacy} from './Icons/privacy.png';
 export {default as terms} from './Icons/terms.png';
 export {default as contact} from './Icons/contact.png';
 export {default as logout} from './Icons/logout.png';
+export {default as contacticon} from './Icons/contacticon.png';
+export {default as wordIcon} from './Icons/wordIcon.png';

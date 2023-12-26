@@ -12,4 +12,6 @@ export const types = {
   trainingCat: 'trainingCat',
   subCat: 'subCat',
   updateCat: 'updateCat',
+  msdsSheet: 'msdsSheet',
+  getcatalogData: 'getcatalogData',
 };

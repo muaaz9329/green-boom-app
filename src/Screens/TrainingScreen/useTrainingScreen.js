@@ -1,10 +1,10 @@
 import {useEffect, useState} from 'react';
 import {videosData} from '../../Utils/localDB';
 import API from '../../Utils/helperFunc';
-import {sendType} from '../../Utils/Urls';
+import {sendType, tabButtonType} from '../../Utils/Urls';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {getCategory} from '../../Redux/Action/contentAction';
-import {trainingPDFIcon} from '../../Assets';
+import {trainingPDFIcon, wordIcon} from '../../Assets';
 
 const useTraining = ({navigate, goBack}, {params}) => {
   const {dispatch, getState} = useReduxStore();
@@ -15,7 +15,20 @@ const useTraining = ({navigate, goBack}, {params}) => {
   const isCategory = Boolean(category.length > 0);
   const iconType = {
     pdf: trainingPDFIcon,
+    word: wordIcon,
   };
+
+  const [subCat, setSubCat] = useState(null);
+  const [activeBtn, setActiveBtn] = useState(category[0]?.id);
+  const onCategory = async item => {
+    setActiveBtn(item.id);
+    const {ok, data} = await API.get(tabButtonType + item?.id);
+    if (ok) {
+      setSubCat(data.data);
+      subCategory = data.data;
+    }
+  };
+
   // console.log('asdtest', titleData[params.title]?.cat[0]);
   useEffect(() => {
     dispatch(getCategory(params?.title));
@@ -27,8 +40,10 @@ const useTraining = ({navigate, goBack}, {params}) => {
     title: params?.title,
     isVideo: params?.isVideo,
     category,
-    subCategory,
+    subCategory: subCat ?? subCategory,
     iconType,
+    onCategory,
+    activeBtn,
   };
 };
 
