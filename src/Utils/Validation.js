@@ -114,10 +114,10 @@ const resetPasswordScheme = yup.object().shape({
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
       'Must contain 8 characters, one uppercase, one lowercase, one number and one special case character.',
     ),
-  confirm_password: yup
-    .string()
-    .required('Confirm password is required.')
-    .oneOf([yup.ref('new_password'), null], 'Passwords must match.'),
+  // confirm_password: yup
+  //   .string()
+  //   .required('Confirm password is required.')
+  //   .oneOf([yup.ref('new_password'), null], 'Passwords must match.'),
 });
 
 const addUsernameScheme = yup.object().shape({
@@ -132,7 +132,12 @@ const editProfileScheme = yup.object().shape({
     .matches(/^[A-Za-z ]*$/, 'Please enter valid name.')
     .min(2, 'Name must be atleast 2 characters.')
     .max(50, 'Name must be of 50 characters.'),
-  phone: yup.string().required('Please enter your number.'),
+  company: yup
+    .string()
+    .required('Please enter your Company Name.')
+    .max(100, 'Name must be less than 100 characters.')
+    .min(2, 'Name must be atleast 2 characters.')
+    .max(50, 'Name must be of 50 characters.'),
   email: yup
     .string()
     .email('Email must be valid.')

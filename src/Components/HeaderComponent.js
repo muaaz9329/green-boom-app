@@ -3,7 +3,7 @@ import {FlatList, Image, Platform, StyleSheet, Text, View} from 'react-native';
 import {hp, wp} from '../Config/responsive';
 import {Colors} from '../Theme/Variables';
 import {TextComponent} from './TextComponent';
-import {goBack} from '../Utils';
+// import {goBack} from '../Utils';
 import {backIcon, searchIcon} from '../Assets';
 import {Touchable} from './Touchable';
 import TabButton from './TabButton';
@@ -17,6 +17,7 @@ export const HeaderComponent = ({
   categoryData,
   headerShow,
   activeBtn,
+  goBack,
 }) => {
   const renderItem = useCallback(({item, index}) => {
     return (
@@ -71,7 +72,7 @@ export const HeaderComponent = ({
 
 const styles = StyleSheet.create({
   headerTop: {
-    backgroundColor: Colors.black,
+    backgroundColor: Colors.headerBg,
     borderRadius: 15,
     borderTopStartRadius: 0,
     borderTopEndRadius: 0,

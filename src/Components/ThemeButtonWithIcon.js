@@ -12,13 +12,14 @@ const ThemeButtonWithIcon = ({
   style,
   textStyle,
   btnStyle,
+  imageStyle,
 }) => {
   return (
     <Touchable
       Opacity={0.7}
       onPress={onPress}
       style={[styles.button, {justifyContent: 'center', ...style}]}>
-      <Image source={documentDownload} style={styles.iconStyle} />
+      <Image source={image} style={[styles.iconStyle, {...imageStyle}]} />
       <Text style={[styles.text, {...textStyle}]}>{title}</Text>
     </Touchable>
   );

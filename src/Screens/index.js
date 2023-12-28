@@ -10,3 +10,6 @@ export {default as ProductScreen} from './ProductScreen';
 export {default as CatalogScreen} from './CatalogScreen';
 export {default as SettingScreen} from './SettingScreen';
 export {default as ContactScreen} from './ContactScreen';
+export {default as ChangePasswordScreen} from './ChangePasswordScreen';
+export {default as MyProfileScreen} from './MyProfileScreen';
+export {default as EditProfileScreen} from './EditProfileScreen';

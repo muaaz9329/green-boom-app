@@ -369,12 +369,12 @@ export const settingData = [
   {
     title: 'My Profile',
     image: profile,
-    screenUrl: 'ContactScreen',
+    screenUrl: 'MyProfileScreen',
   },
   {
     title: 'Change Password',
     image: locksetting,
-    screenUrl: 'ContactScreen',
+    screenUrl: 'ChangePasswordScreen',
   },
   {
     title: 'About Green Boom',

@@ -69,6 +69,18 @@ function MainNavigator() {
               name="ContactScreen"
               component={Screens.ContactScreen}
             />
+            <Stack.Screen
+              name="ChangePasswordScreen"
+              component={Screens.ChangePasswordScreen}
+            />
+            <Stack.Screen
+              name="MyProfileScreen"
+              component={Screens.MyProfileScreen}
+            />
+            <Stack.Screen
+              name="EditProfileScreen"
+              component={Screens.EditProfileScreen}
+            />
           </>
         )}
       </Stack.Navigator>

@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     flex: 0.8,
   },
   pdfTitle: {
-    fontWeight: '600',
+    fontWeight: '400',
     fontSize: hp('2'),
   },
   pdfDesc: {

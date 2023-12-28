@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     height: hp('19'),
   },
   videoTitle: {
-    fontWeight: '500',
+    fontWeight: '400',
     fontSize: hp('2'),
     color: '#000',
     marginBottom: hp('1'),

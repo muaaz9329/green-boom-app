@@ -17,7 +17,7 @@ import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
 import ThemeButtonWithIcon from '../../Components/ThemeButtonWithIcon';
 import {Touchable} from '../../Components/Touchable';
-import {introVideo} from '../../Assets';
+import {documentDownload, introVideo} from '../../Assets';
 
 const HomeScreen = ({navigation}) => {
   const {dispatch} = useReduxStore();
@@ -70,6 +70,7 @@ const HomeScreen = ({navigation}) => {
           <ThemeButtonWithIcon
             onPress={() => navigation.navigate('CatalogScreen')}
             title={'Download Catalogs & Brochures'}
+            image={documentDownload}
           />
         </View>
       </View>

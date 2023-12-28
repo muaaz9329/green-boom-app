@@ -71,6 +71,7 @@ const TrainingScreen = ({route, navigation}) => {
         categoryData={category}
         activeBtn={activeBtn}
         onPress={item => onCategory(item)}
+        goBack={() => navigation.goBack()}
       />
       <ScrollView
         showsVerticalScrollIndicator={false}

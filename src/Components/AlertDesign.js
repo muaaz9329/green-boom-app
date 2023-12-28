@@ -34,10 +34,10 @@ export const AlertDesign = ({
       confirmButtonStyle={styles.confirmBtnMain}
       cancelButtonTextStyle={styles.modalCancelBtnText}
       confirmButtonTextStyle={styles.modalcConfirmBtnText}
-      onCancelPressed={onCancel}
       onConfirmPressed={onConfirm}
+      onCancelPressed={onCancel}
       overlayStyle={{
-        backgroundColor: 'rgba(255,255,255,0.8)',
+        backgroundColor: 'rgba(0,0,0,0.6)',
       }}
     />
   );
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   modalMsg: {
     color: Colors.gray,
     fontSize: hp('1.8'),
-    marginBottom: hp('3'),
+    marginBottom: hp('2'),
   },
   cancelBtnMain: {
     backgroundColor: '#F6F6F6',
@@ -62,7 +62,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    marginBottom: hp('3'),
+    marginBottom: hp('1'),
+    borderWidth: 1,
+    borderColor: Colors.gray,
   },
   confirmBtnMain: {
     // backgroundColor: '#FF4949',
@@ -71,7 +73,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    marginBottom: hp('3'),
+    borderColor: '#FF4949',
+    borderWidth: 1,
+    marginBottom: hp('1'),
   },
   modalCancelBtnText: {
     fontSize: hp('1.8'),

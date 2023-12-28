@@ -29,7 +29,10 @@ const CatalogScreen = ({navigation}) => {
   });
   return (
     <ScrollView>
-      <HeaderComponent title={'Catalogs & Brochures'} />
+      <HeaderComponent
+        title={'Catalogs & Brochures'}
+        goBack={() => navigation.goBack()}
+      />
       <View style={styles.catMain}>
         <FlatList
           refreshing={false}

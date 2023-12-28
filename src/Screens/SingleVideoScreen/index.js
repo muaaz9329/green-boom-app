@@ -19,6 +19,7 @@ const SingleVideoScreen = ({route, navigation}) => {
         headerShow={styles.header(isPortrait)}
         title={'Video'}
         search={true}
+        goBack={() => navigation.goBack()}
       />
       <VideoComponent
         videoUrl={item?.videoUrl}

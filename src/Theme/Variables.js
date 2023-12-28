@@ -6,11 +6,11 @@ const Colors = {
   black: '#000000',
   white: '#ffffff',
   themeRed: '#EA4335',
-
   gray: 'rgba(45, 45, 45, 0.5)',
   grayBorder: '#D9D9D9',
   lightGray: 'rgba(0, 0, 0, 0.50)',
   textGray: 'rgba(32, 32, 32, 0.50)',
+  headerBg: '#202020',
 };
 
 /** FontSize **/

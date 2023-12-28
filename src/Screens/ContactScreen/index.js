@@ -38,7 +38,10 @@ const ContactScreen = ({navigation}) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}>
-        <HeaderComponent title={'Catalogs & Brochures'} />
+        <HeaderComponent
+          title={'Contact us'}
+          goBack={() => navigation.goBack()}
+        />
         <View style={styles.catMain}>
           <Image source={contacticon} style={styles.contactIcon} />
           <FlatList
@@ -49,6 +52,21 @@ const ContactScreen = ({navigation}) => {
               // alignItems: 'center',
               marginTop: hp('2'),
             }}
+            ItemSeparatorComponent={() => (
+              <View style={styles.separator}></View>
+            )}
+            ListFooterComponent={() => (
+              <View style={styles.footer}>
+                <TextComponent
+                  text={'For All Other Questions'}
+                  styles={styles.footerH}
+                />
+                <TextComponent
+                  text={'Info@greenboom.com'}
+                  styles={styles.footerT}
+                />
+              </View>
+            )}
           />
         </View>
       </ScrollView>

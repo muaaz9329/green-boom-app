@@ -24,7 +24,7 @@ const SettingScreen = ({navigation}) => {
   });
   return (
     <>
-      <HeaderComponent title={'Catalogs & Brochures'} />
+      <HeaderComponent title={'Settings'} goBack={() => navigation.goBack()} />
       <ScrollView>
         <View style={styles.catMain}>
           <FlatList
@@ -38,10 +38,10 @@ const SettingScreen = ({navigation}) => {
           />
           <AlertDesign
             isVisible={alert}
-            onCancel={onCancel}
             onConfirm={onConfirm}
+            onCancel={onCancel}
             title={'Log Out?'}
-            message={'Are you sure, you want to log out ?'}
+            message={'Are you sure, you want to log out?'}
             confirmText={'Log Out'}
           />
         </View>

@@ -32,7 +32,7 @@ const DemoKitScreen = ({route, navigation}) => {
 
   return (
     <View style={styles.trainingMain}>
-      <HeaderComponent title={title} />
+      <HeaderComponent title={title} goBack={() => navigation.goBack()} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}>

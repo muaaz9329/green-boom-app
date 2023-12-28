@@ -15,7 +15,11 @@ export const styles = StyleSheet.create({
   },
   mainContact: {
     flexDirection: 'row',
-    borderBottomWidth: 0.5,
+  },
+  separator: {
+    borderBottomColor: '#bbb',
+    borderWidth: 0.4,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     marginBottom: hp('3'),
   },
   contactProfile: {
@@ -37,5 +41,17 @@ export const styles = StyleSheet.create({
     color: Colors.black,
     fontSize: hp('1.7'),
     marginTop: hp('.4'),
+  },
+  footer: {
+    paddingLeft: wp('15'),
+  },
+  footerH: {
+    color: Colors.primaryColor,
+    fontSize: hp('1.8'),
+    fontWeight: 500,
+  },
+  footerT: {
+    fontSize: hp('1.7'),
+    marginTop: hp('.3'),
   },
 });

@@ -29,7 +29,8 @@ export {default as linaProfile} from './Images/lina.png';
 export {default as parkerProfile} from './Images/parker.png';
 export {default as hadylProfile} from './Images/hadyl.png';
 export {default as asenaProfile} from './Images/asena.png';
-export {default as tindraProfile} from './Images/asena.png';
+export {default as tindraProfile} from './Images/tindra.png';
+export {default as profileBg} from './Images/profileBg1.png';
 
 //  Icons
 
@@ -72,3 +73,9 @@ export {default as contact} from './Icons/contact.png';
 export {default as logout} from './Icons/logout.png';
 export {default as contacticon} from './Icons/contacticon.png';
 export {default as wordIcon} from './Icons/wordIcon.png';
+export {default as changePasswordIcon} from './Icons/changePaawordIcon.png';
+export {default as profileCompany} from './Icons/profileCompany.png';
+export {default as profileEmail} from './Icons/profileEmail.png';
+export {default as passDots} from './Icons/passdots.png';
+export {default as passIcon} from './Icons/passIcon.png';
+export {default as edit2} from './Icons/edit-2.png';
