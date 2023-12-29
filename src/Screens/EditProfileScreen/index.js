@@ -7,6 +7,7 @@ import useEditProfileScreen from './useEditProfileScreen';
 import {HeaderComponentProfile} from '../../Components/HeaderComponentProfile';
 import {
   company,
+  editPro,
   emailIcon,
   logout,
   passDots,
@@ -24,8 +25,17 @@ import {InputComponent} from '../../Components/InputComponent';
 import ThemeButton from '../../Components/ThemeButton';
 
 const EditProfileScreen = ({navigation}) => {
-  const {handleSubmit, errors, reset, control, getValues} =
-    useEditProfileScreen(navigation);
+  const {
+    handleSubmit,
+    errors,
+    reset,
+    control,
+    getValues,
+    userData,
+    updateProfileFunction,
+    uploadFromGalary,
+    profileData,
+  } = useEditProfileScreen(navigation);
 
   return (
     <>
@@ -34,16 +44,24 @@ const EditProfileScreen = ({navigation}) => {
         goBack={() => navigation.goBack()}
       />
       <View style={styles.catMain}>
-        <BlurImage
-          blurhash={'LKK1wP_3yYIU4.jsWrt7_NRjMdt7'}
-          radius={75}
-          isURI={true}
-          styles={styles.ProfileImage}
-          blurStyle={styles.blurMain}
-          uri={imageUrl(ProfileImage)}
-        />
-        <TextComponent text={'John Doe'} styles={styles.name} />
-        <TextComponent text={'greenboomcorp@mail.com'} styles={styles.email} />
+        <View>
+          <BlurImage
+            blurhash={'LKK1wP_3yYIU4.jsWrt7_NRjMdt7'}
+            radius={75}
+            isURI={true}
+            styles={styles.ProfileImage}
+            blurStyle={styles.blurMain}
+            uri={profileData?.uri ?? imageUrl(userData?.profile_image)}
+          />
+          <Touchable
+            onPress={uploadFromGalary}
+            style={styles.profileIcon}
+            Opacity={0.8}>
+            <Image source={editPro} style={styles.addImageIcon} />
+          </Touchable>
+        </View>
+        <TextComponent text={userData?.name} styles={styles.name} />
+        <TextComponent text={userData?.email} styles={styles.email} />
 
         <TextComponent text={'User Name'} styles={styles.subHd} />
         <InputComponent
@@ -56,14 +74,14 @@ const EditProfileScreen = ({navigation}) => {
             getValues,
             isImage: username,
             placeholder: 'John Doe',
-            defaultValue: 'John Doe',
-            viewStyle: {...styles.inputStyle},
+            defaultValue: userData?.name,
+            viewStyle: {...styles.nameSt},
           }}
         />
         <TextComponent text={'Company'} styles={styles.subHd} />
         <InputComponent
           {...{
-            name: 'company',
+            name: 'company_name',
             handleSubmit,
             errors,
             reset,
@@ -71,7 +89,7 @@ const EditProfileScreen = ({navigation}) => {
             isImage: company,
             getValues,
             placeholder: 'Green Boom Corp',
-            defaultValue: 'Green Boom Corp',
+            defaultValue: userData?.company_name,
             viewStyle: {...styles.inputStyle},
           }}
         />
@@ -86,7 +104,7 @@ const EditProfileScreen = ({navigation}) => {
             isImage: emailIcon,
             getValues,
             placeholder: 'greenboomcorp@mail.com',
-            defaultValue: 'greenboomcorp@mail.com',
+            defaultValue: userData?.email,
             viewStyle: {...styles.inputStyle},
           }}
         />
@@ -107,7 +125,11 @@ const EditProfileScreen = ({navigation}) => {
             imageStyle={styles.imgStyle}
           />
         </View>
-        <ThemeButton title={'Change Password'} style={styles.buttonStyle} />
+        <ThemeButton
+          onPress={handleSubmit(updateProfileFunction)}
+          title={'Save'}
+          style={styles.buttonStyle}
+        />
       </View>
     </>
   );

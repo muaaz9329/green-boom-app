@@ -40,11 +40,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   // msds card
-  card: {
-    paddingHorizontal: wp('2'),
-    shadowColor: 'gray',
-  },
-  cardBtn: {},
+
   imageStyle: {
     width: wp('36'),
     height: hp('20'),
@@ -72,5 +68,60 @@ export const styles = StyleSheet.create({
     fontSize: hp('1.8'),
     textAlign: 'center',
     height: hp('10'),
+  },
+  // accordion
+  cardBtn: {
+    backgroundColor: Colors.white,
+    borderRadius: 10,
+  },
+  card: {
+    marginHorizontal: wp('2'),
+    marginVertical: hp('1'),
+    marginBottom: hp('1'),
+  },
+  imageStyle: {
+    width: wp('40'),
+    height: hp('13'),
+    alignItems: 'center',
+    justifyContent: 'center',
+    // marginVertical: hp('1'),
+    marginHorizontal: wp('2'),
+    marginBottom: hp('2'),
+    shadowColor: 'gray',
+  },
+
+  iconStyle: {
+    width: wp('9'),
+    height: hp('4.5'),
+    marginBottom: hp('2'),
+  },
+  titleStyle: {
+    fontSize: hp('1.8'),
+  },
+  button: {
+    marginHorizontal: wp('4'),
+    marginTop: hp('.7'),
+  },
+  acc: {
+    flexDirection: 'row',
+    paddingVertical: hp('1'),
+    paddingHorizontal: wp('5'),
+    // marginBottom: hp('1'),
+  },
+  accTitle: {
+    width: wp('86'),
+    fontSize: hp('1.7'),
+  },
+  accImage: {
+    resizeMode: 'contain',
+    width: wp('4'),
+  },
+  separator: {
+    borderBottomColor: '#bbb',
+    borderWidth: 0.4,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    marginTop: hp('2'),
+    marginBottom: hp('2'),
+    marginHorizontal: wp('5'),
   },
 });

@@ -11,12 +11,13 @@ const useTraining = ({navigate, goBack}, {params}) => {
   const titleData = getState('getCategory');
   const category = titleData[params?.title]?.cat ?? [];
   const subCategory = titleData[params?.title]?.subCat ?? [];
-  console.log('first', subCategory);
+  // console.log('first', subCategory);
   const isCategory = Boolean(category.length > 0);
   const iconType = {
     pdf: trainingPDFIcon,
     word: wordIcon,
   };
+  const [accordionItem, setAccordionItem] = useState('');
 
   const [subCat, setSubCat] = useState(null);
   const [activeBtn, setActiveBtn] = useState(category[0]?.id);
@@ -44,6 +45,8 @@ const useTraining = ({navigate, goBack}, {params}) => {
     iconType,
     onCategory,
     activeBtn,
+    accordionItem,
+    setAccordionItem,
   };
 };
 

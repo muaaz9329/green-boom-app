@@ -5,8 +5,10 @@ import {logoutService} from '../../Services/AuthServices';
 
 const useMyProfileScreen = ({navigate, goBack}) => {
   const [alert, setAlert] = useState(false);
-  const {dispatch} = useReduxStore();
+  const {dispatch, getState} = useReduxStore();
 
+  const {userData} = getState('Auth');
+  // console.log('userData', userData);
   const onConfirm = () => {
     setAlert(false);
     setTimeout(async () => {
@@ -18,7 +20,7 @@ const useMyProfileScreen = ({navigate, goBack}) => {
     setAlert(!alert);
   };
 
-  return {onCancel, onConfirm, alert};
+  return {onCancel, onConfirm, alert, userData};
 };
 
 export default useMyProfileScreen;

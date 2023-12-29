@@ -7,6 +7,7 @@ import useMyProfileScreen from './useMyProfileScreen';
 import {HeaderComponentProfile} from '../../Components/HeaderComponentProfile';
 import {
   company,
+  editPro,
   emailIcon,
   logout,
   passDots,
@@ -20,9 +21,11 @@ import {imageUrl} from '../../Utils/Urls';
 import ThemeButton from '../../Components/ThemeButton';
 import ThemeButtonWithIcon from '../../Components/ThemeButtonWithIcon';
 import {AlertDesign} from '../../Components/AlertDesign';
+import {Touchable} from '../../Components/Touchable';
+import {hp, wp} from '../../Config/responsive';
 
 const MyProfileScreen = ({navigation}) => {
-  const {onCancel, onConfirm, alert} = useMyProfileScreen(navigation);
+  const {onCancel, onConfirm, alert, userData} = useMyProfileScreen(navigation);
 
   return (
     <View style={styles.catMain}>
@@ -38,20 +41,20 @@ const MyProfileScreen = ({navigation}) => {
         isURI={true}
         styles={styles.ProfileImage}
         blurStyle={styles.blurMain}
-        uri={imageUrl(ProfileImage)}
+        uri={imageUrl(userData?.profile_image)}
       />
-      <TextComponent text={'John Doe'} styles={styles.name} />
-      <TextComponent text={'greenboomcorp@mail.com'} styles={styles.email} />
+      <TextComponent text={userData?.name} styles={styles.name} />
+      <TextComponent text={userData?.email} styles={styles.email} />
       <View style={styles.cardBtn}>
         <Image source={profileEmail} style={styles.iconStyle} />
-        <TextComponent
-          text={'greenboomcorp@mail.com'}
-          styles={styles.titleStyle}
-        />
+        <TextComponent text={userData?.email} styles={styles.titleStyle} />
       </View>
       <View style={styles.cardBtn}>
         <Image source={profileCompany} style={styles.iconStyle} />
-        <TextComponent text={'Green Boom Corp'} styles={styles.titleStyle} />
+        <TextComponent
+          text={userData?.company_name}
+          styles={styles.titleStyle}
+        />
       </View>
       <View style={styles.cardBtn}>
         <Image source={passIcon} style={styles.iconStyle} />

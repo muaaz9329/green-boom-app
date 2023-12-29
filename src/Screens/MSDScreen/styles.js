@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
   },
   cardBtn: {},
   imageStyle: {
-    width: wp('38'),
+    width: wp('40'),
     height: hp('18'),
     alignItems: 'center',
     justifyContent: 'center',

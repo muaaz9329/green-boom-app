@@ -59,6 +59,7 @@ export const styles = StyleSheet.create({
     fontWeight: 500,
     marginTop: hp('2'),
     fontSize: hp('2.3'),
+    textTransform: 'capitalize',
   },
   email: {
     alignSelf: 'center',
@@ -113,5 +114,22 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     left: wp('4'),
+  },
+
+  profileIcon: {
+    position: 'absolute',
+    right: wp('32'),
+    top: hp('1.5'),
+    zIndex: 1,
+  },
+  addImageIcon: {
+    width: wp('10'),
+    resizeMode: 'contain',
+  },
+  nameSt: {
+    textTransform: 'capitalize',
+    backgroundColor: Colors.white,
+    borderColor: Colors.grayBorder,
+    marginTop: hp('.4'),
   },
 });

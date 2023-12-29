@@ -14,4 +14,5 @@ export const types = {
   updateCat: 'updateCat',
   msdsSheet: 'msdsSheet',
   getcatalogData: 'getcatalogData',
+  UpdateProfile: 'UpdateProfile',
 };

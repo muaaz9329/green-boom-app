@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   },
   iconStyle: {
     width: wp('12'),
-    height: hp('6'),
+    height: hp('5.5'),
     // marginBottom: hp('2'),
     resizeMode: 'contain',
   },
@@ -63,6 +63,7 @@ export const styles = StyleSheet.create({
     fontWeight: 500,
     marginTop: hp('2'),
     fontSize: hp('2.3'),
+    textTransform: 'capitalize',
   },
   email: {
     alignSelf: 'center',
@@ -92,5 +93,21 @@ export const styles = StyleSheet.create({
     width: wp('10'),
     marginRight: wp('0'),
     marginLeft: wp('-4'),
+  },
+  addImageIcon: {
+    alignSelf: 'center',
+    width: wp('14'),
+    height: hp('8'),
+    resizeMode: 'contain',
+  },
+  profileIcon: {
+    position: 'absolute',
+    right: wp('36'),
+    top: hp('1'),
+    zIndex: 1,
+  },
+  addImageIcon: {
+    width: wp('10'),
+    resizeMode: 'contain',
   },
 });

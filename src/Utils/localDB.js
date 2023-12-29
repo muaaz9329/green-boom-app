@@ -8,9 +8,11 @@ import {
   bg4,
   bg5,
   bg6,
+  callS,
   contact,
   demokit,
   downloadIcon,
+  emailS,
   hadylProfile,
   icon1,
   icon2,
@@ -21,6 +23,8 @@ import {
   linaProfile,
   locksetting,
   logout,
+  messageS,
+  microphoneS,
   pBoom,
   pKits,
   pMat,
@@ -449,5 +453,28 @@ export const contactData = [
     email: 'Tindra.Falk@greenboom.com',
     phone: '+1 (404)786-8003',
     available: '(Available European office hours)',
+  },
+];
+
+export const accordionData = [
+  {
+    id: 1,
+    title: 'Email Script',
+    icon: emailS,
+  },
+  {
+    id: 2,
+    title: 'Phone Call Script',
+    icon: callS,
+  },
+  {
+    id: 3,
+    title: 'Voice Mail Script',
+    icon: microphoneS,
+  },
+  {
+    id: 4,
+    title: 'SMS Script',
+    icon: messageS,
   },
 ];
