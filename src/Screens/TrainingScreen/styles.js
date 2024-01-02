@@ -25,6 +25,8 @@ export const styles = StyleSheet.create({
   },
   pdfInner: {
     flex: 0.8,
+
+    justifyContent: 'center',
   },
   pdfTitle: {
     fontWeight: '400',

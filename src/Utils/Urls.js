@@ -33,3 +33,4 @@ export const tabButtonType = 'customer/training-media/';
 export const msdSheets = 'customer/msdsSheet-list/';
 export const catalogBroucher = 'customer/catalogBrouchers-list/';
 export const updateUser = '/customer/update-user/';
+export const salesPitch = '/customer/all-perfectSale/';

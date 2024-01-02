@@ -74,7 +74,7 @@ export const onBoardingData = [
 ];
 export const homeScreenBtns = [
   {
-    id: 1,
+    id: 'Training',
     title: 'Training',
     image: bg1,
     icon: icon1,
@@ -107,7 +107,7 @@ export const homeScreenBtns = [
     ],
   },
   {
-    id: 2,
+    id: 'Video',
     title: 'Videos',
     image: bg2,
     icon: icon2,
@@ -148,7 +148,7 @@ export const homeScreenBtns = [
     routeName: 'DemoKitScreen',
   },
   {
-    id: 4,
+    id: 'MSDSheets',
     title: 'MSDS Sheets',
     image: bg4,
     icon: icon4,
@@ -163,11 +163,11 @@ export const homeScreenBtns = [
     routeName: 'ProductScreen',
   },
   {
-    id: 6,
+    id: 'salespitch',
     title: 'Perfect Sales Pitch',
     image: bg6,
     icon: icon6,
-    routeName: 'PerfectSaleScreen',
+    routeName: 'TrainingScreen',
   },
 ];
 

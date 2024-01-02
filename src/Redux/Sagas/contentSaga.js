@@ -12,11 +12,13 @@ const dataType = {
   Video: 'Video',
   msdSheets: 'msdSheets',
   catalog: 'catalog',
+  salespitch: 'salespitch',
 };
 const getTrainingData = function* ({payload}) {
   yield put(loadingTrue());
   try {
-    const {ok, data} = yield call(getCategoryApi, payload);
+    const {ok, data} = yield call(getCategoryApi, dataType[payload]);
+    console.log('dta', data);
     if (ok) {
       yield put({
         type: types.updateCat,

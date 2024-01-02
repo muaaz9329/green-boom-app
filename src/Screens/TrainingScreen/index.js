@@ -27,6 +27,7 @@ const TrainingScreen = ({route, navigation}) => {
     accordionItem,
     setAccordionItem,
     accordionBool,
+    scriptIconType,
     setAccordionBool,
   } = useTraining(navigation, route);
   // console.log('first', isVideo);
@@ -42,7 +43,7 @@ const TrainingScreen = ({route, navigation}) => {
         />
         <View style={styles.pdfInner}>
           <TextComponent styles={styles.pdfTitle} text={item?.title} />
-          <TextComponent styles={styles.pdfDesc} text={item?.description} />
+          {/* <TextComponent styles={styles.pdfDesc} text={item?.description} /> */}
         </View>
       </Touchable>
     );
@@ -73,7 +74,7 @@ const TrainingScreen = ({route, navigation}) => {
       <>
         {index == 0 || index == 4 ? '' : <View style={styles.separator}></View>}
         <View style={styles.acc}>
-          <TextComponent text={'test'} styles={styles.accTitle} />
+          <TextComponent text={item?.title} styles={styles.accTitle} />
           <Image source={i ? arrDown : arrUp} style={styles.accImage} />
         </View>
       </>
@@ -81,24 +82,27 @@ const TrainingScreen = ({route, navigation}) => {
   };
   const renderContentInner = useCallback(item => {
     const itemData = item?.item;
-    // console.log('ren item', itemData);
+    console.log('ren item', item);
     return (
       <View style={styles.card}>
         <Touchable style={styles.cardBtn}>
           <View style={styles.imageStyle}>
-            <Image source={itemData?.icon} style={styles.iconStyle} />
+            <Image
+              source={scriptIconType[itemData?.icon_type]}
+              style={styles.iconStyle}
+            />
             <TextComponent text={itemData?.title} styles={styles.titleStyle} />
           </View>
         </Touchable>
       </View>
     );
   });
-  const renderContent = () => {
-    // console.log('check', accordionData);
+  const renderContent = item => {
+    console.log('check asd', item.script_media);
     return (
       <FlatList
         refreshing={false}
-        data={accordionData}
+        data={item?.script_media}
         numColumns={2}
         renderItem={renderContentInner}
         contentContainerStyle={{
@@ -114,7 +118,7 @@ const TrainingScreen = ({route, navigation}) => {
         <Accordion
           underlayColor="#D9D9D9"
           activeSections={accordionItem}
-          sections={['Section 1', 'Section 2', 'Section 3', 'Section 4']}
+          sections={subCategory}
           // renderSectionTitle={this._renderSectionTitle}
           renderHeader={renderHeader}
           renderContent={renderContent}
@@ -134,7 +138,7 @@ const TrainingScreen = ({route, navigation}) => {
         search={true}
         isCategory={isCategory}
         categoryData={category}
-        activeBtn={activeBtn}
+        activeBtn={activeBtn.id}
         onPress={item => onCategory(item)}
         goBack={() => navigation.goBack()}
       />
@@ -163,16 +167,19 @@ const TrainingScreen = ({route, navigation}) => {
           </View>
         ) : (
           <>
-            <FlatList
-              refreshing={false}
-              data={subCategory}
-              renderItem={renderItem}
-              contentContainerStyle={{
-                // alignItems: 'center',
-                marginTop: hp('2'),
-              }}
-            />
-            {renderAccordion()}
+            {activeBtn.title !== 'Scripts' && (
+              <FlatList
+                refreshing={false}
+                data={subCategory}
+                renderItem={renderItem}
+                contentContainerStyle={{
+                  // alignItems: 'center',
+                  marginTop: hp('2'),
+                }}
+              />
+            )}
+
+            {activeBtn.title == 'Scripts' && renderAccordion()}
           </>
         )}
       </ScrollView>

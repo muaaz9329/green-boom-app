@@ -10,6 +10,10 @@ const initial_state = {
   },
   msdSheets: new Set([]),
   catalog: new Set([]),
+  salespitch: {
+    cat: [],
+    subCat: new Set([]),
+  },
 };
 
 const actionMap = {

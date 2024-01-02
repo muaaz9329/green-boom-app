@@ -22,13 +22,13 @@ export const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   catMain: {
-    marginTop: hp('4'),
+    marginTop: hp('1'),
   },
   titleStyle: {
     width: wp('69'),
     paddingHorizontal: wp('3'),
-    fontSize: hp('2'),
-    fontWeight: '500',
+    fontSize: hp('1.8'),
+    fontWeight: '400',
     color: Colors.black,
   },
   descStyle: {
