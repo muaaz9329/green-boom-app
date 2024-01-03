@@ -6,12 +6,14 @@ import {styles} from './styles';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import useSingleVideoScreen from './useSingleVideoScreen';
 import VideoComponent from '../../Components/VideoComponent';
+import {imageUrl} from '../../Utils/Urls';
 
 const SingleVideoScreen = ({route, navigation}) => {
   const {title, isPortrait} = useSingleVideoScreen(navigation, route);
   const item = route.params;
 
   console.log('first port', isPortrait);
+  console.log('asddd', imageUrl(item?.file));
 
   return (
     <View style={styles.trainingMain}>
@@ -22,9 +24,9 @@ const SingleVideoScreen = ({route, navigation}) => {
         goBack={() => navigation.goBack()}
       />
       <VideoComponent
-        videoUrl={item?.videoUrl}
-        videoTitle={item?.videoTitle}
-        videoDesc={item?.videoDesc}
+        videoUrl={imageUrl(item?.file)}
+        videoTitle={item?.title}
+        videoDesc={item?.description}
       />
     </View>
   );

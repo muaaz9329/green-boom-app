@@ -7,7 +7,7 @@ import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
 import {accordionData, trainingPDFData, videosData} from '../../Utils/localDB';
 import {hp, wp} from '../../Config/responsive';
-import {arrDown, arrUp, boom, emailIcon} from '../../Assets';
+import {arrDown, arrUp, boom, emailIcon, videoThumb} from '../../Assets';
 import {CategoryIntro} from '../../Components/CategoryIntro';
 import VideoThumbComponent from '../../Components/VideoThumbComponent';
 import {imageUrl} from '../../Utils/Urls';
@@ -60,9 +60,9 @@ const TrainingScreen = ({route, navigation}) => {
       //   videoDesc={item?.videoDesc}
       // />
       <VideoThumbComponent
-        videoTitle={item?.videoTitle}
-        videoDesc={item?.videoDesc}
-        videoThumb={item?.videoThumb}
+        videoTitle={item?.title}
+        videoDesc={item?.description}
+        videoThumb={videoThumb}
         onPress={() => navigation.navigate('SingleVideoScreen', item)}
       />
     );
@@ -82,10 +82,12 @@ const TrainingScreen = ({route, navigation}) => {
   };
   const renderContentInner = useCallback(item => {
     const itemData = item?.item;
-    console.log('ren item', item);
+    // console.log('ren item', item);
     return (
       <View style={styles.card}>
-        <Touchable style={styles.cardBtn}>
+        <Touchable
+          style={styles.cardBtn}
+          onPress={() => Linking.openURL(imageUrl(itemData?.file))}>
           <View style={styles.imageStyle}>
             <Image
               source={scriptIconType[itemData?.icon_type]}
@@ -98,7 +100,7 @@ const TrainingScreen = ({route, navigation}) => {
     );
   });
   const renderContent = item => {
-    console.log('check asd', item.script_media);
+    // console.log('check asd', item.script_media);
     return (
       <FlatList
         refreshing={false}
@@ -116,7 +118,7 @@ const TrainingScreen = ({route, navigation}) => {
     return (
       <>
         <Accordion
-          underlayColor="#D9D9D9"
+          underlayColor="transparent"
           activeSections={accordionItem}
           sections={subCategory}
           // renderSectionTitle={this._renderSectionTitle}
@@ -145,25 +147,25 @@ const TrainingScreen = ({route, navigation}) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}>
-        {isVideo ? (
+        {activeBtn?.title == 'Videos' ? (
           <View style={styles.videoMain}>
-            <CategoryIntro
+            {/* <CategoryIntro
               introImage={boom}
               introTitle={'Booms'}
               introDescription={
                 'Our awesome name-sake booms provide rapid absorption ideal for marine environments.'
               }
-            />
-            {/* <FlatList
+            /> */}
+            <FlatList
               refreshing={false}
-              data={}
+              data={subCategory}
               renderItem={renderVideos}
               contentContainerStyle={
                 {
                   // alignItems: 'center',
                 }
               }
-            /> */}
+            />
           </View>
         ) : (
           <>
@@ -178,8 +180,9 @@ const TrainingScreen = ({route, navigation}) => {
                 }}
               />
             )}
-
-            {activeBtn.title == 'Scripts' && renderAccordion()}
+            <View style={styles.script}>
+              {activeBtn.title == 'Scripts' && renderAccordion()}
+            </View>
           </>
         )}
       </ScrollView>

@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     color: '#000',
     marginBottom: hp('1'),
     marginTop: hp('2'),
+    textAlign: 'center',
   },
   videoDesc: {
     fontSize: hp('1.8'),

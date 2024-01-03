@@ -9,6 +9,7 @@ import {
   emailS,
   messageS,
   microphoneS,
+  ppt,
   trainingPDFIcon,
   wordIcon,
 } from '../../Assets';
@@ -18,11 +19,12 @@ const useTraining = ({navigate, goBack}, {params}) => {
   const titleData = getState('getCategory');
   const category = titleData[params?.id]?.cat ?? [];
   const subCategory = titleData[params?.id]?.subCat ?? [];
-  console.log('cat subcat', subCategory[0]);
+  // console.log('cat subcat', subCategory);
   const isCategory = Boolean(category.length > 0);
   const iconType = {
     pdf: trainingPDFIcon,
     word: wordIcon,
+    ppt: ppt,
   };
   const scriptIconType = {
     email: emailS,
@@ -33,18 +35,21 @@ const useTraining = ({navigate, goBack}, {params}) => {
   const [accordionItem, setAccordionItem] = useState('');
 
   const [subCat, setSubCat] = useState(null);
-  const [activeBtn, setActiveBtn] = useState({
-    id: category[0]?.id,
-    title: category[0]?.title,
-  });
-  console.log('st', activeBtn);
+  const [activeBtn, setActiveBtn] = useState({});
+  // console.log(
+  //   'st',
+
+  //   titleData[params?.id]?.cat[0]?.id,
+  //   'nam',
+  //   titleData[params?.id]?.cat[0]?.title,
+  // );
   const onCategory = async item => {
     setActiveBtn(item);
     const {ok, data} = await API.post(tabButtonType, {
       id: item?.id,
       type: params.id,
     });
-    console.log('dd', data);
+    // console.log('dd', data);
     if (ok) {
       setSubCat(data.data);
       subCategory = data.data;
@@ -54,10 +59,10 @@ const useTraining = ({navigate, goBack}, {params}) => {
   useEffect(() => {
     dispatch(getCategory(params?.id));
     setActiveBtn({
-      id: category[0]?.id,
-      title: category[0]?.title,
+      id: titleData[params?.id]?.cat[0]?.id,
+      title: titleData[params?.id]?.cat[0]?.title,
     });
-  }, []);
+  }, [titleData[params?.id]?.cat[0]?.id]);
 
   return {
     isCategory,

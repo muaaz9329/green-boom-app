@@ -40,6 +40,7 @@ export const styles = StyleSheet.create({
   videoMain: {
     // paddingHorizontal: wp('2'),
     flex: 1,
+    marginTop: hp('3'),
   },
   // msds card
 
@@ -125,5 +126,8 @@ export const styles = StyleSheet.create({
     marginTop: hp('2'),
     marginBottom: hp('2'),
     marginHorizontal: wp('5'),
+  },
+  script: {
+    marginTop: hp('3'),
   },
 });

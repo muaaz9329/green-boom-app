@@ -86,3 +86,4 @@ export {default as emailS} from './Icons/emailS.png';
 export {default as callS} from './Icons/callS.png';
 export {default as microphoneS} from './Icons/microphoneS.png';
 export {default as messageS} from './Icons/messageS.png';
+export {default as ppt} from './Icons/ppt.png';
