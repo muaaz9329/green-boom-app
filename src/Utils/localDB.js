@@ -8,6 +8,8 @@ import {
   bg4,
   bg5,
   bg6,
+  bio,
+  biomass,
   callS,
   contact,
   demokit,
@@ -25,6 +27,7 @@ import {
   logout,
   messageS,
   microphoneS,
+  oil,
   pBoom,
   pKits,
   pMat,
@@ -33,7 +36,10 @@ import {
   pSorbent,
   parkerProfile,
   privacy,
+  product,
   profile,
+  rapid,
+  remediation,
   splashIndustrial,
   splashLand,
   splashMarine,
@@ -44,6 +50,7 @@ import {
   tindraProfile,
   trainingPDFIcon,
   videoThumb,
+  water,
 } from '../Assets';
 
 export const onBoardingData = [
@@ -478,3 +485,79 @@ export const accordionData = [
     icon: messageS,
   },
 ];
+
+export const slider = [
+  {
+    id: 1,
+    image: product,
+  },
+  {
+    id: 2,
+    image: product,
+  },
+  {
+    id: 3,
+    image: product,
+  },
+  {
+    id: 4,
+    image: product,
+  },
+  {
+    id: 5,
+    image: product,
+  },
+];
+
+export const productsData = [
+  {
+    name: 'Loose Sorbent',
+    sku: 'L0010S',
+    usage: 'For use on water surface',
+    title:
+      'Green Boom’s land use sorbents provide rapid absorption in land and industry environments.',
+    description:
+      'Spill control at its best! With a high capacity for oil absorption, the sorbent coagulates after oil absorption for easy cleanup. Also efficient in sand or sludge remediation.',
+    longDescription:
+      'Spill control at its best! With a high capacity for oil absorption, the sorbent coagulates after oil absorption for easy cleanup. Also efficient in sand or sludge remediation. Fast-wicking cellulose-based granules begin to soak up liquid the moment they touch the spill. Lightweight absorbent is easier than clay to carry and use without injury. Oil spill on sand or sludge has never been easier to clean! The loose sorbent quickly absorbs the oil, and together with the added microbes makes the oil non-traceable after just a few weeks',
+    sizeValue: 'Small',
+    dimensionValue: '10lb / 5kg bag',
+    absorbencyValue: 'Up to 6 gal / 22,7 L',
+    qtyValue: '1 Bag',
+    productDimensionSize: '30" x 14" x 3"',
+    productDimensionCm: '35,6 x 76,2 x 7,62 cm',
+    packageDimensionSize: '30" x 14" x 3"',
+    packageDimensionCm: '35,6 x 76,2 x 7,62 cm',
+    weightProduct: '10lbs / 5kg',
+    totalWeightProduct: '10lbs / 5kg',
+  },
+];
+export const productBottom = [
+  {
+    icon: bio,
+    name: '100% Biodegradable',
+  },
+  {
+    icon: water,
+    name: 'Water Repellent',
+  },
+  {
+    icon: oil,
+    name: 'Absorbs Oil Only',
+  },
+  {
+    icon: biomass,
+    name: '100% Biomass',
+  },
+  {
+    icon: rapid,
+    name: 'Rapid Absorption',
+  },
+  {
+    icon: remediation,
+    name: 'Oil degrading Remediation Material',
+  },
+];
+
+export const sizes = ['Small', 'Medium', 'large'];
+export const remedidationOption = ['No', 'Yes'];

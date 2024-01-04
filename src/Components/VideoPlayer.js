@@ -318,7 +318,11 @@ class VideoPlayer extends React.Component {
                 // height: fullScreen ? heightPercentageToDP() : height * 0.27,
                 // zIndex: fullScreen ? 1 : 0,
               }}
-              source={this.props.videoSource}
+              source={
+                this.props.uri
+                  ? {uri: this.props.videoSource}
+                  : this.props.videoSource
+              }
               resizeMode="contain"
               fullscreen={Platform.OS == 'ios' ? fullScreen : undefined}
               fullscreenOrientation="all"

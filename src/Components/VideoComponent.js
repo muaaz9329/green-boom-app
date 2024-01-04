@@ -12,6 +12,7 @@ const VideoComponent = ({videoUrl, videoTitle, videoDesc, videoThumb}) => {
         pause={false}
         videoSource={videoUrl}
         VideoThumb={videoThumb}
+        uri={true}
       />
       <View style={styles.videoMainComp}>
         <TextComponent text={videoTitle} styles={styles.videoTitle} />

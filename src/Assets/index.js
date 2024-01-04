@@ -31,6 +31,7 @@ export {default as hadylProfile} from './Images/hadyl.png';
 export {default as asenaProfile} from './Images/asena.png';
 export {default as tindraProfile} from './Images/tindra.png';
 export {default as profileBg} from './Images/profileBg1.png';
+export {default as product} from './Images/product.png';
 
 //  Icons
 
@@ -87,3 +88,9 @@ export {default as callS} from './Icons/callS.png';
 export {default as microphoneS} from './Icons/microphoneS.png';
 export {default as messageS} from './Icons/messageS.png';
 export {default as ppt} from './Icons/ppt.png';
+export {default as bio} from './Icons/bio.png';
+export {default as water} from './Icons/water.png';
+export {default as oil} from './Icons/oil.png';
+export {default as biomass} from './Icons/bioMass.png';
+export {default as rapid} from './Icons/rapid.png';
+export {default as remediation} from './Icons/remediation.png';

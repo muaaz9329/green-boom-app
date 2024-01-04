@@ -20,7 +20,9 @@ const ProductScreen = ({route, navigation}) => {
   const renderMSDSItem = useCallback(({item, index}) => {
     return (
       <View style={styles.card}>
-        <TouchableWithoutFeedback style={styles.cardBtn}>
+        <TouchableWithoutFeedback
+          style={styles.cardBtn}
+          onPress={() => navigation.navigate('ProductDetailScreen')}>
           <View style={styles.imageStyle}>
             <Image source={item?.image} style={styles.iconStyle} />
             <TextComponent text={item?.title} styles={styles.titleStyle} />

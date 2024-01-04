@@ -13,3 +13,4 @@ export {default as ContactScreen} from './ContactScreen';
 export {default as ChangePasswordScreen} from './ChangePasswordScreen';
 export {default as MyProfileScreen} from './MyProfileScreen';
 export {default as EditProfileScreen} from './EditProfileScreen';
+export {default as ProductDetailScreen} from './ProductDetailScreen';
