@@ -35,9 +35,7 @@ const RegisterScreen = ({navigation}) => {
     policy,
   } = useRegister(navigation);
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={styles.logInMain}>
+    <View style={styles.logInMain}>
       <View style={styles.loginTop}>
         <TextComponent text={'Register to'} styles={styles.signInText} />
         <Image source={logo} style={styles.logo} resizeMode="contain" />
@@ -138,7 +136,10 @@ const RegisterScreen = ({navigation}) => {
           source={policy ? rememberEmpty : rememberImg}
           style={styles.tickIcon}
         />
-        <Text style={styles.tickText}>Agree to our terms & conditions.</Text>
+        <TextComponent
+          styles={styles.tickText}
+          text={'Agree to our terms & conditions.'}
+        />
       </Touchable>
       <ThemeButton
         title={'Register'}
@@ -154,7 +155,7 @@ const RegisterScreen = ({navigation}) => {
           <Text style={styles.signUpText}>Log In</Text>
         </Touchable>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 export default memo(RegisterScreen);

@@ -52,7 +52,9 @@ const MyProfileScreen = ({navigation}) => {
       <View style={styles.cardBtn}>
         <Image source={profileCompany} style={styles.iconStyle} />
         <TextComponent
-          text={userData?.company_name}
+          text={
+            userData?.company_name ? userData?.company_name : 'Company Name'
+          }
           styles={styles.titleStyle}
         />
       </View>

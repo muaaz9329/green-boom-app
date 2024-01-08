@@ -34,14 +34,14 @@ const LoginScreen = ({navigation}) => {
     remember,
   } = useLogin(navigation);
   return (
-    <ScrollView style={styles.logInMain}>
+    <View style={styles.logInMain}>
       <View style={styles.loginTop}>
         <Image
           source={mainImage}
           style={styles.mainImage}
           resizeMode="contain"
         />
-        <TextComponent text={'Sign in to'} styles={styles.signInText} />
+        <TextComponent text={'Log in to'} styles={styles.signInText} />
         <Image source={logo} style={styles.logo} resizeMode="contain" />
       </View>
       <View style={styles.loginBottom}>
@@ -91,11 +91,11 @@ const LoginScreen = ({navigation}) => {
             styles={styles.dontHaveText}
           />
           <Touchable onPress={onPress}>
-            <Text style={styles.signUpText}>Sign Up</Text>
+            <Text style={styles.signUpText}>Register</Text>
           </Touchable>
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 export default memo(LoginScreen);

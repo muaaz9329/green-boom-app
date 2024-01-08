@@ -58,11 +58,15 @@ const useTraining = ({navigate, goBack}, {params}) => {
   };
   useEffect(() => {
     dispatch(getCategory(params?.id));
-    setActiveBtn({
-      id: titleData[params?.id]?.cat[0]?.id,
-      title: titleData[params?.id]?.cat[0]?.title,
-    });
-  }, [titleData[params?.id]?.cat[0]?.id]);
+    if (titleData[params?.id]?.cat?.length > 0) {
+      setActiveBtn({
+        id: titleData[params?.id]?.cat[0]?.id,
+        title: titleData[params?.id]?.cat[0]?.title,
+      });
+    }
+  }, [
+    titleData[params?.id]?.cat?.length > 0 && titleData[params?.id]?.cat[0]?.id,
+  ]);
 
   return {
     isCategory,

@@ -38,6 +38,7 @@ export const styles = StyleSheet.create({
     color: Colors.gray,
     fontSize: hp('1.9'),
     fontWeight: '400',
+    // marginBottom: hp('1'),
   },
   logInMain: {
     flexGrow: 1,
@@ -46,7 +47,7 @@ export const styles = StyleSheet.create({
     paddingBottom: hp('6'),
   },
   buttonStyle: {
-    marginTop: hp('3'),
+    // marginTop: hp('3'),
   },
   lockstyle: {
     flex: 0.5,
@@ -68,7 +69,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: hp('3'),
-    marginBottom: hp('2'),
+    marginBottom: hp('1'),
   },
   dontHaveText: {
     fontSize: hp('1.9'),

@@ -1,5 +1,5 @@
 import React, {memo, useCallback} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, ScrollView} from 'react-native';
 import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
 import useEditProfileScreen from './useEditProfileScreen';
@@ -62,61 +62,62 @@ const EditProfileScreen = ({navigation}) => {
         </View>
         <TextComponent text={userData?.name} styles={styles.name} />
         <TextComponent text={userData?.email} styles={styles.email} />
-
-        <TextComponent text={'User Name'} styles={styles.subHd} />
-        <InputComponent
-          {...{
-            name: 'name',
-            handleSubmit,
-            errors,
-            reset,
-            control,
-            getValues,
-            isImage: username,
-            placeholder: 'John Doe',
-            defaultValue: userData?.name,
-            viewStyle: {...styles.nameSt},
-          }}
-        />
-        <TextComponent text={'Company'} styles={styles.subHd} />
-        <InputComponent
-          {...{
-            name: 'company_name',
-            handleSubmit,
-            errors,
-            reset,
-            control,
-            isImage: company,
-            getValues,
-            placeholder: 'Green Boom Corp',
-            defaultValue: userData?.company_name,
-            viewStyle: {...styles.inputStyle},
-          }}
-        />
-        <TextComponent text={'Email Address'} styles={styles.subHd} />
-        <InputComponent
-          {...{
-            name: 'email',
-            handleSubmit,
-            errors,
-            reset,
-            control,
-            isImage: emailIcon,
-            getValues,
-            placeholder: 'greenboomcorp@mail.com',
-            defaultValue: userData?.email,
-            viewStyle: {...styles.inputStyle},
-          }}
-        />
-        <TextComponent text={'Password'} styles={styles.subHd} />
-        <Touchable
-          Opacity={1}
-          onPress={() => navigation.navigate('ChangePasswordScreen')}
-          style={styles.cardBtn}>
-          <Image source={passDots} style={styles.passStyle} />
-          <TextComponent text={'Change'} styles={styles.passTextStyle} />
-        </Touchable>
-        <View style={styles.logoutBtn}>
+        <ScrollView>
+          <TextComponent text={'User Name'} styles={styles.subHd} />
+          <InputComponent
+            {...{
+              name: 'name',
+              handleSubmit,
+              errors,
+              reset,
+              control,
+              getValues,
+              isImage: username,
+              placeholder: 'John Doe',
+              defaultValue: userData?.name,
+              viewStyle: {...styles.nameSt},
+            }}
+          />
+          <TextComponent text={'Company'} styles={styles.subHd} />
+          <InputComponent
+            {...{
+              name: 'company_name',
+              handleSubmit,
+              errors,
+              reset,
+              control,
+              isImage: company,
+              getValues,
+              placeholder: 'Green Boom Corp',
+              defaultValue: userData?.company_name,
+              viewStyle: {...styles.inputStyle},
+            }}
+          />
+          <TextComponent text={'Email Address'} styles={styles.subHd} />
+          <InputComponent
+            {...{
+              name: 'email',
+              handleSubmit,
+              errors,
+              reset,
+              control,
+              isImage: emailIcon,
+              getValues,
+              placeholder: 'greenboomcorp@mail.com',
+              defaultValue: userData?.email,
+              viewStyle: {...styles.inputStyle},
+            }}
+          />
+          <TextComponent text={'Password'} styles={styles.subHd} />
+          <Touchable
+            Opacity={1}
+            onPress={() => navigation.navigate('ChangePasswordScreen')}
+            style={styles.cardBtn}>
+            <Image source={passDots} style={styles.passStyle} />
+            <TextComponent text={'Change'} styles={styles.passTextStyle} />
+          </Touchable>
+        </ScrollView>
+        {/* <View style={styles.logoutBtn}>
           <ThemeButtonWithIcon
             textStyle={styles.btnText}
             title={'Log out'}
@@ -124,7 +125,7 @@ const EditProfileScreen = ({navigation}) => {
             style={styles.btn}
             imageStyle={styles.imgStyle}
           />
-        </View>
+        </View> */}
         <ThemeButton
           onPress={handleSubmit(updateProfileFunction)}
           title={'Save'}

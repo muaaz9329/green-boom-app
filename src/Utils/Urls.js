@@ -34,3 +34,4 @@ export const msdSheets = 'customer/msdsSheet-list/';
 export const catalogBroucher = 'customer/catalogBrouchers-list/';
 export const updateUser = '/customer/update-user/';
 export const salesPitch = '/customer/all-perfectSale/';
+export const productListApi = '/customer/product-list/';

@@ -36,7 +36,13 @@ const signUpschema = yup.object().shape({
     .min(2, 'Name must be atleast 2 characters.')
     .max(50, 'Name must be of 50 characters.'),
   company: yup.string(),
-  last: yup.string(),
+  last: yup
+    .string()
+    .required('Please enter your Last Name.')
+    .max(100, 'Name must be less than 100 characters.')
+    .matches(/^[A-Za-z ]*$/, 'Please enter valid name.')
+    .min(2, 'Name must be atleast 2 characters.')
+    .max(50, 'Name must be of 50 characters.'),
   // last: yup
   //   .string()
   //   .required('Please enter your Last Name.')
@@ -80,7 +86,7 @@ const logInUpschema = yup.object().shape({
     .max(16, 'Password must be less then 16 digit.')
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      'Must contain 8 characters, one uppercase, one lowercase, one number and one special case character.',
+      'Your password does not match.',
     ),
 });
 const forgotSchema = yup.object().shape({
@@ -103,7 +109,7 @@ const resetPasswordScheme = yup.object().shape({
     .max(25, 'Password must be less than 25 characters.')
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      'Must contain 8 characters, one uppercase, one lowercase, one number and one special case character.',
+      'Please enter valid password.',
     ),
 
   new_password: yup
@@ -112,7 +118,7 @@ const resetPasswordScheme = yup.object().shape({
     .max(25, 'Password must be less than 25 characters')
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      'Must contain 8 characters, one uppercase, one lowercase, one number and one special case character.',
+      'Your password does not match.',
     ),
   // confirm_password: yup
   //   .string()

@@ -25,7 +25,7 @@ export const AlertDesign = ({
       closeOnHardwareBackPress={false}
       showCancelButton={true}
       showConfirmButton={true}
-      cancelText={cancelText ?? 'Cancel'}
+      cancelText={cancelText ?? 'Not Now'}
       confirmText={confirmText}
       confirmButtonColor={confirmButtonColor ?? 'rgba(234, 67, 53, 1)'}
       titleStyle={styles.modalTitle}
@@ -46,7 +46,7 @@ export const AlertDesign = ({
 const styles = StyleSheet.create({
   modalTitle: {
     fontWeight: '600',
-    color: Colors.black,
+    color: Colors.primaryColor,
     fontSize: hp('2.5'),
   },
   modalMsg: {
