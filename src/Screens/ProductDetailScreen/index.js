@@ -17,8 +17,8 @@ import {SizeDetails} from './SizeDetails';
 import SelectDropdown from 'react-native-select-dropdown';
 import {arrDown} from '../../Assets';
 
-const ProductDetailScreen = ({navigation}) => {
-  const {} = useProductDetailScreen(navigation);
+const ProductDetailScreen = ({route, navigation}) => {
+  const {} = useProductDetailScreen(navigation, route);
 
   const renderItem = useCallback(({item, index}) => {
     return (

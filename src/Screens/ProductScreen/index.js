@@ -24,7 +24,7 @@ const ProductScreen = ({route, navigation}) => {
       <View style={styles.card}>
         <TouchableWithoutFeedback
           style={styles.cardBtn}
-          onPress={() => navigation.navigate('ProductDetailScreen')}>
+          onPress={() => navigation.navigate('ProductDetailScreen', item?.id)}>
           <View style={styles.imageStyle}>
             <Image
               source={{uri: imageUrl(item?.file)}}
