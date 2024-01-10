@@ -15,4 +15,5 @@ export const types = {
   msdsSheet: 'msdsSheet',
   getcatalogData: 'getcatalogData',
   UpdateProfile: 'UpdateProfile',
+  forgotPasswordType: 'forgotPasswordType',
 };

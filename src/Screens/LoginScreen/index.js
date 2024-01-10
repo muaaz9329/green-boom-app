@@ -17,6 +17,7 @@ import {InputComponent} from '../../Components/InputComponent';
 import {Controller} from 'react-hook-form';
 import useLogin from './useLoginScreen';
 import {Touchable} from '../../Components/Touchable';
+import KeyBoardWrapper from '../../Components/KeyBoardWrapper';
 
 const LoginScreen = ({navigation}) => {
   const {
@@ -34,7 +35,9 @@ const LoginScreen = ({navigation}) => {
     remember,
   } = useLogin(navigation);
   return (
-    <View style={styles.logInMain}>
+    <KeyBoardWrapper
+      styles={styles.logInMain}
+      showsVerticalScrollIndicator={false}>
       <View style={styles.loginTop}>
         <Image
           source={mainImage}
@@ -82,7 +85,11 @@ const LoginScreen = ({navigation}) => {
             />
             <Text style={styles.tickText}>Remember me</Text>
           </Touchable>
-          <TextComponent text={'Forgot Password?'} styles={styles.forgetText} />
+          <TextComponent
+            text={'Forgot Password?'}
+            styles={styles.forgetText}
+            onPress={() => navigation.navigate('ForgetPasswordScreen')}
+          />
         </View>
         <ThemeButton onPress={handleSubmit(loginUser)} title={'Log In'} />
         <View style={styles.dontHave}>
@@ -95,7 +102,7 @@ const LoginScreen = ({navigation}) => {
           </Touchable>
         </View>
       </View>
-    </View>
+    </KeyBoardWrapper>
   );
 };
 export default memo(LoginScreen);

@@ -39,6 +39,10 @@ function MainNavigator() {
               name="RegisterScreen"
               component={Screens.RegisterScreen}
             />
+            <Stack.Screen
+              name="ForgetPasswordScreen"
+              component={Screens.ForgetPasswordScreen}
+            />
           </>
         )}
         {isLogin && (

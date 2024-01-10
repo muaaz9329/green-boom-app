@@ -20,6 +20,7 @@ import {InputComponent} from '../../Components/InputComponent';
 import {Controller} from 'react-hook-form';
 import {Touchable} from '../../Components/Touchable';
 import useRegister from './useRegisterScreen';
+import KeyBoardWrapper from '../../Components/KeyBoardWrapper';
 
 const RegisterScreen = ({navigation}) => {
   const {
@@ -35,7 +36,9 @@ const RegisterScreen = ({navigation}) => {
     policy,
   } = useRegister(navigation);
   return (
-    <View style={styles.logInMain}>
+    <KeyBoardWrapper
+      styles={styles.logInMain}
+      showsVerticalScrollIndicator={false}>
       <View style={styles.loginTop}>
         <TextComponent text={'Register to'} styles={styles.signInText} />
         <Image source={logo} style={styles.logo} resizeMode="contain" />
@@ -155,7 +158,7 @@ const RegisterScreen = ({navigation}) => {
           <Text style={styles.signUpText}>Log In</Text>
         </Touchable>
       </View>
-    </View>
+    </KeyBoardWrapper>
   );
 };
 export default memo(RegisterScreen);
