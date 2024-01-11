@@ -56,7 +56,7 @@ const OnboardScreen = ({navigation}) => {
     <ScrollView
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{
-        // flex: 1,
+        flex: 1,
         position: 'relative',
         // width: wp('100'),
         // height: hp('100'),

@@ -140,10 +140,10 @@ export const styles = StyleSheet.create({
     borderColor: currentIndex == index ? Colors.primaryColor : Colors.black,
   }),
   bannerImg: {
-    // flex: 0.5,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    height: hp('100'),
+    // height: hp('95'),
     width: wp('100'),
     // aspectRatio: 1,
   },

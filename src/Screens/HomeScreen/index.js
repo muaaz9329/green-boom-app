@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {
   View,
   Text,
@@ -21,14 +21,26 @@ import {documentDownload, introVideo} from '../../Assets';
 
 const HomeScreen = ({navigation}) => {
   const {dispatch} = useReduxStore();
-  const {homeScreenBtns, onPress} = useHomeScreen(navigation);
+  const {homeScreenBtns, onPress, videoOn, setVideoOn, videoP} =
+    useHomeScreen(navigation);
+
+  const videoPlayerRef = useRef();
+
+  const callHandlePlayer = () => {
+    if (videoPlayerRef.current && !videoPlayerRef.current.state.paused) {
+      videoPlayerRef.current.handlePlayer();
+      console.log('fi', videoPlayerRef.current.state.paused);
+    }
+  };
 
   const renderItem = useCallback(({item, index}) => {
     return (
       <View style={styles.card}>
         <Touchable
           style={styles.cardBtn}
-          onPress={() => onPress(item?.routeName, item)}>
+          onPress={() => {
+            onPress(item?.routeName, item), callHandlePlayer();
+          }}>
           <ImageBackground
             source={item?.image}
             resizeMode="contain"
@@ -53,6 +65,7 @@ const HomeScreen = ({navigation}) => {
       <VideoPlayer
         videoSource={require('./test.mp4')}
         VideoThumb={introVideo}
+        ref={videoPlayerRef}
       />
 
       <View>

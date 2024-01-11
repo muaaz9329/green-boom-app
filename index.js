@@ -13,8 +13,8 @@ import FlashMessage from 'react-native-flash-message';
 const GreenBoom = () => (
   <Provider store={store}>
     <PersistGate persistor={persistor} loading={null}>
-      <FlashMessage position="top" />
       <App />
+      <FlashMessage position="top" />
     </PersistGate>
   </Provider>
 );

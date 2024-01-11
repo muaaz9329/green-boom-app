@@ -36,6 +36,7 @@ class VideoPlayer extends React.Component {
       currentTime: 0,
       duration: 0,
       paused: this.props.pause ?? true,
+      // paused: this.props.pause,
       // paused: true,
       overlay: false,
       buffer: false,
@@ -46,7 +47,6 @@ class VideoPlayer extends React.Component {
       fullScreenNew: false,
     };
   }
-
   getTime = t => {
     const digit = n => (n < 10 ? `0${n}` : `${n}`);
     const sec = digit(Math.floor(t % 60));
@@ -276,6 +276,8 @@ class VideoPlayer extends React.Component {
     const currentAudioposition = currentTime / duration;
     this.currentposition = currentAudioposition;
     // console.log(fullScreen, 'asdasdasdasd');
+    console.log('asda', paused);
+
     return (
       // <View style={styles.container}>
       <>

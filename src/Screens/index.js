@@ -15,3 +15,4 @@ export {default as MyProfileScreen} from './MyProfileScreen';
 export {default as EditProfileScreen} from './EditProfileScreen';
 export {default as ProductDetailScreen} from './ProductDetailScreen';
 export {default as ForgetPasswordScreen} from './ForgetPasswordScreen';
+export {default as flash} from './flash';
