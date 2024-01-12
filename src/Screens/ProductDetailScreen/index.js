@@ -18,7 +18,11 @@ import SelectDropdown from 'react-native-select-dropdown';
 import {arrDown} from '../../Assets';
 
 const ProductDetailScreen = ({route, navigation}) => {
-  const {} = useProductDetailScreen(navigation, route);
+  const {productData} = useProductDetailScreen(navigation, route);
+  console.log('test', productData);
+  const productSize =
+    productData?.small?.length > 0 ? productData?.small?.[0]?.size[0] : null;
+  console.log('testa', productSize);
 
   const renderItem = useCallback(({item, index}) => {
     return (
@@ -42,12 +46,12 @@ const ProductDetailScreen = ({route, navigation}) => {
         <HorizontalCarousal data={slider} />
         <View style={styles.title}>
           <TextComponent
-            text={productsData[0]?.name}
+            text={productData?.product_data?.product_name}
             numberOfLines={1}
             styles={styles.titleInner}
           />
           <TextComponent
-            text={'SKU: ' + productsData[0]?.sku}
+            text={'SKU: ' + productSize?.sku_num}
             styles={styles.sku}
             numberOfLines={2}
           />

@@ -29,7 +29,7 @@ const HomeScreen = ({navigation}) => {
   const callHandlePlayer = () => {
     if (videoPlayerRef.current && !videoPlayerRef.current.state.paused) {
       videoPlayerRef.current.handlePlayer();
-      console.log('fi', videoPlayerRef.current.state.paused);
+      // console.log('fi', videoPlayerRef.current.state.paused);
     }
   };
 
