@@ -2,7 +2,7 @@
  * @format
  */
 
-import {AppRegistry} from 'react-native';
+import {AppRegistry, Text, TextInput, View} from 'react-native';
 import App from './App';
 import {name as appName} from './app.json';
 import {Provider} from 'react-redux';
@@ -18,5 +18,21 @@ const GreenBoom = () => (
     </PersistGate>
   </Provider>
 );
+
+//ADD this
+if (Text.defaultProps == null) {
+  Text.defaultProps = {};
+  Text.defaultProps.allowFontScaling = false;
+}
+
+if (TextInput.defaultProps == null) {
+  TextInput.defaultProps = {};
+  TextInput.defaultProps.allowFontScaling = false;
+}
+
+if (View.defaultProps == null) {
+  View.defaultProps = {};
+  View.defaultProps.allowFontScaling = false;
+}
 
 AppRegistry.registerComponent(appName, () => GreenBoom);

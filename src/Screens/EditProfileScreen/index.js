@@ -23,6 +23,7 @@ import ThemeButtonWithIcon from '../../Components/ThemeButtonWithIcon';
 import {Touchable} from '../../Components/Touchable';
 import {InputComponent} from '../../Components/InputComponent';
 import ThemeButton from '../../Components/ThemeButton';
+import KeyBoardWrapper from '../../Components/KeyBoardWrapper';
 
 const EditProfileScreen = ({navigation}) => {
   const {
@@ -62,7 +63,7 @@ const EditProfileScreen = ({navigation}) => {
         </View>
         <TextComponent text={userData?.name} styles={styles.name} />
         <TextComponent text={userData?.email} styles={styles.email} />
-        <ScrollView>
+        <KeyBoardWrapper>
           <TextComponent text={'User Name'} styles={styles.subHd} />
           <InputComponent
             {...{
@@ -116,7 +117,7 @@ const EditProfileScreen = ({navigation}) => {
             <Image source={passDots} style={styles.passStyle} />
             <TextComponent text={'Change'} styles={styles.passTextStyle} />
           </Touchable>
-        </ScrollView>
+        </KeyBoardWrapper>
         {/* <View style={styles.logoutBtn}>
           <ThemeButtonWithIcon
             textStyle={styles.btnText}

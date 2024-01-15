@@ -94,9 +94,9 @@ function MybottomTabs() {
         component={Screens.HomeScreen}
       />
       <Tab.Screen
-        name="FavourateScreen"
+        name="MyProfileScreen"
         options={tabarComponent(profile2, profile1)}
-        component={Screens.HomeScreen}
+        component={Screens.MyProfileScreen}
       />
 
       <Tab.Screen

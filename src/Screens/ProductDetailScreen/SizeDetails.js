@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   size: {
     width: wp('60'),
-    fontSize: hp('1.8'),
+    fontSize: hp('1.6'),
     textTransform: 'uppercase',
     fontWeight: '500',
   },
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     fontSize: hp('1.6'),
     marginTop: hp('0.5'),
     color: Colors.textGray,
-    width: wp('34.1'),
+    width: wp('33.8'),
     textAlign: 'right',
+    // alignSelf: 'flex-end',
   },
 });

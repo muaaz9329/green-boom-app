@@ -82,9 +82,9 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderWidth: 0.5,
     borderColor: Colors.grayBorder,
-    position: 'absolute',
-    bottom: 0,
-    left: wp('4'),
+    // position: 'absolute',
+    bottom: hp('-10'),
+    // left: wp('4'),
   },
   btnText: {
     color: Colors.black,

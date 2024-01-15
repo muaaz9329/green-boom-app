@@ -28,7 +28,7 @@ const CatalogScreen = ({navigation}) => {
     );
   });
   return (
-    <ScrollView>
+    <View>
       <HeaderComponent
         title={'Catalogs & Brochures'}
         goBack={() => navigation.goBack()}
@@ -41,10 +41,11 @@ const CatalogScreen = ({navigation}) => {
           contentContainerStyle={{
             // alignItems: 'center',
             marginTop: hp('2'),
+            paddingBottom: hp('10'),
           }}
         />
       </View>
-    </ScrollView>
+    </View>
   );
 };
 export default memo(CatalogScreen);

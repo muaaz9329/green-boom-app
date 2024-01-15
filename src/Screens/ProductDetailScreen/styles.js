@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   titleInner: {
-    width: wp('65'),
+    width: wp('64'),
     fontSize: hp('2.5'),
     fontWeight: '600',
     color: Colors.primaryColor,
@@ -58,10 +58,11 @@ export const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   size: {
-    width: wp('60'),
-    fontSize: hp('1.8'),
+    width: wp('59.5'),
+    fontSize: hp('1.6'),
     textTransform: 'uppercase',
     fontWeight: '500',
+    // backgroundColor: 'red',
   },
   sizeValue: {
     fontSize: hp('1.6'),
@@ -72,13 +73,13 @@ export const styles = StyleSheet.create({
   },
   lastSection: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    width: wp('50'),
+    // flexWrap: 'wrap',
+    width: wp('47'),
     alignItems: 'center',
     paddingVertical: hp('2.5'),
   },
   lastIcon: {
-    width: wp('15'),
+    width: wp('12'),
     resizeMode: 'contain',
     height: hp('3.6'),
   },
