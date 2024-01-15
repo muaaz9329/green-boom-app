@@ -18,11 +18,13 @@ import SelectDropdown from 'react-native-select-dropdown';
 import {arrDown} from '../../Assets';
 
 const ProductDetailScreen = ({route, navigation}) => {
-  const {productData} = useProductDetailScreen(navigation, route);
+  const {productData, selectedSize, setSelectedSize, remOption, setRemOption} =
+    useProductDetailScreen(navigation, route);
   console.log('test', productData);
-  const productSize =
-    productData?.small?.length > 0 ? productData?.small?.[0]?.size[0] : null;
-  console.log('testa', productSize);
+
+  const size = productData?.[selectedSize.id][0]?.size[0];
+  const dimension = productData?.[selectedSize.id][0]?.dimension[0];
+  const title = productData?.[selectedSize.id][0]?.title[0];
 
   const renderItem = useCallback(({item, index}) => {
     return (
@@ -32,6 +34,46 @@ const ProductDetailScreen = ({route, navigation}) => {
       </View>
     );
   });
+  const notRequired = [
+    'id',
+    'product_id',
+    'sku_num',
+    'updated_at',
+    'created_at',
+    'added_remediation_material',
+  ];
+  const notReqDimension = [
+    'created_at',
+    'id',
+    'product_data_size_id',
+    'product_id',
+    'updated_at',
+  ];
+  const SizePickerView = useCallback(() => {
+    return (
+      <SelectDropdown
+        buttonStyle={styles.selectIcon}
+        buttonTextStyle={styles.selectText}
+        rowTextStyle={styles.selected}
+        renderDropdownIcon={() => (
+          <Image source={arrDown} style={styles.arrowStyle} />
+        )}
+        defaultValueByIndex={selectedSize?.index}
+        drop
+        dropdownIconPosition="right"
+        data={productData?.sizePicker.map(res => res?.title)}
+        onSelect={(selectedItem, index) => {
+          setSelectedSize({id: selectedItem, index});
+        }}
+        buttonTextAfterSelection={(selectedItem, index) => {
+          return selectedItem;
+        }}
+        rowTextForSelection={(item, index) => {
+          return item;
+        }}
+      />
+    );
+  }, [productData]);
 
   return (
     <>
@@ -51,17 +93,21 @@ const ProductDetailScreen = ({route, navigation}) => {
             styles={styles.titleInner}
           />
           <TextComponent
-            text={'SKU: ' + productSize?.sku_num}
+            // text={'SKU: ' + size?.sku_num}
+            text={`SKU: ${remOption ? title?.sku_rem : size?.sku_num}`}
             styles={styles.sku}
             numberOfLines={2}
           />
         </View>
-        <TextComponent
+        {/* <TextComponent
           text={productsData[0]?.usage}
           styles={styles.usage}
           numberOfLines={1}
+        /> */}
+        <TextComponent
+          text={remOption ? title?.title_remediation : productsData[0]?.title}
+          styles={styles.pTitle}
         />
-        <TextComponent text={productsData[0]?.title} styles={styles.pTitle} />
         <TextComponent
           text={productsData[0]?.description}
           styles={styles.pDesc}
@@ -71,35 +117,27 @@ const ProductDetailScreen = ({route, navigation}) => {
           styles={{...styles.pTitle, ...styles.dropTitle}}
         />
         <View>
-          <SelectDropdown
-            buttonStyle={styles.selectIcon}
-            buttonTextStyle={styles.selectText}
-            rowTextStyle={styles.selected}
-            renderDropdownIcon={() => (
-              <Image source={arrDown} style={styles.arrowStyle} />
-            )}
-            defaultValueByIndex={0}
-            drop
-            dropdownIconPosition="right"
-            data={sizes}
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index);
-            }}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              return selectedItem;
-            }}
-            rowTextForSelection={(item, index) => {
-              return item;
-            }}
-          />
+          <SizePickerView />
         </View>
         <TextComponent text={'Description'} styles={styles.pTitle} />
         <TextComponent
           text={productsData[0]?.longDescription}
           styles={{...styles.pDesc, ...styles.pDescLast}}
         />
-        <SizeDetails sizeName={'SIZE'} sizeValue={productsData[0]?.sizeValue} />
-        <SizeDetails
+        {size &&
+          Object.entries(size).map(([key, value]) => {
+            return (
+              !notRequired.includes(key) &&
+              value != undefined &&
+              value != null && (
+                <SizeDetails
+                  sizeName={key.replace(/_/g, ' / ')}
+                  sizeValue={value}
+                />
+              )
+            );
+          })}
+        {/* <SizeDetails
           sizeName={'DIMENSIONS'}
           sizeValue={productsData[0]?.dimensionValue}
         />
@@ -110,35 +148,50 @@ const ProductDetailScreen = ({route, navigation}) => {
         <SizeDetails
           sizeName={'QTY/CASE'}
           sizeValue={productsData[0]?.qtyValue}
-        />
-        <View style={styles.remed}>
-          <TextComponent
-            text={'ADDED REMEDIATION MATERIAL'}
-            styles={styles.size}
-          />
-          <SelectDropdown
-            buttonStyle={styles.remedSelectIcon}
-            buttonTextStyle={styles.selectText}
-            rowTextStyle={styles.selected}
-            renderDropdownIcon={() => (
-              <Image source={arrDown} style={styles.arrowStyle} />
-            )}
-            defaultValueByIndex={0}
-            drop
-            dropdownIconPosition="right"
-            data={remedidationOption}
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index);
-            }}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              return selectedItem;
-            }}
-            rowTextForSelection={(item, index) => {
-              return item;
-            }}
-          />
-        </View>
-        <SizeDetails
+        /> */}
+        {size?.added_remediation_material && (
+          <View style={styles.remed}>
+            <TextComponent
+              text={'ADDED REMEDIATION MATERIAL'}
+              styles={styles.size}
+            />
+            <SelectDropdown
+              buttonStyle={styles.remedSelectIcon}
+              buttonTextStyle={styles.selectText}
+              rowTextStyle={styles.selected}
+              renderDropdownIcon={() => (
+                <Image source={arrDown} style={styles.arrowStyle} />
+              )}
+              defaultValueByIndex={0}
+              drop
+              dropdownIconPosition="right"
+              data={remedidationOption}
+              onSelect={(selectedItem, index) => {
+                setRemOption(selectedItem == 'Yes' ? true : false);
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem;
+              }}
+              rowTextForSelection={(item, index) => {
+                return item;
+              }}
+            />
+          </View>
+        )}
+        {dimension &&
+          Object.entries(dimension).map(([key, value]) => {
+            return (
+              !notReqDimension.includes(key) &&
+              value != undefined &&
+              value != null && (
+                <SizeDetails
+                  sizeName={key.replace(/_/g, ' / ').replace(/\d/g, '')}
+                  sizeValue={value}
+                />
+              )
+            );
+          })}
+        {/* <SizeDetails
           sizeName={'PRODUCT DIMENSIONS (LHW)'}
           sizeValue={productsData[0]?.productDimensionSize}
         />
@@ -161,7 +214,7 @@ const ProductDetailScreen = ({route, navigation}) => {
         <SizeDetails
           sizeName={'TOTAL WEIGHT/PRODUCT'}
           sizeValue={productsData[0]?.totalWeightProduct}
-        />
+        /> */}
         <FlatList
           refreshing={false}
           data={productBottom}
