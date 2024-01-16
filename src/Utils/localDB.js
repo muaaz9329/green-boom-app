@@ -561,3 +561,19 @@ export const productBottom = [
 
 export const sizes = ['Small', 'Medium', 'large'];
 export const remedidationOption = ['No', 'Yes'];
+
+export const notRequired = [
+  'id',
+  'product_id',
+  'sku_num',
+  'updated_at',
+  'created_at',
+  'added_remediation_material',
+];
+export const notReqDimension = [
+  'created_at',
+  'id',
+  'product_data_size_id',
+  'product_id',
+  'updated_at',
+];

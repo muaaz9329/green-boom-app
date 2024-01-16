@@ -7,6 +7,8 @@ import useProductDetailScreen from './useProductDetailScreen';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import HorizontalCarousal from '../../Components/HorizontalCarousal';
 import {
+  notReqDimension,
+  notRequired,
   productBottom,
   productsData,
   remedidationOption,
@@ -25,7 +27,8 @@ const ProductDetailScreen = ({route, navigation}) => {
   const size = productData?.[selectedSize.id][0]?.size[0];
   const dimension = productData?.[selectedSize.id][0]?.dimension[0];
   const title = productData?.[selectedSize.id][0]?.title[0];
-
+  const desc = productData?.[selectedSize.id][0]?.desc[0]?.sub_description;
+  console.log('asddd', desc && JSON.parse(desc));
   const renderItem = useCallback(({item, index}) => {
     return (
       <View style={styles.lastSection}>
@@ -34,21 +37,7 @@ const ProductDetailScreen = ({route, navigation}) => {
       </View>
     );
   });
-  const notRequired = [
-    'id',
-    'product_id',
-    'sku_num',
-    'updated_at',
-    'created_at',
-    'added_remediation_material',
-  ];
-  const notReqDimension = [
-    'created_at',
-    'id',
-    'product_data_size_id',
-    'product_id',
-    'updated_at',
-  ];
+
   const SizePickerView = useCallback(() => {
     return (
       <SelectDropdown
@@ -120,10 +109,13 @@ const ProductDetailScreen = ({route, navigation}) => {
           <SizePickerView />
         </View>
         <TextComponent text={'Description'} styles={styles.pTitle} />
-        <TextComponent
-          text={productsData[0]?.longDescription}
-          styles={{...styles.pDesc, ...styles.pDescLast}}
-        />
+        <View>
+          <TextComponent
+            text={productsData[0]?.longDescription}
+            styles={{...styles.pDesc, ...styles.pDescLast}}
+          />
+        </View>
+
         {size &&
           Object.entries(size).map(([key, value]) => {
             return (
