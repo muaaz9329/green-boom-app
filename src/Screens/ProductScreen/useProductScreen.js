@@ -8,12 +8,12 @@ const useMSDS = ({navigate, goBack}, {params}) => {
 
   const productListing = async () => {
     const {ok, data} = await API.get(productListApi);
-    console.log('productlist data', data);
+    // console.log('productlist data', data);
 
     if (ok) {
       setProductList(data);
     } else {
-      console.log('productlist err', error);
+      // console.log('productlist err', error);
     }
   };
   useEffect(() => {

@@ -17,9 +17,9 @@ import {imageUrl} from '../../Utils/Urls';
 
 const ProductScreen = ({route, navigation}) => {
   const {title, productList} = useProductScreen(navigation, route);
-  console.log('firstaa', productList);
+  // console.log('firstaa', productList);
   const renderMSDSItem = useCallback(({item, index}) => {
-    console.log('firstcd', imageUrl(item?.file));
+    // console.log('firstcd', imageUrl(item?.file));
     return (
       <View style={styles.card}>
         <TouchableWithoutFeedback

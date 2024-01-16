@@ -22,7 +22,7 @@ import {arrDown} from '../../Assets';
 const ProductDetailScreen = ({route, navigation}) => {
   const {productData, selectedSize, setSelectedSize, remOption, setRemOption} =
     useProductDetailScreen(navigation, route);
-  console.log('test', productData);
+  // console.log('test', productData);
 
   const size = productData?.[selectedSize.id][0]?.size[0];
   const dimension = productData?.[selectedSize.id][0]?.dimension[0];
@@ -63,6 +63,19 @@ const ProductDetailScreen = ({route, navigation}) => {
       />
     );
   }, [productData]);
+
+  const subDesc = useCallback(({item}) => {
+    console.log('dtaa', item);
+    return (
+      <View style={styles.subDes}>
+        <View style={styles.dotSt}></View>
+        <TextComponent
+          text={item}
+          styles={{...styles.pDesc, ...styles.pDescLast}}
+        />
+      </View>
+    );
+  });
 
   return (
     <>
@@ -109,13 +122,27 @@ const ProductDetailScreen = ({route, navigation}) => {
           <SizePickerView />
         </View>
         <TextComponent text={'Description'} styles={styles.pTitle} />
-        <View>
-          <TextComponent
-            text={productsData[0]?.longDescription}
-            styles={{...styles.pDesc, ...styles.pDescLast}}
-          />
-        </View>
 
+        {/* <FlatList
+          // refreshing={false}
+          data={desc ? JSON.parse(desc) : []}
+          renderItem={subDesc}
+          contentContainerStyle={{
+            alignItems: 'center',
+          }}
+        /> */}
+        {/* {desc &&
+          JSON.parse(desc)?.map(res => {
+            return (
+              <View style={styles.subDes}>
+                <View style={styles.dotSt}></View>
+                <TextComponent
+                  text={res}
+                  styles={{...styles.pDesc, ...styles.pDescLast}}
+                />
+              </View>
+            );
+          })} */}
         {size &&
           Object.entries(size).map(([key, value]) => {
             return (

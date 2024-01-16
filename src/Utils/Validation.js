@@ -23,10 +23,21 @@ const number = yup.object().shape({
 const signUpschema = yup.object().shape({
   email: yup
     .string()
-    .required('Please enter your email.')
-    .email('Please enter valid email.')
-    .min(3, 'Please enter valid email.')
-    .max(50, 'Please enter valid email.'),
+    .email('Email must be valid')
+    .required('Please enter your email'),
+  // .min(3, 'Email must be valid')
+  // .max(50, 'Email must be valid'),
+  // .matches(
+  //   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+  //   'Please enter valid email',
+  // ),
+  // yeh mera ha
+  // email: yup
+  //   .string()
+  //   .required('Please enter your email.')
+  //   .email('Please enter valid email.')
+  //   .min(3, 'Please enter valid email.')
+  //   .max(50, 'Please enter valid email.'),
   // .matches(emailRegex, 'email is not Valid'),
   name: yup
     .string()
@@ -71,10 +82,21 @@ const signUpschema = yup.object().shape({
 const logInUpschema = yup.object().shape({
   email: yup
     .string()
-    .required('Please enter your email.')
-    .email('Please enter valid email.')
-    .min(3, 'Please enter valid email.')
-    .max(50, 'Please enter valid email.'),
+    // .email('Email must be valid')
+    .min(3, 'Email must be valid')
+    .max(50, 'Email must be valid')
+    .required('Please enter your email')
+    .matches(
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+      'Please enter valid email',
+    ),
+  // mera code
+  // email: yup
+  //   .string()
+  //   .required('Please enter your email.')
+  //   .email('Please enter valid email.')
+  //   .min(3, 'Please enter valid email.')
+  //   .max(50, 'Please enter valid email.'),
   password: yup.string().required('Please Enter your password.'),
   // .min(6, 'Password must be greater then 6 digit.')
   // .max(16, 'Password must be less then 16 digit.')

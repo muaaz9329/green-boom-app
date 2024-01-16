@@ -47,9 +47,7 @@ export const styles = StyleSheet.create({
     color: Colors.textGray,
     lineHeight: 20,
   },
-  pDescLast: {
-    marginBottom: hp('3'),
-  },
+
   sizeMain: {
     flexDirection: 'row',
     borderTopWidth: 0.5,
@@ -121,5 +119,21 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: Colors.grayBorder,
+  },
+  subDes: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  dotSt: {
+    width: wp('1.7'),
+    height: hp('.8'),
+    padding: 1,
+    backgroundColor: Colors.textGray,
+    borderRadius: 50,
+  },
+  pDescLast: {
+    marginBottom: hp('3'),
+    width: wp('95'),
+    marginLeft: wp('1'),
   },
 });
