@@ -69,7 +69,8 @@ const OnboardScreen = ({navigation}) => {
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
         horizontal
-        onMomentumScrollEnd={onSnapToItem}
+        scrollEnabled={false}
+        // onMomentumScrollEnd={onSnapToItem}
         keyExtractor={keyExtractor}
         pagingEnabled={true}
         contentContainerStyle={{

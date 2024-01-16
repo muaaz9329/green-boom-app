@@ -23,8 +23,8 @@ const number = yup.object().shape({
 const signUpschema = yup.object().shape({
   email: yup
     .string()
-    // .email('Email must be valid')
     .required('Please enter your email.')
+    .email('Please enter valid email.')
     .min(3, 'Please enter valid email.')
     .max(50, 'Please enter valid email.'),
   // .matches(emailRegex, 'email is not Valid'),
@@ -71,14 +71,10 @@ const signUpschema = yup.object().shape({
 const logInUpschema = yup.object().shape({
   email: yup
     .string()
-    // .email('Email must be valid')
     .required('Please enter your email.')
+    .email('Please enter valid email.')
     .min(3, 'Please enter valid email.')
-    .max(50, 'Please enter valid email.')
-    .matches(
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-      'Please enter valid email.',
-    ),
+    .max(50, 'Please enter valid email.'),
   password: yup.string().required('Please Enter your password.'),
   // .min(6, 'Password must be greater then 6 digit.')
   // .max(16, 'Password must be less then 16 digit.')
@@ -91,7 +87,9 @@ const forgotSchema = yup.object().shape({
   email: yup
     .string()
     .email('Please enter valid email.')
-    .required('Please enter your email.'),
+    .required('Please enter your email.')
+    .min(3, 'Please enter valid email.')
+    .max(50, 'Please enter valid email.'),
 });
 const verificationSchema = yup.object().shape({
   reset_code: yup
