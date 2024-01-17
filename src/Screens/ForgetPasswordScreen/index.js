@@ -29,7 +29,7 @@ const ForgetPasswordScreen = ({navigation}) => {
         showsHorizontalScrollIndicator={false}>
         <HeaderComponent
           goBack={() => navigation.goBack()}
-          title={'Forget Password'}
+          title={'Forgot Password'}
         />
         <View style={styles.passMain}>
           <Image source={changePasswordIcon} style={styles.contactIcon} />

@@ -28,7 +28,8 @@ const ProductDetailScreen = ({route, navigation}) => {
   const dimension = productData?.[selectedSize.id][0]?.dimension[0];
   const title = productData?.[selectedSize.id][0]?.title[0];
   const desc = productData?.[selectedSize.id][0]?.desc[0]?.sub_description;
-  console.log('asddd', desc && JSON.parse(desc));
+  console.log('asddd', desc && JSON.parse(desc)?.map(res => res));
+
   const renderItem = useCallback(({item, index}) => {
     return (
       <View style={styles.lastSection}>
@@ -63,19 +64,6 @@ const ProductDetailScreen = ({route, navigation}) => {
       />
     );
   }, [productData]);
-
-  const subDesc = useCallback(({item}) => {
-    console.log('dtaa', item);
-    return (
-      <View style={styles.subDes}>
-        <View style={styles.dotSt}></View>
-        <TextComponent
-          text={item}
-          styles={{...styles.pDesc, ...styles.pDescLast}}
-        />
-      </View>
-    );
-  });
 
   return (
     <>
@@ -131,8 +119,9 @@ const ProductDetailScreen = ({route, navigation}) => {
             alignItems: 'center',
           }}
         /> */}
-        {/* {desc &&
+        {desc &&
           JSON.parse(desc)?.map(res => {
+            console.log('res', res);
             return (
               <View style={styles.subDes}>
                 <View style={styles.dotSt}></View>
@@ -142,7 +131,7 @@ const ProductDetailScreen = ({route, navigation}) => {
                 />
               </View>
             );
-          })} */}
+          })}
         {size &&
           Object.entries(size).map(([key, value]) => {
             return (

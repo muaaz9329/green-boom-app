@@ -122,7 +122,7 @@ export const styles = StyleSheet.create({
   },
   subDes: {
     flexDirection: 'row',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   dotSt: {
     width: wp('1.7'),
@@ -130,9 +130,9 @@ export const styles = StyleSheet.create({
     padding: 1,
     backgroundColor: Colors.textGray,
     borderRadius: 50,
+    marginTop: hp('1.7'),
   },
   pDescLast: {
-    marginBottom: hp('3'),
     width: wp('95'),
     marginLeft: wp('1'),
   },
