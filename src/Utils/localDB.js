@@ -390,17 +390,17 @@ export const settingData = [
   {
     title: 'About Green Boom',
     image: about,
-    screenUrl: 'ContactScreen',
+    pageUrl: 'https://www.greenboom.com/about',
   },
   {
     title: 'Privacy Policy',
     image: privacy,
-    screenUrl: 'ContactScreen',
+    pageUrl: 'https://www.greenboom.com/privacy',
   },
   {
     title: 'Terms and Conditions',
     image: terms,
-    screenUrl: 'ContactScreen',
+    pageUrl: 'https://www.greenboom.com/terms',
   },
   {
     title: 'Contact us',

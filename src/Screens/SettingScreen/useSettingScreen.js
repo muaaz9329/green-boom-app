@@ -2,6 +2,7 @@ import {useState} from 'react';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {logOutUser} from '../../Redux/Action/AuthAction';
 import {logoutService} from '../../Services/AuthServices';
+import {Linking} from 'react-native';
 
 const useSettingScreen = ({navigate, goBack}) => {
   const [alert, setAlert] = useState(false);
@@ -18,9 +19,13 @@ const useSettingScreen = ({navigate, goBack}) => {
     setAlert(!alert);
   };
   const tabScreen = item => {
-    if (item?.screenUrl !== '') {
+    console.log('fir', item);
+    if (item?.screenUrl) {
       navigate(item?.screenUrl);
       console.log('asdaa', item?.screenUrl);
+    } else if (item?.pageUrl) {
+      Linking.openURL(item?.pageUrl);
+      console.log('tes', item?.pageUrl);
     } else {
       onCancel();
       console.log('asd asd');
