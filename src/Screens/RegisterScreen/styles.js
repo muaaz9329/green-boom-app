@@ -82,7 +82,7 @@ export const styles = StyleSheet.create({
     fontSize: hp('1.9'),
   },
   lastNameSt: {
-    position: 'absolute',
+    // position: 'absolute',
     right: wp('0'),
   },
 });

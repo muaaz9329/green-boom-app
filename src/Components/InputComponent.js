@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
   },
   error: {
     color: Colors.themeRed,
+    fontSize: hp('1.4'),
   },
   inputIcon: {
     // marginLeft: hp('2'),

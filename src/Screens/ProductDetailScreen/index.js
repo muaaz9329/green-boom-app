@@ -28,7 +28,8 @@ const ProductDetailScreen = ({route, navigation}) => {
   const dimension = productData?.[selectedSize.id][0]?.dimension[0];
   const title = productData?.[selectedSize.id][0]?.title[0];
   const desc = productData?.[selectedSize.id][0]?.desc[0]?.sub_description;
-  console.log('asddd', desc && JSON.parse(desc)?.map(res => res));
+  const sentencesArray = desc && JSON.parse(desc);
+  const descArry = desc && JSON.parse([sentencesArray]);
 
   const renderItem = useCallback(({item, index}) => {
     return (
@@ -120,7 +121,7 @@ const ProductDetailScreen = ({route, navigation}) => {
           }}
         /> */}
         {desc &&
-          JSON.parse(desc)?.map(res => {
+          descArry?.map(res => {
             console.log('res', res);
             return (
               <View style={styles.subDes}>

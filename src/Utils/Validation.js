@@ -51,7 +51,7 @@ const signUpschema = yup.object().shape({
     .string()
     // .required('Please enter your Last Name.')
     // .max(100, 'Name must be less than 100 characters.')
-    .matches(/^[A-Za-z ]*$/, 'Type valid Last Name.'),
+    .matches(/^[A-Za-z ]*$/, 'Please enter valid last name.'),
   // .min(2, 'Name must be atleast 2 characters.')
   // .max(50, 'Name must be of 50 characters.'),
   // last: yup
