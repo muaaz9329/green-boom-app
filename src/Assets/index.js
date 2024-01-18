@@ -95,3 +95,5 @@ export {default as biomass} from './Icons/bioMass.png';
 export {default as rapid} from './Icons/rapid.png';
 export {default as remediation} from './Icons/remediation.png';
 export {default as videoCircle} from './Icons/video-circle.png';
+export {default as thumbUp} from './Icons/thumbUp.png';
+export {default as arrowLeft} from './Icons/arrow-left.png';

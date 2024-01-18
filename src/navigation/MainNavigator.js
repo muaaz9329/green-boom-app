@@ -69,6 +69,10 @@ function MainNavigator() {
               name="DemoKitVideoScreen"
               component={Screens.DemoKitVideoScreen}
             />
+            <Stack.Screen
+              name="ThankYouScreen"
+              component={Screens.ThankYouScreen}
+            />
 
             <Stack.Screen
               name="ProductScreen"

@@ -10,16 +10,42 @@ import {arrowrightblack, demokit, videoCircle} from '../../Assets';
 import {InputComponent} from '../../Components/InputComponent';
 import ThemeButton from '../../Components/ThemeButton';
 import KeyBoardWrapper from '../../Components/KeyBoardWrapper';
-import {imageUrl} from '../../Utils/Urls';
+import {imageUrl, kitForm} from '../../Utils/Urls';
+import API from '../../Utils/helperFunc';
 
 const DemoKitSingleScreen = ({route, navigation}) => {
-  const {handleSubmit, errors, reset, control, getValues} =
+  const {handleSubmit, errors, reset, control, getValues, submitData} =
     useDemoKitSingleScreen(navigation, route);
   const kitInnerData = route.params;
 
   const sentencesArray =
     kitInnerData?.kit_includes && JSON.parse(kitInnerData?.kit_includes);
   const descArry = kitInnerData?.kit_includes && JSON.parse([sentencesArray]);
+
+  // const onSubmit = data => {
+  //   submitData(data); // Call the function from the separate file
+  //   console.log('asd', data);
+  // };
+
+  const onSubmit = async data => {
+    try {
+      // Perform the API call to post data
+      const response = await API.post(kitForm, data);
+
+      if (response.ok) {
+        // Handle success
+        console.log('Data posted successfully:', response.data);
+        reset();
+        navigation.navigate('ThankYouScreen');
+      } else {
+        // Handle error
+        console.error('Error posting data:', response.problem);
+      }
+    } catch (error) {
+      console.error('Unexpected error:', error);
+    }
+  };
+
   return (
     <View style={styles.trainingMain}>
       <HeaderComponent
@@ -82,7 +108,7 @@ const DemoKitSingleScreen = ({route, navigation}) => {
             <View style={styles.inputCol}>
               <InputComponent
                 {...{
-                  name: 'name',
+                  name: 'first_name',
                   handleSubmit,
                   errors,
                   reset,
@@ -96,7 +122,7 @@ const DemoKitSingleScreen = ({route, navigation}) => {
 
               <InputComponent
                 {...{
-                  name: 'last',
+                  name: 'last_name',
                   handleSubmit,
                   errors,
                   reset,
@@ -182,7 +208,7 @@ const DemoKitSingleScreen = ({route, navigation}) => {
 
               <InputComponent
                 {...{
-                  name: 'code',
+                  name: 'zip_code',
                   handleSubmit,
                   errors,
                   reset,
@@ -197,7 +223,7 @@ const DemoKitSingleScreen = ({route, navigation}) => {
             <View>
               <InputComponent
                 {...{
-                  name: 'name',
+                  name: 'address',
                   handleSubmit,
                   errors,
                   reset,
@@ -210,7 +236,8 @@ const DemoKitSingleScreen = ({route, navigation}) => {
               />
             </View>
             <ThemeButton
-              onPress={handleSubmit()}
+              // onPress={handleSubmit(onSubmit)}
+              onPress={handleSubmit(onSubmit)}
               title={'Order a Kit'}
               style={styles.kitBtn}
             />
