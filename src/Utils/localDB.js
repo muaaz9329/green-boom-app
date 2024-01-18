@@ -577,3 +577,11 @@ export const notReqDimension = [
   'product_id',
   'updated_at',
 ];
+
+export const kitList = [
+  'Small Sock',
+  'Pillow',
+  'Mat',
+  'Sample of Loose Sorbent',
+  'Information',
+];

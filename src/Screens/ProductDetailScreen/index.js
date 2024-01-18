@@ -84,17 +84,12 @@ const ProductDetailScreen = ({route, navigation}) => {
             styles={styles.titleInner}
           />
           <TextComponent
-            // text={'SKU: ' + size?.sku_num}
             text={`SKU: ${remOption ? title?.sku_rem : size?.sku_num}`}
             styles={styles.sku}
             numberOfLines={2}
           />
         </View>
-        {/* <TextComponent
-          text={productsData[0]?.usage}
-          styles={styles.usage}
-          numberOfLines={1}
-        /> */}
+
         <TextComponent
           text={remOption ? title?.title_remediation : productsData[0]?.title}
           styles={styles.pTitle}
@@ -110,16 +105,7 @@ const ProductDetailScreen = ({route, navigation}) => {
         <View>
           <SizePickerView />
         </View>
-        <TextComponent text={'Description'} styles={styles.pTitle} />
-
-        {/* <FlatList
-          // refreshing={false}
-          data={desc ? JSON.parse(desc) : []}
-          renderItem={subDesc}
-          contentContainerStyle={{
-            alignItems: 'center',
-          }}
-        /> */}
+        {desc && <TextComponent text={'Description'} styles={styles.pTitle} />}
         {desc &&
           descArry?.map(res => {
             console.log('res', res);
@@ -146,18 +132,7 @@ const ProductDetailScreen = ({route, navigation}) => {
               )
             );
           })}
-        {/* <SizeDetails
-          sizeName={'DIMENSIONS'}
-          sizeValue={productsData[0]?.dimensionValue}
-        />
-        <SizeDetails
-          sizeName={'ABSORBENCY/BAG'}
-          sizeValue={productsData[0]?.absorbencyValue}
-        />
-        <SizeDetails
-          sizeName={'QTY/CASE'}
-          sizeValue={productsData[0]?.qtyValue}
-        /> */}
+
         {size?.added_remediation_material && (
           <View style={styles.remed}>
             <TextComponent
@@ -200,30 +175,7 @@ const ProductDetailScreen = ({route, navigation}) => {
               )
             );
           })}
-        {/* <SizeDetails
-          sizeName={'PRODUCT DIMENSIONS (LHW)'}
-          sizeValue={productsData[0]?.productDimensionSize}
-        />
-        <SizeDetails
-          sizeName={'PRODUCT DIMENSIONS (LHW)'}
-          sizeValue={productsData[0]?.productDimensionCm}
-        />
-        <SizeDetails
-          sizeName={'PACKAGING DIMENSIONS (LHW)'}
-          sizeValue={productsData[0]?.packageDimensionSize}
-        />
-        <SizeDetails
-          sizeName={'PACKAGING DIMENSIONS (LHW)'}
-          sizeValue={productsData[0]?.packageDimensionCm}
-        />
-        <SizeDetails
-          sizeName={'WEIGHT/PRODUCT'}
-          sizeValue={productsData[0]?.weightProduct}
-        />
-        <SizeDetails
-          sizeName={'TOTAL WEIGHT/PRODUCT'}
-          sizeValue={productsData[0]?.totalWeightProduct}
-        /> */}
+
         <FlatList
           refreshing={false}
           data={productBottom}

@@ -36,3 +36,4 @@ export const updateUser = '/customer/update-user/';
 export const salesPitch = '/customer/all-perfectSale/';
 export const productListApi = '/customer/product-list/';
 export const singleProduct = '/customer/product-data/';
+export const orderKit = '/customer/order-kit-list/';

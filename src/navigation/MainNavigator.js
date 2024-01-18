@@ -62,6 +62,15 @@ function MainNavigator() {
               component={Screens.DemoKitScreen}
             />
             <Stack.Screen
+              name="DemoKitSingleScreen"
+              component={Screens.DemoKitSingleScreen}
+            />
+            <Stack.Screen
+              name="DemoKitVideoScreen"
+              component={Screens.DemoKitVideoScreen}
+            />
+
+            <Stack.Screen
               name="ProductScreen"
               component={Screens.ProductScreen}
             />

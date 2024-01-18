@@ -4,16 +4,13 @@ import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
 
 import {HeaderComponent} from '../../Components/HeaderComponent';
-import useSingleVideoScreen from './useSingleVideoScreen';
+import useDemoKitVideoScreen from './useDemoKitVideoScreen';
 import VideoComponent from '../../Components/VideoComponent';
 import {imageUrl} from '../../Utils/Urls';
 
-const SingleVideoScreen = ({route, navigation}) => {
-  const {title, isPortrait} = useSingleVideoScreen(navigation, route);
+const DemoKitVideoScreen = ({route, navigation}) => {
+  const {title, isPortrait} = useDemoKitVideoScreen(navigation, route);
   const item = route.params;
-
-  console.log('first port', isPortrait);
-  console.log('asddd', imageUrl(item?.file));
 
   return (
     <View style={styles.trainingMain}>
@@ -27,9 +24,8 @@ const SingleVideoScreen = ({route, navigation}) => {
         videoUrl={imageUrl(item?.file)}
         uri={true}
         videoTitle={item?.title}
-        videoDesc={item?.description}
       />
     </View>
   );
 };
-export default memo(SingleVideoScreen);
+export default memo(DemoKitVideoScreen);

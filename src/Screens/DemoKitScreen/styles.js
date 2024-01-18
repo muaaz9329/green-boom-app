@@ -9,11 +9,12 @@ export const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginHorizontal: wp('5'),
     marginBottom: hp('5'),
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   iconStyle: {
     width: wp('21'),
     height: hp('10'),
-    // marginBottom: hp('2'),
     resizeMode: 'contain',
   },
   imageStyle: {
@@ -23,7 +24,7 @@ export const styles = StyleSheet.create({
   titleStyle: {
     fontSize: hp('2.5'),
     fontWeight: '500',
-    marginBottom: hp('1.5'),
+    marginBottom: hp('.3'),
     color: Colors.primaryColor,
   },
   descStyle: {
