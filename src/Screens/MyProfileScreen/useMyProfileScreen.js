@@ -8,7 +8,7 @@ const useMyProfileScreen = ({navigate, goBack}) => {
   const {dispatch, getState} = useReduxStore();
 
   const {userData} = getState('Auth');
-  // console.log('userData', userData);
+  console.log('userData', userData);
   const onConfirm = () => {
     setAlert(false);
     setTimeout(async () => {

@@ -8,6 +8,7 @@ import mySaga from '../Sagas/index';
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import AlertReucer from './AlertReucer';
 import getTrainingCatReducer from './getTrainingCatReducer';
+import videoReducer from './videoReducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -22,10 +23,16 @@ const AuthPersistConfig = {
   storage: AsyncStorage,
   whitelist: ['userData', 'token', 'isLogin'],
 };
+const VideoPersistConfig = {
+  key: 'isVideo',
+  storage: AsyncStorage,
+  whitelist: 'isVideo',
+};
 
 const reducers = {
   onboarding: persistReducer(onBoardPersistConfig, onboardingReducer),
   Auth: persistReducer(AuthPersistConfig, AuthReducer),
+  isVideo: persistReducer(VideoPersistConfig, videoReducer),
   isloading: loadingReducer,
   isAlert: AlertReucer,
   getCategory: getTrainingCatReducer,

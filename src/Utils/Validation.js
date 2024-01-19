@@ -167,6 +167,32 @@ const editProfileScheme = yup.object().shape({
     .email('Email must be valid.')
     .required('Please enter your email.'),
 });
+const demoKitSchema = yup.object().shape({
+  email: yup
+    .string()
+    // .email('Email must be valid')
+    .min(3, 'Email must be valid')
+    .max(50, 'Email must be valid')
+    .required('Please enter your email')
+    .matches(
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+      'Please enter valid email',
+    ),
+  // mera code
+  // email: yup
+  //   .string()
+  //   .required('Please enter your email.')
+  //   .email('Please enter valid email.')
+  //   .min(3, 'Please enter valid email.')
+  //   .max(50, 'Please enter valid email.'),
+  password: yup.string().required('Please Enter your password.'),
+  // .min(6, 'Password must be greater then 6 digit.')
+  // .max(16, 'Password must be less then 16 digit.')
+  // .matches(
+  //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+  //   'Your password does not match.',
+  // ),
+});
 
 const Schemas = {
   signUp: yupResolver(signUpschema),

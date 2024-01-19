@@ -27,8 +27,12 @@ const ProductDetailScreen = ({route, navigation}) => {
   const size = productData?.[selectedSize.id][0]?.size[0];
   const dimension = productData?.[selectedSize.id][0]?.dimension[0];
   const title = productData?.[selectedSize.id][0]?.title[0];
-  const desc = productData?.[selectedSize.id][0]?.desc[0]?.sub_description;
-  const sentencesArray = desc && JSON.parse(desc);
+  const desc =
+    productData?.[selectedSize.id][0]?.desc == undefined
+      ? productData?.[productData?.sizePicker[0]?.id][0]?.desc[0]
+          .sub_description
+      : productData?.[selectedSize.id][0]?.desc[0].sub_description;
+  const sentencesArray = desc && JSON.parse(desc ?? '');
   const descArry = desc && JSON.parse([sentencesArray]);
 
   const renderItem = useCallback(({item, index}) => {
@@ -54,6 +58,10 @@ const ProductDetailScreen = ({route, navigation}) => {
         dropdownIconPosition="right"
         data={productData?.sizePicker.map(res => res?.title)}
         onSelect={(selectedItem, index) => {
+          console.log(
+            'jksdbjklvsbdkjlvbskldbvlsdbvds',
+            productData?.medium[0]?.desc,
+          );
           setSelectedSize({id: selectedItem, index});
         }}
         buttonTextAfterSelection={(selectedItem, index) => {

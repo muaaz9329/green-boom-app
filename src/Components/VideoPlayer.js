@@ -148,6 +148,9 @@ class VideoPlayer extends React.Component {
   };
 
   handlePlayer = () => {
+    console.log(
+      'handlePlayerhandlePlayerhandlePlayerhandlePlayerhandlePlayerhandlePlayerhandlePlayer',
+    );
     this.setState({paused: !this.state.paused});
 
     if (
@@ -276,7 +279,6 @@ class VideoPlayer extends React.Component {
     const currentAudioposition = currentTime / duration;
     this.currentposition = currentAudioposition;
     // console.log(fullScreen, 'asdasdasdasd');
-    console.log('asda', paused);
 
     return (
       // <View style={styles.container}>
