@@ -39,7 +39,7 @@ const EditProfileScreen = ({navigation}) => {
   } = useEditProfileScreen(navigation);
 
   return (
-    <>
+    <KeyBoardWrapper>
       <HeaderComponentProfile
         title={'Edit Profile'}
         goBack={() => navigation.goBack()}
@@ -63,7 +63,7 @@ const EditProfileScreen = ({navigation}) => {
         </View>
         <TextComponent text={userData?.name} styles={styles.name} />
         <TextComponent text={userData?.email} styles={styles.email} />
-        <KeyBoardWrapper>
+        <KeyBoardWrapper styles={{flex: 1}}>
           <TextComponent text={'User Name'} styles={styles.subHd} />
           <InputComponent
             {...{
@@ -107,6 +107,7 @@ const EditProfileScreen = ({navigation}) => {
               placeholder: 'greenboomcorp@mail.com',
               defaultValue: userData?.email,
               viewStyle: {...styles.inputStyle},
+              editable: false,
             }}
           />
           <TextComponent text={'Password'} styles={styles.subHd} />
@@ -133,7 +134,7 @@ const EditProfileScreen = ({navigation}) => {
           style={styles.buttonStyle}
         />
       </View>
-    </>
+    </KeyBoardWrapper>
   );
 };
 export default memo(EditProfileScreen);

@@ -4,6 +4,7 @@ export const types = {
   isLoadingFalse: 'isLoadingFalse',
   isAlertTrue: 'isAlertTrue',
   isAlertFalse: 'isAlertFalse',
+  isVideo: 'isVideo',
   LoginType: 'LoginType',
   LogoutType: 'LogoutType',
   LogoutFirebaseType: 'LogoutFirebaseType',

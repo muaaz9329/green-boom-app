@@ -15,6 +15,8 @@ import {
   notification2,
   setting2,
 } from '../Assets';
+import {types} from '../Redux/types';
+import useReduxStore from '../Hooks/UseReduxStore';
 globalStyles = {};
 const isIOS = Boolean(Platform.OS == 'ios');
 const tabarComponent = (activeImage, unActiveImage, ImageStyle) => {
@@ -35,6 +37,10 @@ const tabarComponent = (activeImage, unActiveImage, ImageStyle) => {
 const Tab = createBottomTabNavigator();
 
 function MybottomTabs() {
+  const {getState, dispatch} = useReduxStore();
+
+  const {isVideo} = getState('isVideo');
+
   const [isPortrait, setIsPortrait] = useState(true);
   useEffect(() => {
     const handleOrientationChange = orientation => {
@@ -92,6 +98,9 @@ function MybottomTabs() {
         name="HomeScreen"
         options={tabarComponent(home2, home1)}
         component={Screens.HomeScreen}
+        listeners={{
+          blur: () => dispatch({type: types.isVideo, payload: !isVideo}),
+        }}
       />
       <Tab.Screen
         name="MyProfileScreen"

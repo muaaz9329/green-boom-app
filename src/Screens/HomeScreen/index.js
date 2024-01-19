@@ -19,20 +19,19 @@ import ThemeButtonWithIcon from '../../Components/ThemeButtonWithIcon';
 import {Touchable} from '../../Components/Touchable';
 import {documentDownload, introVideo} from '../../Assets';
 import {baseURL, imageURL} from '../../Utils/Urls';
+import NavigationService from '../../Services/NavigationService';
 
 const HomeScreen = ({navigation}) => {
   const {dispatch} = useReduxStore();
-  const {homeScreenBtns, onPress, videoOn, setVideoOn, videoP, videoUrl} =
-    useHomeScreen(navigation);
-
-  const videoPlayerRef = useRef();
-
-  const callHandlePlayer = () => {
-    if (videoPlayerRef.current && !videoPlayerRef.current.state.paused) {
-      videoPlayerRef.current.handlePlayer();
-      // console.log('fi', videoPlayerRef.current.state.paused);
-    }
-  };
+  const {
+    homeScreenBtns,
+    onPress,
+    videoOn,
+    setVideoOn,
+    videoP,
+    videoUrl,
+    videoPlayerRef,
+  } = useHomeScreen(navigation);
 
   const renderItem = useCallback(({item, index}) => {
     return (
@@ -40,7 +39,8 @@ const HomeScreen = ({navigation}) => {
         <Touchable
           style={styles.cardBtn}
           onPress={() => {
-            onPress(item?.routeName, item), callHandlePlayer();
+            onPress(item?.routeName, item);
+            // onPress(item?.routeName, item), callHandlePlayer();
           }}>
           <ImageBackground
             source={item?.image}
