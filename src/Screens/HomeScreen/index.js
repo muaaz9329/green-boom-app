@@ -18,10 +18,11 @@ import {styles} from './styles';
 import ThemeButtonWithIcon from '../../Components/ThemeButtonWithIcon';
 import {Touchable} from '../../Components/Touchable';
 import {documentDownload, introVideo} from '../../Assets';
+import {baseURL, imageURL} from '../../Utils/Urls';
 
 const HomeScreen = ({navigation}) => {
   const {dispatch} = useReduxStore();
-  const {homeScreenBtns, onPress, videoOn, setVideoOn, videoP} =
+  const {homeScreenBtns, onPress, videoOn, setVideoOn, videoP, videoUrl} =
     useHomeScreen(navigation);
 
   const videoPlayerRef = useRef();
@@ -63,7 +64,7 @@ const HomeScreen = ({navigation}) => {
     <View
       style={{flex: 1, paddingTop: Platform.OS == 'ios' ? hp('5') : hp('1.5')}}>
       <VideoPlayer
-        videoSource={require('./test.mp4')}
+        videoSource={{uri: imageURL + videoUrl?.welcome_video?.file}}
         VideoThumb={introVideo}
         ref={videoPlayerRef}
       />
