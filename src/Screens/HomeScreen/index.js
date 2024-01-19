@@ -18,7 +18,7 @@ import {styles} from './styles';
 import ThemeButtonWithIcon from '../../Components/ThemeButtonWithIcon';
 import {Touchable} from '../../Components/Touchable';
 import {documentDownload, introVideo} from '../../Assets';
-import {baseURL, imageURL} from '../../Utils/Urls';
+import {imageURL} from '../../Utils/Urls';
 
 const HomeScreen = ({navigation}) => {
   const {dispatch} = useReduxStore();
