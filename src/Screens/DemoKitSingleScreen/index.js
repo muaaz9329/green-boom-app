@@ -18,7 +18,7 @@ const DemoKitSingleScreen = ({route, navigation}) => {
   const {handleSubmit, errors, reset, control, getValues, submitData} =
     useDemoKitSingleScreen(navigation, route);
   const kitInnerData = route.params;
-
+  console.log('testttt', kitInnerData);
   const sentencesArray =
     kitInnerData?.kit_includes && JSON.parse(kitInnerData?.kit_includes);
   const descArry = kitInnerData?.kit_includes && JSON.parse([sentencesArray]);

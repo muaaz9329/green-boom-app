@@ -25,9 +25,19 @@ const useRegister = ({navigate, goBack}) => {
     setRemember(!remember);
   };
 
-  const signUpButton = ({name, email, number, password, confirm_password}) => {
+  const signUpButton = ({
+    name,
+    email,
+    number,
+    password,
+    confirm_password,
+    company_name,
+  }) => {
     dispatch(
-      loginUser({type: 'email', datas: {name, email, number, password}}),
+      loginUser({
+        type: 'email',
+        datas: {name, email, number, password, company_name},
+      }),
     );
   };
   const loginNav = () => navigate('LoginScreen');

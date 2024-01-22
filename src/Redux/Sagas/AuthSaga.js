@@ -58,6 +58,7 @@ const loginSaga = function* ({payload: {datas, type}}) {
           email: datas?.email,
           password: datas?.password,
           phone: datas?.number,
+          company_name: datas?.company_name,
         });
         console.log('data=========>>>>>>>', data);
         yield put(loadingTrue());

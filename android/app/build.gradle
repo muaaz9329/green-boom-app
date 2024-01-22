@@ -75,9 +75,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.greenboom.codment"
+    namespace "com.greenboom"
     defaultConfig {
-        applicationId "com.greenboom.codment"
+        applicationId "com.greenboom"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

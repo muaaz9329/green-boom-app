@@ -22,7 +22,7 @@ import {arrDown} from '../../Assets';
 const ProductDetailScreen = ({route, navigation}) => {
   const {productData, selectedSize, setSelectedSize, remOption, setRemOption} =
     useProductDetailScreen(navigation, route);
-  // console.log('test', productData);
+  console.log('test param', route.params);
 
   const size = productData?.[selectedSize.id][0]?.size[0];
   const dimension = productData?.[selectedSize.id][0]?.dimension[0];
@@ -58,10 +58,10 @@ const ProductDetailScreen = ({route, navigation}) => {
         dropdownIconPosition="right"
         data={productData?.sizePicker.map(res => res?.title)}
         onSelect={(selectedItem, index) => {
-          console.log(
-            'jksdbjklvsbdkjlvbskldbvlsdbvds',
-            productData?.medium[0]?.desc,
-          );
+          // console.log(
+          //   'jksdbjklvsbdkjlvbskldbvlsdbvds',
+          //   productData?.medium[0]?.desc,
+          // );
           setSelectedSize({id: selectedItem, index});
         }}
         buttonTextAfterSelection={(selectedItem, index) => {
@@ -84,7 +84,7 @@ const ProductDetailScreen = ({route, navigation}) => {
         style={styles.productMain}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}>
-        <HorizontalCarousal data={slider} />
+        <HorizontalCarousal data={productData?.image ?? []} isUri={true} />
         <View style={styles.title}>
           <TextComponent
             text={productData?.product_data?.product_name}
@@ -113,26 +113,31 @@ const ProductDetailScreen = ({route, navigation}) => {
         <View>
           <SizePickerView />
         </View>
-        {desc && <TextComponent text={'Description'} styles={styles.pTitle} />}
-        {desc &&
-          descArry?.map(res => {
-            console.log('res', res);
-            return (
-              <View style={styles.subDes}>
-                <View style={styles.dotSt}></View>
-                <TextComponent
-                  text={res}
-                  styles={{...styles.pDesc, ...styles.pDescLast}}
-                />
-              </View>
-            );
-          })}
+        <View style={styles.destyles}>
+          {desc && (
+            <TextComponent text={'Description'} styles={styles.pTitle} />
+          )}
+          {desc &&
+            descArry?.map(res => {
+              // console.log('res', res);
+              return (
+                <View style={styles.subDes}>
+                  <View style={styles.dotSt}></View>
+                  <TextComponent
+                    text={res}
+                    styles={{...styles.pDesc, ...styles.pDescLast}}
+                  />
+                </View>
+              );
+            })}
+        </View>
         {size &&
           Object.entries(size).map(([key, value]) => {
+            // console.log('sz', size);
             return (
               !notRequired.includes(key) &&
-              value != undefined &&
-              value != null && (
+              value !== 'undefined' &&
+              value !== null && (
                 <SizeDetails
                   sizeName={key.replace(/_/g, ' / ')}
                   sizeValue={value}
@@ -172,10 +177,11 @@ const ProductDetailScreen = ({route, navigation}) => {
         )}
         {dimension &&
           Object.entries(dimension).map(([key, value]) => {
+            // console.log('asdd', dimension);
             return (
               !notReqDimension.includes(key) &&
-              value != undefined &&
-              value != null && (
+              value !== 'undefined' &&
+              value !== null && (
                 <SizeDetails
                   sizeName={key.replace(/_/g, ' / ').replace(/\d/g, '')}
                   sizeValue={value}

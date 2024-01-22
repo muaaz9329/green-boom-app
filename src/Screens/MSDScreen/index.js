@@ -37,7 +37,7 @@ const MSDScreen = ({route, navigation}) => {
     <View style={styles.trainingMain}>
       <HeaderComponent
         title={title}
-        search={true}
+        // search={true}
         goBack={() => navigation.goBack()}
       />
       <ScrollView

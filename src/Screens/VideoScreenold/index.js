@@ -33,7 +33,7 @@ const VideoScreen = ({route, navigation}) => {
     <View style={styles.trainingMain}>
       <HeaderComponent
         title={'Videos'}
-        search={true}
+        // search={true}
         isCategory={isCategory}
         categoryData={categoryData}
       />

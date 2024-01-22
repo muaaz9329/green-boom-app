@@ -64,7 +64,7 @@ const MyProfileScreen = ({navigation}) => {
       </View>
       <View style={styles.logoutBtn}>
         <ThemeButtonWithIcon
-          onPress={() => alert}
+          onPress={() => onCancel()}
           textStyle={styles.btnText}
           title={'Log out'}
           image={logout}

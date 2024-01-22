@@ -122,6 +122,7 @@ export const styles = StyleSheet.create({
   },
   subDes: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     // alignItems: 'center',
   },
   dotSt: {
@@ -133,7 +134,10 @@ export const styles = StyleSheet.create({
     marginTop: hp('1.7'),
   },
   pDescLast: {
-    width: wp('95'),
+    width: wp('90'),
     marginLeft: wp('1'),
+  },
+  destyles: {
+    marginBottom: hp('2'),
   },
 });

@@ -137,7 +137,7 @@ const TrainingScreen = ({route, navigation}) => {
     <View style={styles.trainingMain}>
       <HeaderComponent
         title={title}
-        search={true}
+        // search={true}
         isCategory={isCategory}
         categoryData={category}
         activeBtn={activeBtn.id}

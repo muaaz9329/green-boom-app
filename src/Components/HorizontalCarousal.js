@@ -12,10 +12,11 @@ import {
 import React from 'react';
 import {hp, wp} from '../Config/responsive';
 import {Colors} from '../Theme/Variables';
+import {imageUrl} from '../Utils/Urls';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-const HorizontalCarousal = ({data}) => {
+const HorizontalCarousal = ({data, isUri}) => {
   const flatListRef = React.useRef(null);
   const [prevDisabled, setPrevDisabled] = React.useState(false);
   const [nextDisabled, setNextDisabled] = React.useState(false);
@@ -58,9 +59,9 @@ const HorizontalCarousal = ({data}) => {
         scrollEventThrottle={0}
         showsHorizontalScrollIndicator={false}
         data={data}
-        keyExtractor={item => item.id.toString()}
+        // keyExtractor={item => item.id.toString()}
         renderItem={({item}) => {
-          if (!item.image) return <View style={{width: 0}} />;
+          if (!item) return <View style={{width: 0}} />;
           return (
             <View
               style={{
@@ -69,7 +70,10 @@ const HorizontalCarousal = ({data}) => {
                 alignItems: 'center',
               }}>
               {/* {/ <Image source={{ uri: item.image }} style={styles.image} /> /} */}
-              <Image source={item?.image} style={styles.image} />
+              <Image
+                source={isUri ? {uri: imageUrl(item)} : item}
+                style={styles.image}
+              />
               <Text style={styles.imageText}>{item.title}</Text>
             </View>
           );

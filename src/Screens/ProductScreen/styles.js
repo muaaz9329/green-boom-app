@@ -35,6 +35,7 @@ export const styles = StyleSheet.create({
     // paddingHorizontal: wp('2'),
     flex: 1,
     marginTop: hp('4'),
+    alignItems: 'center',
   },
   // msds card
   card: {

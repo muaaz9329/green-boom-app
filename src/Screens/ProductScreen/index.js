@@ -44,7 +44,7 @@ const ProductScreen = ({route, navigation}) => {
     <View style={styles.trainingMain}>
       <HeaderComponent
         title={title}
-        search={true}
+        // search={true}
         goBack={() => navigation.goBack()}
       />
       <ScrollView
@@ -56,9 +56,11 @@ const ProductScreen = ({route, navigation}) => {
             data={productList?.all_products}
             numColumns={2}
             renderItem={renderMSDSItem}
-            contentContainerStyle={{
-              alignItems: 'center',
-            }}
+            contentContainerStyle={
+              {
+                // alignItems: 'center',
+              }
+            }
           />
         </View>
       </ScrollView>

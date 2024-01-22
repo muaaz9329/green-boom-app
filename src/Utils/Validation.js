@@ -46,7 +46,7 @@ const signUpschema = yup.object().shape({
     .matches(/^[A-Za-z ]*$/, 'Please enter valid name.')
     .min(2, 'Name must be atleast 2 characters.')
     .max(50, 'Name must be of 50 characters.'),
-  company: yup.string(),
+  company_name: yup.string(),
   last: yup
     .string()
     // .required('Please enter your Last Name.')

@@ -80,7 +80,7 @@ const RegisterScreen = ({navigation}) => {
       </View>
       <InputComponent
         {...{
-          name: 'company',
+          name: 'company_name',
           handleSubmit,
           errors,
           reset,
