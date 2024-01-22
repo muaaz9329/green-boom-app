@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   imageStyle: {
-    width: wp('64'),
+    width: wp('63.9'),
     paddingHorizontal: wp('3'),
     justifyContent: 'center',
   },
@@ -47,7 +47,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   videoTitle: {
-    width: wp('21'),
+    width: wp('22'),
     textAlign: 'right',
     color: Colors.themeRed,
     fontSize: hp('1.7'),
@@ -104,13 +104,13 @@ export const styles = StyleSheet.create({
   inputLeft: {
     width: wp('43'),
     height: hp('5.5'),
-    marginRight: wp('2'),
+    marginRight: wp('1.8'),
     paddingLeft: wp('1'),
   },
   inputRight: {
     width: wp('43'),
     height: hp('5.5'),
-    marginLeft: wp('2'),
+    marginLeft: wp('1.8'),
     paddingLeft: wp('1'),
   },
   address: {

@@ -170,28 +170,28 @@ const editProfileScheme = yup.object().shape({
 const demoKitSchema = yup.object().shape({
   email: yup
     .string()
-    // .email('Email must be valid')
-    .min(3, 'Email must be valid')
-    .max(50, 'Email must be valid')
-    .required('Please enter your email')
-    .matches(
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-      'Please enter valid email',
-    ),
-  // mera code
-  // email: yup
-  //   .string()
-  //   .required('Please enter your email.')
-  //   .email('Please enter valid email.')
-  //   .min(3, 'Please enter valid email.')
-  //   .max(50, 'Please enter valid email.'),
-  password: yup.string().required('Please Enter your password.'),
-  // .min(6, 'Password must be greater then 6 digit.')
-  // .max(16, 'Password must be less then 16 digit.')
-  // .matches(
-  //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-  //   'Your password does not match.',
-  // ),
+    .email('Email must be valid.')
+    .required('Please enter your email.'),
+  first_name: yup
+    .string()
+    .required('Please enter your first name.')
+    .max(100, 'Name must be less than 100 characters.')
+    .matches(/^[A-Za-z ]*$/, 'Please enter valid name.')
+    .min(2, 'Name must be atleast 2 characters.')
+    .max(50, 'Name must be of 50 characters.'),
+  last_name: yup
+    .string()
+    .required('Please enter your last name.')
+    .max(100, 'Name must be less than 100 characters.')
+    .matches(/^[A-Za-z ]*$/, 'Please enter valid name.')
+    .min(2, 'Name must be atleast 2 characters.')
+    .max(50, 'Name must be of 50 characters.'),
+  company: yup.string().required('Please enter your company.'),
+  phone: yup.string().required('Please enter your number.'),
+  country: yup.string().required('Please enter your country.'),
+  state: yup.string().required('Please enter your state.'),
+  zip_code: yup.string().required('Please enter zip code.'),
+  address: yup.string().required('Please enter Your address.'),
 });
 
 const Schemas = {
@@ -202,6 +202,8 @@ const Schemas = {
   verification: yupResolver(verificationSchema),
   username: yupResolver(addUsernameScheme),
   editProfile: yupResolver(editProfileScheme),
+  // editProfile: yupResolver(editProfileScheme),
+  demoKit: yupResolver(demoKitSchema),
 };
 
 export default Schemas;

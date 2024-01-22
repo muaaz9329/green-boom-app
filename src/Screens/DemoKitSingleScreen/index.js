@@ -12,6 +12,7 @@ import ThemeButton from '../../Components/ThemeButton';
 import KeyBoardWrapper from '../../Components/KeyBoardWrapper';
 import {imageUrl, kitForm} from '../../Utils/Urls';
 import API from '../../Utils/helperFunc';
+import {hp} from '../../Config/responsive';
 
 const DemoKitSingleScreen = ({route, navigation}) => {
   const {handleSubmit, errors, reset, control, getValues, submitData} =
@@ -28,6 +29,7 @@ const DemoKitSingleScreen = ({route, navigation}) => {
   // };
 
   const onSubmit = async data => {
+    console.log('dtaaa', data);
     try {
       // Perform the API call to post data
       const response = await API.post(kitForm, data);
@@ -54,7 +56,8 @@ const DemoKitSingleScreen = ({route, navigation}) => {
       />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}>
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: hp('20')}}>
         <View style={styles.cardBtn}>
           <Image
             source={{uri: imageUrl(kitInnerData?.image)}}
@@ -106,119 +109,132 @@ const DemoKitSingleScreen = ({route, navigation}) => {
         <View style={styles.form}>
           <KeyBoardWrapper showsVerticalScrollIndicator={false}>
             <View style={styles.inputCol}>
-              <InputComponent
-                {...{
-                  name: 'first_name',
-                  handleSubmit,
-                  errors,
-                  reset,
-                  control,
-                  getValues,
-                  placeholder: 'First name',
-                  defaultValue: '',
-                  viewStyle: styles.inputLeft,
-                }}
-              />
-
-              <InputComponent
-                {...{
-                  name: 'last_name',
-                  handleSubmit,
-                  errors,
-                  reset,
-                  control,
-                  getValues,
-                  placeholder: 'Last name',
-                  defaultValue: '',
-                  viewStyle: styles.inputRight,
-                }}
-              />
+              <View>
+                <InputComponent
+                  {...{
+                    name: 'first_name',
+                    handleSubmit,
+                    errors,
+                    reset,
+                    control,
+                    getValues,
+                    placeholder: 'First name',
+                    defaultValue: '',
+                    viewStyle: styles.inputLeft,
+                  }}
+                />
+              </View>
+              <View>
+                <InputComponent
+                  {...{
+                    name: 'last_name',
+                    handleSubmit,
+                    errors,
+                    reset,
+                    control,
+                    getValues,
+                    placeholder: 'Last name',
+                    defaultValue: '',
+                    viewStyle: styles.inputRight,
+                  }}
+                />
+              </View>
             </View>
             <View style={styles.inputCol}>
-              <InputComponent
-                {...{
-                  name: 'email',
-                  handleSubmit,
-                  errors,
-                  reset,
-                  control,
-                  getValues,
-                  placeholder: 'Email',
-                  defaultValue: '',
-                  viewStyle: styles.inputLeft,
-                }}
-              />
-              <InputComponent
-                {...{
-                  name: 'phone',
-                  handleSubmit,
-                  errors,
-                  reset,
-                  control,
-                  getValues,
-                  placeholder: 'Phone',
-                  defaultValue: '',
-                  viewStyle: styles.inputRight,
-                }}
-              />
+              <View>
+                <InputComponent
+                  {...{
+                    name: 'email',
+                    handleSubmit,
+                    errors,
+                    reset,
+                    control,
+                    getValues,
+                    placeholder: 'Email',
+                    defaultValue: '',
+                    viewStyle: styles.inputLeft,
+                  }}
+                />
+              </View>
+              <View>
+                <InputComponent
+                  {...{
+                    name: 'phone',
+                    handleSubmit,
+                    errors,
+                    reset,
+                    control,
+                    getValues,
+                    placeholder: 'Phone',
+                    defaultValue: '',
+                    viewStyle: styles.inputRight,
+                  }}
+                />
+              </View>
             </View>
             <View style={styles.inputCol}>
-              <InputComponent
-                {...{
-                  name: 'company',
-                  handleSubmit,
-                  errors,
-                  reset,
-                  control,
-                  getValues,
-                  placeholder: 'Company',
-                  defaultValue: '',
-                  viewStyle: styles.inputLeft,
-                }}
-              />
-
-              <InputComponent
-                {...{
-                  name: 'country',
-                  handleSubmit,
-                  errors,
-                  reset,
-                  control,
-                  getValues,
-                  placeholder: 'Country',
-                  defaultValue: '',
-                  viewStyle: styles.inputRight,
-                }}
-              />
+              <View>
+                <InputComponent
+                  {...{
+                    name: 'company',
+                    handleSubmit,
+                    errors,
+                    reset,
+                    control,
+                    getValues,
+                    placeholder: 'Company',
+                    defaultValue: '',
+                    viewStyle: styles.inputLeft,
+                  }}
+                />
+              </View>
+              <View>
+                <InputComponent
+                  {...{
+                    name: 'country',
+                    handleSubmit,
+                    errors,
+                    reset,
+                    control,
+                    getValues,
+                    placeholder: 'Country',
+                    defaultValue: '',
+                    viewStyle: styles.inputRight,
+                  }}
+                />
+              </View>
             </View>
             <View style={styles.inputCol}>
-              <InputComponent
-                {...{
-                  name: 'state',
-                  handleSubmit,
-                  errors,
-                  reset,
-                  control,
-                  getValues,
-                  placeholder: 'State',
-                  defaultValue: '',
-                  viewStyle: styles.inputLeft,
-                }}
-              />
-
-              <InputComponent
-                {...{
-                  name: 'zip_code',
-                  handleSubmit,
-                  errors,
-                  reset,
-                  control,
-                  getValues,
-                  placeholder: 'Zip Code',
-                  defaultValue: '',
-                  viewStyle: styles.inputRight,
-                }}
-              />
+              <View>
+                <InputComponent
+                  {...{
+                    name: 'state',
+                    handleSubmit,
+                    errors,
+                    reset,
+                    control,
+                    getValues,
+                    placeholder: 'State',
+                    defaultValue: '',
+                    viewStyle: styles.inputLeft,
+                  }}
+                />
+              </View>
+              <View>
+                <InputComponent
+                  {...{
+                    name: 'zip_code',
+                    handleSubmit,
+                    errors,
+                    reset,
+                    control,
+                    getValues,
+                    placeholder: 'Zip Code',
+                    defaultValue: '',
+                    viewStyle: styles.inputRight,
+                  }}
+                />
+              </View>
             </View>
             <View>
               <InputComponent
