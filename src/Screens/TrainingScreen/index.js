@@ -7,12 +7,22 @@ import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
 import {accordionData, trainingPDFData, videosData} from '../../Utils/localDB';
 import {hp, wp} from '../../Config/responsive';
-import {arrDown, arrUp, boom, emailIcon, videoThumb} from '../../Assets';
+import {
+  arrDown,
+  arrUp,
+  boom,
+  dataNotFound,
+  emailIcon,
+  videoThumb,
+} from '../../Assets';
 import {CategoryIntro} from '../../Components/CategoryIntro';
 import VideoThumbComponent from '../../Components/VideoThumbComponent';
 import {imageUrl} from '../../Utils/Urls';
 import Accordion from 'react-native-collapsible/Accordion';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import ThemeButton from '../../Components/ThemeButton';
+import NoDataFound from '../../Components/DataNotFound';
+import DataNotFound from '../../Components/DataNotFound';
 const TrainingScreen = ({route, navigation}) => {
   const {
     isCategory,
@@ -61,7 +71,7 @@ const TrainingScreen = ({route, navigation}) => {
       // />
       <VideoThumbComponent
         videoTitle={item?.title}
-        videoDesc={item?.description}
+        // videoDesc={item?.description}
         videoThumb={videoThumb}
         onPress={() => navigation.navigate('SingleVideoScreen', item)}
       />
@@ -132,7 +142,7 @@ const TrainingScreen = ({route, navigation}) => {
       </>
     );
   });
-
+  console.log('test', subCategory);
   return (
     <View style={styles.trainingMain}>
       <HeaderComponent
@@ -144,48 +154,54 @@ const TrainingScreen = ({route, navigation}) => {
         onPress={item => onCategory(item)}
         goBack={() => navigation.goBack()}
       />
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}>
-        {activeBtn?.title == 'Videos' ? (
-          <View style={styles.videoMain}>
-            {/* <CategoryIntro
+      {subCategory.length > 0 ? (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}>
+          {(title == 'Videos' && activeBtn?.title == undefined) ||
+          activeBtn?.title == 'Videos' ? (
+            <View style={styles.videoMain}>
+              {/* <CategoryIntro
               introImage={boom}
               introTitle={'Booms'}
               introDescription={
                 'Our awesome name-sake booms provide rapid absorption ideal for marine environments.'
               }
             /> */}
-            <FlatList
-              refreshing={false}
-              data={subCategory}
-              renderItem={renderVideos}
-              contentContainerStyle={
-                {
-                  // alignItems: 'center',
-                }
-              }
-            />
-          </View>
-        ) : (
-          <>
-            {activeBtn.title !== 'Scripts' && (
+
               <FlatList
                 refreshing={false}
                 data={subCategory}
-                renderItem={renderItem}
-                contentContainerStyle={{
-                  // alignItems: 'center',
-                  marginTop: hp('2'),
-                }}
+                renderItem={renderVideos}
+                contentContainerStyle={
+                  {
+                    // alignItems: 'center',
+                  }
+                }
               />
-            )}
-            <View style={styles.script}>
-              {activeBtn.title == 'Scripts' && renderAccordion()}
             </View>
-          </>
-        )}
-      </ScrollView>
+          ) : (
+            <>
+              {activeBtn.title !== 'Scripts' && (
+                <FlatList
+                  refreshing={false}
+                  data={subCategory}
+                  renderItem={renderItem}
+                  contentContainerStyle={{
+                    // alignItems: 'center',
+                    marginTop: hp('2'),
+                  }}
+                />
+              )}
+              <View style={styles.script}>
+                {activeBtn.title == 'Scripts' && renderAccordion()}
+              </View>
+            </>
+          )}
+        </ScrollView>
+      ) : (
+        <DataNotFound />
+      )}
     </View>
   );
 };

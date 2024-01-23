@@ -49,9 +49,11 @@ const MSDScreen = ({route, navigation}) => {
             data={category}
             numColumns={2}
             renderItem={renderMSDSItem}
-            contentContainerStyle={{
-              alignItems: 'center',
-            }}
+            contentContainerStyle={
+              {
+                // alignItems: 'center',
+              }
+            }
           />
         </View>
       </ScrollView>

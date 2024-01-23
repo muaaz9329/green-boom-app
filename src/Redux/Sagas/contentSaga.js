@@ -18,7 +18,7 @@ const getTrainingData = function* ({payload}) {
   yield put(loadingTrue());
   try {
     const {ok, data} = yield call(getCategoryApi, dataType[payload]);
-    console.log('dta', data);
+    console.log('dta', data, 'type', dataType[payload], 'pay0', payload);
     if (ok) {
       yield put({
         type: types.updateCat,
@@ -34,24 +34,24 @@ const getTrainingData = function* ({payload}) {
   }
 };
 
-const getVideoData = function* ({payload}) {
-  yield put(loadingTrue());
-  try {
-    const {ok, data} = yield call(getCategoryApi, payload);
-    if (ok) {
-      yield put({
-        type: types.updateCat,
-        catType: 'Video',
-        payload: data,
-      });
-    }
-  } catch (error) {
-    errorMessage(error.message.split(' ').slice(1).join(' ') ?? error);
-    console.log('err', error);
-  } finally {
-    yield put(loadingFalse());
-  }
-};
+// const getVideoData = function* ({payload}) {
+//   yield put(loadingTrue());
+//   try {
+//     const {ok, data} = yield call(getCategoryApi, payload);
+//     if (ok) {
+//       yield put({
+//         type: types.updateCat,
+//         catType: 'Video',
+//         payload: data,
+//       });
+//     }
+//   } catch (error) {
+//     errorMessage(error.message.split(' ').slice(1).join(' ') ?? error);
+//     console.log('err', error);
+//   } finally {
+//     yield put(loadingFalse());
+//   }
+// };
 
 const getmsdsData = function* ({payload}) {
   yield put(loadingTrue());

@@ -19,7 +19,7 @@ const useTraining = ({navigate, goBack}, {params}) => {
   const titleData = getState('getCategory');
   const category = titleData[params?.id]?.cat ?? [];
   const subCategory = titleData[params?.id]?.subCat ?? [];
-  // console.log('cat subcat', subCategory);
+  console.log('cat subcat', subCategory);
   const isCategory = Boolean(category.length > 0);
   const iconType = {
     pdf: trainingPDFIcon,

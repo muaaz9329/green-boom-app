@@ -27,7 +27,7 @@ const SingleVideoScreen = ({route, navigation}) => {
         videoUrl={imageUrl(item?.file)}
         uri={true}
         videoTitle={item?.title}
-        videoDesc={item?.description}
+        // videoDesc={item?.description}
       />
     </View>
   );

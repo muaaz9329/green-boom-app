@@ -42,7 +42,7 @@ const SettingScreen = ({navigation}) => {
             onCancel={onCancel}
             title={'Log Out?'}
             message={'Are you sure, you want to log out?'}
-            confirmText={'Log Out'}
+            confirmText={'Yes, I want to'}
           />
         </View>
       </ScrollView>
