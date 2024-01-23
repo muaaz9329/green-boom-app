@@ -8,6 +8,7 @@ import {Touchable} from '../../Components/Touchable';
 import {demoKit} from '../../Utils/localDB';
 import {arrowrightblack} from '../../Assets';
 import {imageUrl} from '../../Utils/Urls';
+import DataNotFound from '../../Components/DataNotFound';
 
 const DemoKitScreen = ({route, navigation}) => {
   const {title, kitData} = useDemoKitScreen(navigation, route);
@@ -45,18 +46,23 @@ const DemoKitScreen = ({route, navigation}) => {
       <HeaderComponent title={title} goBack={() => navigation.goBack()} />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}>
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.main}>
         <View style={styles.proMain}>
-          <FlatList
-            refreshing={false}
-            data={kitData}
-            renderItem={renderMSDSItem}
-            contentContainerStyle={
-              {
-                // alignItems: 'center',
+          {kitData.length > 0 ? (
+            <FlatList
+              refreshing={false}
+              data={kitData}
+              renderItem={renderMSDSItem}
+              contentContainerStyle={
+                {
+                  // alignItems: 'center',
+                }
               }
-            }
-          />
+            />
+          ) : (
+            <DataNotFound />
+          )}
         </View>
       </ScrollView>
     </View>
