@@ -9,6 +9,7 @@ import {hp} from '../../Config/responsive';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
 import {imageUrl} from '../../Utils/Urls';
+import DataNotFound from '../../Components/DataNotFound';
 
 const CatalogScreen = ({navigation}) => {
   const {category, iconType} = useCatalogScreen(navigation);
@@ -28,23 +29,31 @@ const CatalogScreen = ({navigation}) => {
     );
   });
   return (
-    <View>
+    <View style={{flex: 1}}>
       <HeaderComponent
         title={'Catalogs & Brochures'}
         goBack={() => navigation.goBack()}
       />
-      <View style={styles.catMain}>
-        <FlatList
-          refreshing={false}
-          data={category}
-          renderItem={renderItem}
-          contentContainerStyle={{
-            // alignItems: 'center',
-            marginTop: hp('2'),
-            paddingBottom: hp('10'),
-          }}
-        />
-      </View>
+      {category?.length > 0 ? (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}>
+          <View style={styles.catMain}>
+            <FlatList
+              refreshing={false}
+              data={category}
+              renderItem={renderItem}
+              contentContainerStyle={{
+                // alignItems: 'center',
+                marginTop: hp('2'),
+                paddingBottom: hp('10'),
+              }}
+            />
+          </View>
+        </ScrollView>
+      ) : (
+        <DataNotFound />
+      )}
     </View>
   );
 };

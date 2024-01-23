@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   videoMainComp: {
     // marginHorizontal: wp('5'),
-    marginBottom: hp('3'),
+    // marginBottom: hp('3'),
   },
   videoThumbnail: {
     width: wp('94'),

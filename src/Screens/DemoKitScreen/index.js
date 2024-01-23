@@ -44,12 +44,12 @@ const DemoKitScreen = ({route, navigation}) => {
   return (
     <View style={styles.trainingMain}>
       <HeaderComponent title={title} goBack={() => navigation.goBack()} />
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.main}>
-        <View style={styles.proMain}>
-          {kitData.length > 0 ? (
+      {kitData.length > 0 ? (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.main}>
+          <View style={styles.proMain}>
             <FlatList
               refreshing={false}
               data={kitData}
@@ -60,11 +60,11 @@ const DemoKitScreen = ({route, navigation}) => {
                 }
               }
             />
-          ) : (
-            <DataNotFound />
-          )}
-        </View>
-      </ScrollView>
+          </View>
+        </ScrollView>
+      ) : (
+        <DataNotFound />
+      )}
     </View>
   );
 };

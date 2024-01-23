@@ -7,6 +7,7 @@ import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
 import {msdsData} from '../../Utils/localDB';
 import {imageUrl} from '../../Utils/Urls';
+import DataNotFound from '../../Components/DataNotFound';
 
 const MSDScreen = ({route, navigation}) => {
   const {title, category, iconType} = useMSDS(navigation, route);
@@ -40,23 +41,27 @@ const MSDScreen = ({route, navigation}) => {
         // search={true}
         goBack={() => navigation.goBack()}
       />
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}>
-        <View style={styles.videoMain}>
-          <FlatList
-            refreshing={false}
-            data={category}
-            numColumns={2}
-            renderItem={renderMSDSItem}
-            contentContainerStyle={
-              {
-                // alignItems: 'center',
+      {category.length > 0 ? (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}>
+          <View style={styles.videoMain}>
+            <FlatList
+              refreshing={false}
+              data={category}
+              numColumns={2}
+              renderItem={renderMSDSItem}
+              contentContainerStyle={
+                {
+                  // alignItems: 'center',
+                }
               }
-            }
-          />
-        </View>
-      </ScrollView>
+            />
+          </View>
+        </ScrollView>
+      ) : (
+        <DataNotFound />
+      )}
     </View>
   );
 };

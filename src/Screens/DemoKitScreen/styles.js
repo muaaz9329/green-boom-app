@@ -38,6 +38,9 @@ export const styles = StyleSheet.create({
   },
   proMain: {
     marginTop: hp('5'),
-    // flex: 1,
+    flex: 1,
+  },
+  trainingMain: {
+    flex: 1,
   },
 });

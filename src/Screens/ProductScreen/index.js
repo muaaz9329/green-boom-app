@@ -14,10 +14,11 @@ import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
 import {productData} from '../../Utils/localDB';
 import {imageUrl} from '../../Utils/Urls';
+import DataNotFound from '../../Components/DataNotFound';
 
 const ProductScreen = ({route, navigation}) => {
   const {title, productList} = useProductScreen(navigation, route);
-  // console.log('firstaa', productList);
+  // console.log('firstaa', productList?.all_products?.length);
   const renderMSDSItem = useCallback(({item, index}) => {
     // console.log('firstcd', imageUrl(item?.file));
     return (
@@ -47,23 +48,27 @@ const ProductScreen = ({route, navigation}) => {
         // search={true}
         goBack={() => navigation.goBack()}
       />
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}>
-        <View style={styles.videoMain}>
-          <FlatList
-            refreshing={false}
-            data={productList?.all_products}
-            numColumns={2}
-            renderItem={renderMSDSItem}
-            contentContainerStyle={
-              {
-                // alignItems: 'center',
+      {productList?.all_products?.length > 0 ? (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}>
+          <View style={styles.videoMain}>
+            <FlatList
+              refreshing={false}
+              data={productList?.all_products}
+              numColumns={2}
+              renderItem={renderMSDSItem}
+              contentContainerStyle={
+                {
+                  // alignItems: 'center',
+                }
               }
-            }
-          />
-        </View>
-      </ScrollView>
+            />
+          </View>
+        </ScrollView>
+      ) : (
+        <DataNotFound />
+      )}
     </View>
   );
 };
