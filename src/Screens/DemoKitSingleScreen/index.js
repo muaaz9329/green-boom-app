@@ -28,20 +28,20 @@ const DemoKitSingleScreen = ({route, navigation}) => {
   //   console.log('asd', data);
   // };
 
-  const onSubmit = async data => {
-    console.log('dtaaa', data);
+  const onSubmit = async datas => {
+    console.log('dtaaa', datas);
     try {
       // Perform the API call to post data
-      const response = await API.post(kitForm, data);
+      const {ok, data} = await API.post(kitForm, datas);
 
-      if (response.ok) {
+      if (ok) {
         // Handle success
-        console.log('Data posted successfully:', response.data);
+        console.log('Data posted successfully:', data);
         reset();
         navigation.navigate('ThankYouScreen');
       } else {
         // Handle error
-        console.error('Error posting data:', response.problem);
+        console.error('Error posting data:', data);
       }
     } catch (error) {
       console.error('Unexpected error:', error);

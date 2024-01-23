@@ -10,7 +10,7 @@ const useProductDetailScreen = ({navigate, goBack}, {params}) => {
   const getSingleProduct = async () => {
     const {ok, data} = await API.get(singleProduct + params);
 
-    // console.log('all data', data);
+    console.log('all data', data);
 
     if (ok) {
       setSelectedSize({id: data?.sizePicker[0]?.id, index: 0});

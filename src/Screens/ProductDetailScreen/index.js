@@ -22,7 +22,6 @@ import {arrDown} from '../../Assets';
 const ProductDetailScreen = ({route, navigation}) => {
   const {productData, selectedSize, setSelectedSize, remOption, setRemOption} =
     useProductDetailScreen(navigation, route);
-  console.log('test param', route.params);
 
   const size = productData?.[selectedSize.id][0]?.size[0];
   const dimension = productData?.[selectedSize.id][0]?.dimension[0];
@@ -35,6 +34,7 @@ const ProductDetailScreen = ({route, navigation}) => {
   const sentencesArray = desc && JSON.parse(desc ?? '');
   const descArry = desc && JSON.parse([sentencesArray]);
 
+  console.log('test param', size?.added_remediation_material);
   const renderItem = useCallback(({item, index}) => {
     return (
       <View style={styles.lastSection}>
@@ -146,7 +146,7 @@ const ProductDetailScreen = ({route, navigation}) => {
             );
           })}
 
-        {size?.added_remediation_material && (
+        {size?.added_remediation_material && title?.sku_rem != 'undefined' && (
           <View style={styles.remed}>
             <TextComponent
               text={'ADDED REMEDIATION MATERIAL'}
