@@ -33,7 +33,7 @@ const ForgetPasswordScreen = ({navigation}) => {
         />
         <View style={styles.passMain}>
           <Image source={changePasswordIcon} style={styles.contactIcon} />
-          <TextComponent text={'Forget Password'} styles={styles.Cpass} />
+          <TextComponent text={'Forgot Password'} styles={styles.Cpass} />
           <TextComponent text={''} styles={styles.CpassSub} />
           <InputComponent
             {...{
