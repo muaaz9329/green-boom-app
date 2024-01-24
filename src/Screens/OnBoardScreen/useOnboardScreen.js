@@ -33,9 +33,19 @@ const useOnboardingScreen = ({navigate, params}) => {
     setCurrentIndex(currentIndex);
   };
 
+  // if (Platform.OS == 'android') {
+  //   setCurrentIndex(prev => prev + 1);
+  //   flatListRef.current.scrollToIndex({index: currentIndex + 1});
+  // } else {
+  //   flatListRef.current.scrollToIndex({index: currentIndex + 1});
+  // }
+
   const goNext = () => {
     if (currentIndex == 2) getStart();
-    setCurrentIndex(pre => pre + 1);
+    else {
+      flatListRef.current.scrollToIndex({index: currentIndex + 1});
+      setCurrentIndex(pre => pre + 1);
+    }
   };
   const getStart = () => {
     dispatch({

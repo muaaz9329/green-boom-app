@@ -11,6 +11,7 @@
 import {useState} from 'react';
 import {loginUser} from '../../Redux/Action/AuthAction';
 import useReduxStore from '../../Hooks/UseReduxStore';
+import {errorMessage} from '../../Config/NotificationMessage';
 
 const {default: useFormHook} = require('../../Hooks/UseFormHooks');
 const {default: Schemas} = require('../../Utils/Validation');
@@ -33,12 +34,14 @@ const useRegister = ({navigate, goBack}) => {
     confirm_password,
     company_name,
   }) => {
-    dispatch(
-      loginUser({
-        type: 'email',
-        datas: {name, email, number, password, company_name},
-      }),
-    );
+    if (policy) {
+      dispatch(
+        loginUser({
+          type: 'email',
+          datas: {name, email, number, password, company_name},
+        }),
+      );
+    } else errorMessage('Please agree terms & conditions.');
   };
   const loginNav = () => navigate('LoginScreen');
 
