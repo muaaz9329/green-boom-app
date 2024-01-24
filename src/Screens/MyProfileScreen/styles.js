@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import {hp, wp} from '../../Config/responsive';
 import {Colors} from '../../Theme/Variables';
 
@@ -49,10 +49,14 @@ export const styles = StyleSheet.create({
     marginTop: hp('5'),
   },
   ProfileImage: {
-    height: hp('15'),
     aspectRatio: 1,
     alignSelf: 'center',
     position: 'relative',
+    borderRadius: Math.round(
+      Dimensions.get('window').width + Dimensions.get('window').height,
+    ),
+    width: Dimensions.get('window').width * 0.8,
+    height: Dimensions.get('window').width * 0.3,
   },
   blurMain: {
     marginTop: hp('-9'),

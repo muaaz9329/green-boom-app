@@ -23,8 +23,13 @@ const number = yup.object().shape({
 const signUpschema = yup.object().shape({
   email: yup
     .string()
-    .email('Email must be valid.')
-    .required('Please enter your email.'),
+    // .email('Email must be valid')
+    .max(50, 'Email must be valid.')
+    .required('Please enter your email.')
+    .matches(
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+      'Please enter valid email.',
+    ),
   // .min(3, 'Email must be valid')
   // .max(50, 'Email must be valid'),
   // .matches(
