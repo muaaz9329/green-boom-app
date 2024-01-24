@@ -18,7 +18,7 @@ const getTrainingData = function* ({payload}) {
   yield put(loadingTrue());
   try {
     const {ok, data} = yield call(getCategoryApi, dataType[payload]);
-    console.log('dta', data, 'type', dataType[payload], 'pay0', payload);
+    // console.log('dta', data, 'type', dataType[payload], 'pay0', payload);
     if (ok) {
       yield put({
         type: types.updateCat,
@@ -28,7 +28,7 @@ const getTrainingData = function* ({payload}) {
     }
   } catch (error) {
     errorMessage(error.message.split(' ').slice(1).join(' ') ?? error);
-    console.log('err', error);
+    // console.log('err', error);
   } finally {
     yield put(loadingFalse());
   }

@@ -55,6 +55,7 @@ const loginSaga = function* ({payload: {datas, type}}) {
         const {data, ok} = yield call(registerService, {
           token: jwtToken,
           name: datas?.name,
+          last_name: datas?.last_name,
           email: datas?.email,
           password: datas?.password,
           phone: datas?.number,

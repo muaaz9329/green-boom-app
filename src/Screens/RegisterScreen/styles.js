@@ -23,9 +23,9 @@ export const styles = StyleSheet.create({
   },
   rememberInner: {
     flexDirection: 'row',
-    marginTop: hp('1'),
-    flex: 1,
-    marginBottom: hp('3.5'),
+    // marginTop: hp('1'),
+    // flex: 1,
+    // marginBottom: hp('3.5'),
     alignItems: 'center',
   },
   tickIcon: {
@@ -84,5 +84,18 @@ export const styles = StyleSheet.create({
   lastNameSt: {
     // position: 'absolute',
     right: wp('0'),
+  },
+  termsMain: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: hp('1'),
+    marginBottom: hp('3.5'),
+  },
+  termsText: {
+    color: Colors.gray,
+    fontSize: hp('1.9'),
+    fontWeight: '400',
+    textDecorationColor: Colors.black,
+    textDecorationLine: 'underline',
   },
 });

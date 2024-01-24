@@ -61,10 +61,13 @@ const EditProfileScreen = ({navigation}) => {
             <Image source={editPro} style={styles.addImageIcon} />
           </Touchable>
         </View>
-        <TextComponent text={userData?.name} styles={styles.name} />
+        <View style={styles.names}>
+          <TextComponent text={userData?.name + ' '} styles={styles.name} />
+          <TextComponent text={userData?.last_name} styles={styles.name} />
+        </View>
         <TextComponent text={userData?.email} styles={styles.email} />
-        <KeyBoardWrapper styles={{flex: 1}}>
-          <TextComponent text={'User Name'} styles={styles.subHd} />
+        <ScrollView styles={{flex: 1}}>
+          {/* <TextComponent text={'First Name'} styles={styles.subHd} /> */}
           <InputComponent
             {...{
               name: 'name',
@@ -74,12 +77,27 @@ const EditProfileScreen = ({navigation}) => {
               control,
               getValues,
               isImage: username,
-              placeholder: 'John Doe',
+              placeholder: 'First Name',
               defaultValue: userData?.name,
               viewStyle: {...styles.nameSt},
             }}
           />
-          <TextComponent text={'Company'} styles={styles.subHd} />
+          {/* <TextComponent text={'Last Name'} styles={styles.subHd} /> */}
+          <InputComponent
+            {...{
+              name: 'last_name',
+              handleSubmit,
+              errors,
+              reset,
+              control,
+              getValues,
+              isImage: username,
+              placeholder: 'last Name',
+              defaultValue: userData?.last_name,
+              viewStyle: {...styles.nameSt},
+            }}
+          />
+          {/* <TextComponent text={'Company'} styles={styles.subHd} /> */}
           <InputComponent
             {...{
               name: 'company_name',
@@ -94,7 +112,7 @@ const EditProfileScreen = ({navigation}) => {
               viewStyle: {...styles.inputStyle},
             }}
           />
-          <TextComponent text={'Email Address'} styles={styles.subHd} />
+          {/* <TextComponent text={'Email Address'} styles={styles.subHd} /> */}
           <InputComponent
             {...{
               name: 'email',
@@ -110,7 +128,7 @@ const EditProfileScreen = ({navigation}) => {
               editable: false,
             }}
           />
-          <TextComponent text={'Password'} styles={styles.subHd} />
+          {/* <TextComponent text={'Password'} styles={styles.subHd} /> */}
           <Touchable
             Opacity={1}
             onPress={() => navigation.navigate('ChangePasswordScreen')}
@@ -118,7 +136,7 @@ const EditProfileScreen = ({navigation}) => {
             <Image source={passDots} style={styles.passStyle} />
             <TextComponent text={'Change'} styles={styles.passTextStyle} />
           </Touchable>
-        </KeyBoardWrapper>
+        </ScrollView>
         {/* <View style={styles.logoutBtn}>
           <ThemeButtonWithIcon
             textStyle={styles.btnText}

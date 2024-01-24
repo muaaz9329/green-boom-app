@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     flexWrap: 'wrap',
     // marginHorizontal: wp('4'),
     marginBottom: hp('2'),
-    marginTop: hp('.4'),
+    marginTop: hp('.8'),
     alignItems: 'center',
     backgroundColor: Colors.white,
     paddingHorizontal: wp('2.5'),
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   catMain: {
     // marginTop: hp('-3'),
     position: 'relative',
-    height: hp('71.5'),
+    // height: hp('71.5'),
     paddingHorizontal: wp('4'),
   },
   titleStyle: {
@@ -52,6 +52,12 @@ export const styles = StyleSheet.create({
   },
   blurMain: {
     marginTop: hp('-9'),
+  },
+  names: {
+    flexDirection: 'row',
+    // backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   name: {
     alignSelf: 'center',
@@ -103,7 +109,7 @@ export const styles = StyleSheet.create({
   inputStyle: {
     backgroundColor: Colors.white,
     borderColor: Colors.grayBorder,
-    marginTop: hp('.4'),
+    marginVertical: hp('.4'),
   },
   subHd: {
     fontSize: hp('1.7'),
@@ -111,9 +117,9 @@ export const styles = StyleSheet.create({
     marginTop: hp('.5'),
   },
   buttonStyle: {
-    position: 'absolute',
+    // position: 'absolute',
     bottom: 0,
-    left: wp('4'),
+    // left: wp('4'),
   },
 
   profileIcon: {
@@ -130,6 +136,6 @@ export const styles = StyleSheet.create({
     textTransform: 'capitalize',
     backgroundColor: Colors.white,
     borderColor: Colors.grayBorder,
-    marginTop: hp('.4'),
+    marginVertical: hp('.4'),
   },
 });

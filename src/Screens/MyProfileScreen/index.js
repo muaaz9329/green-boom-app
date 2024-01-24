@@ -43,7 +43,10 @@ const MyProfileScreen = ({navigation}) => {
         blurStyle={styles.blurMain}
         uri={imageUrl(userData?.profile_image)}
       />
-      <TextComponent text={userData?.name} styles={styles.name} />
+      <View style={styles.names}>
+        <TextComponent text={userData?.name + ' '} styles={styles.name} />
+        <TextComponent text={userData?.last_name} styles={styles.name} />
+      </View>
       <TextComponent text={userData?.email} styles={styles.email} />
       <View style={styles.cardBtn}>
         <Image source={profileEmail} style={styles.iconStyle} />

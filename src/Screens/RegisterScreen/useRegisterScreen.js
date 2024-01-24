@@ -28,17 +28,18 @@ const useRegister = ({navigate, goBack}) => {
 
   const signUpButton = ({
     name,
+    last_name,
     email,
     number,
     password,
     confirm_password,
     company_name,
   }) => {
-    if (policy) {
+    if (!policy) {
       dispatch(
         loginUser({
           type: 'email',
-          datas: {name, email, number, password, company_name},
+          datas: {name, email, number, password, company_name, last_name},
         }),
       );
     } else errorMessage('Please agree terms & conditions.');

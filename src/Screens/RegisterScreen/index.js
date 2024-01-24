@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, Image, ScrollView, Linking} from 'react-native';
 import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
 import ThemeButton from '../../Components/ThemeButton';
@@ -65,7 +65,7 @@ const RegisterScreen = ({navigation}) => {
         <View style={styles.lastNameSt}>
           <InputComponent
             {...{
-              name: 'last',
+              name: 'last_name',
               handleSubmit,
               errors,
               reset,
@@ -134,16 +134,21 @@ const RegisterScreen = ({navigation}) => {
           inputIconStyle: styles.lockstyle,
         }}
       />
-      <Touchable style={styles.rememberInner} onPress={PolicyValue}>
-        <Image
-          source={policy ? rememberEmpty : rememberImg}
-          style={styles.tickIcon}
-        />
+      <View style={styles.termsMain}>
+        <Touchable style={styles.rememberInner} onPress={PolicyValue}>
+          <Image
+            source={policy ? rememberEmpty : rememberImg}
+            style={styles.tickIcon}
+          />
+          <TextComponent styles={styles.tickText} text={'Agree to our '} />
+        </Touchable>
         <TextComponent
-          styles={styles.tickText}
-          text={'Agree to our terms & conditions.'}
+          styles={styles.termsText}
+          text={'terms & conditions.'}
+          onPress={() => Linking.openURL('https://www.greenboom.com/privacy')}
         />
-      </Touchable>
+      </View>
+
       <ThemeButton
         title={'Register'}
         onPress={handleSubmit(signUpButton)}

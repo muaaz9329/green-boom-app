@@ -57,6 +57,12 @@ export const styles = StyleSheet.create({
   blurMain: {
     marginTop: hp('-9'),
   },
+  names: {
+    flexDirection: 'row',
+    // backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   name: {
     alignSelf: 'center',
     color: Colors.primaryColor,
@@ -65,6 +71,7 @@ export const styles = StyleSheet.create({
     fontSize: hp('2.3'),
     textTransform: 'capitalize',
   },
+
   email: {
     alignSelf: 'center',
     fontSize: hp('2'),
