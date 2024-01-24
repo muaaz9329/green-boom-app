@@ -72,7 +72,8 @@ const loginSaga = function* ({payload: {datas, type}}) {
     const newError = error;
     const errorValidation = Boolean(
       newError.toString() ==
-        'Error: [auth/internal-error] An internal error has occurred, please try again.',
+        'Error: [auth/internal-error] An internal error has occurred, please try again.' ||
+        'Error: [auth/internal-error] The supplied auth credential is incorrect, malformed or has expired.',
     );
     errorMessage(
       errorValidation
@@ -112,7 +113,8 @@ function* registerSaga({payload: {datas}}) {
     const newError = error;
     const errorValidation = Boolean(
       newError.toString() ==
-        'Error: [auth/internal-error] An internal error has occurred, please try again.',
+        'Error: [auth/internal-error] An internal error has occurred, please try again.' ||
+        'Error: [auth/internal-error] The supplied auth credential is incorrect, malformed or has expired.',
     );
     errorMessage(
       errorValidation

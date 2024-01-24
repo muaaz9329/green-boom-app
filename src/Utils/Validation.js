@@ -83,7 +83,6 @@ const logInUpschema = yup.object().shape({
   email: yup
     .string()
     // .email('Email must be valid')
-    .min(3, 'Email must be valid')
     .max(50, 'Email must be valid')
     .required('Please enter your email')
     .matches(
@@ -110,7 +109,6 @@ const forgotSchema = yup.object().shape({
     .string()
     .email('Please enter valid email.')
     .required('Please enter your email.')
-    .min(3, 'Please enter valid email.')
     .max(50, 'Please enter valid email.'),
 });
 const verificationSchema = yup.object().shape({

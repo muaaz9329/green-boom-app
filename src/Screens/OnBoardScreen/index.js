@@ -22,27 +22,24 @@ const OnboardScreen = ({navigation}) => {
   const renderItem = useCallback(
     ({item, index}) => {
       return (
-        currentIndex == index && (
-          <ImageBackground
-            style={styles.bannerImg}
-            // resizeMode="contain"
-            source={item?.image}>
-            <View style={styles.centerMainView}>
-              <Image
-                source={item?.splashImage}
-                resizeMode="contain"
-                style={styles.splashImg}
-              />
-              <TextComponent text={item?.heading} styles={styles.hdStyle} />
-              <TextComponent
-                text={item?.description}
-                styles={styles.descStyle}
-              />
-              {/* <ThemeButton title={'next'} onPress={goNext} /> */}
-            </View>
-          </ImageBackground>
-        )
+        // currentIndex == index && (
+        <ImageBackground
+          style={styles.bannerImg}
+          // resizeMode="contain"
+          source={item?.image}>
+          <View style={styles.centerMainView}>
+            <Image
+              source={item?.splashImage}
+              resizeMode="contain"
+              style={styles.splashImg}
+            />
+            <TextComponent text={item?.heading} styles={styles.hdStyle} />
+            <TextComponent text={item?.description} styles={styles.descStyle} />
+            {/* <ThemeButton title={'next'} onPress={goNext} /> */}
+          </View>
+        </ImageBackground>
       );
+      // );
     },
     [currentIndex],
   );
@@ -69,8 +66,8 @@ const OnboardScreen = ({navigation}) => {
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
         horizontal
-        scrollEnabled={false}
-        // onMomentumScrollEnd={onSnapToItem}
+        scrollEnabled={true}
+        onMomentumScrollEnd={onSnapToItem}
         keyExtractor={keyExtractor}
         pagingEnabled={true}
         contentContainerStyle={{
