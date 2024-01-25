@@ -34,7 +34,11 @@ const ProductDetailScreen = ({route, navigation}) => {
   const sentencesArray = desc && JSON.parse(desc ?? '');
   const descArry = desc && JSON.parse([sentencesArray]);
 
-  console.log('test param', size?.added_remediation_material);
+  let text = title?.title_remediation;
+
+  // Remove newline characters
+  let remTitle = text?.replace(/\r?\n|\r/g, ' ');
+
   const renderItem = useCallback(({item, index}) => {
     return (
       <View style={styles.lastSection}>
@@ -81,7 +85,7 @@ const ProductDetailScreen = ({route, navigation}) => {
         goBack={() => navigation.goBack()}
       />
       <ScrollView
-        style={styles.productMain}
+        contentContainerStyle={styles.productMain}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}>
         <HorizontalCarousal data={productData?.image ?? []} isUri={true} />
@@ -99,11 +103,11 @@ const ProductDetailScreen = ({route, navigation}) => {
         </View>
 
         <TextComponent
-          text={remOption ? title?.title_remediation : productsData[0]?.title}
+          text={remOption ? remTitle : productData?.product_data?.title}
           styles={styles.pTitle}
         />
         <TextComponent
-          text={productsData[0]?.description}
+          text={productData?.product_data?.description}
           styles={styles.pDesc}
         />
         <TextComponent

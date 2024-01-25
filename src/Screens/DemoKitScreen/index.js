@@ -5,7 +5,6 @@ import {styles} from './styles';
 import useDemoKitScreen from './useDemoKitScreen';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
-import {demoKit} from '../../Utils/localDB';
 import {arrowrightblack} from '../../Assets';
 import {imageUrl} from '../../Utils/Urls';
 import DataNotFound from '../../Components/DataNotFound';

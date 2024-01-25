@@ -33,9 +33,9 @@ export const styles = StyleSheet.create({
   },
   pTitle: {
     fontSize: hp('1.9'),
-    marginTop: hp('0.5'),
+    // marginTop: hp('0.5'),
     color: Colors.black,
-    marginTop: hp('1.5'),
+    marginTop: hp('1'),
     fontWeight: '500',
   },
   dropTitle: {

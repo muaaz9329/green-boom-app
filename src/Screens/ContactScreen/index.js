@@ -20,15 +20,19 @@ const ContactScreen = ({navigation}) => {
             text={item?.designation}
             styles={styles.designationStyle}
           />
-          <TextComponent
-            text={`${item?.name}${' - ' + item?.subDesignation}`}
-            styles={styles.name}
-          />
+          {item?.name !== undefined && (
+            <TextComponent
+              text={`${item?.name}${' - ' + item?.subDesignation}`}
+              styles={styles.name}
+            />
+          )}
           <TextComponent text={item?.email} styles={styles.name} />
-          <TextComponent
-            text={`${item?.phone} ${item?.available}`}
-            styles={styles.name}
-          />
+          {item?.phone !== undefined && (
+            <TextComponent
+              text={`${item?.phone} ${item?.available}`}
+              styles={styles.name}
+            />
+          )}
         </View>
       </View>
     );
@@ -55,18 +59,18 @@ const ContactScreen = ({navigation}) => {
             ItemSeparatorComponent={() => (
               <View style={styles.separator}></View>
             )}
-            ListFooterComponent={() => (
-              <View style={styles.footer}>
-                <TextComponent
-                  text={'For All Other Questions'}
-                  styles={styles.footerH}
-                />
-                <TextComponent
-                  text={'Info@greenboom.com'}
-                  styles={styles.footerT}
-                />
-              </View>
-            )}
+            // ListFooterComponent={() => (
+            //   <View style={styles.footer}>
+            //     <TextComponent
+            //       text={'For All Other Questions'}
+            //       styles={styles.footerH}
+            //     />
+            //     <TextComponent
+            //       text={'Info@greenboom.com'}
+            //       styles={styles.footerT}
+            //     />
+            //   </View>
+            // )}
           />
         </View>
       </ScrollView>

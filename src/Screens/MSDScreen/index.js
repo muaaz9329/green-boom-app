@@ -5,7 +5,6 @@ import {styles} from './styles';
 import useMSDS from './useMSDScreen';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
-import {msdsData} from '../../Utils/localDB';
 import {imageUrl} from '../../Utils/Urls';
 import DataNotFound from '../../Components/DataNotFound';
 

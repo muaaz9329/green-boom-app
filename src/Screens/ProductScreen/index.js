@@ -11,8 +11,6 @@ import {TextComponent} from '../../Components/TextComponent';
 import {styles} from './styles';
 import useProductScreen from './useProductScreen';
 import {HeaderComponent} from '../../Components/HeaderComponent';
-import {Touchable} from '../../Components/Touchable';
-import {productData} from '../../Utils/localDB';
 import {imageUrl} from '../../Utils/Urls';
 import DataNotFound from '../../Components/DataNotFound';
 

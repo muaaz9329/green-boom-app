@@ -1,17 +1,16 @@
 import React from 'react';
 import {Text, Image, StyleSheet, View} from 'react-native';
 import {Colors, FontFamily} from '../Theme/Variables';
-import {Touchable} from './Touchable';
 import {hp, wp} from '../Config/responsive';
 import {TextComponent} from './TextComponent';
-import {dataNotFound} from '../Assets';
+import {comingSoon} from '../Assets';
 import ThemeButton from './ThemeButton';
 
 const DataNotFound = () => {
   return (
     <View style={styles.noData}>
-      <Image source={dataNotFound} style={styles.noDataImg} />
-      <TextComponent text={'Data Not Found'} styles={styles.noDataText} />
+      <Image source={comingSoon} style={styles.noDataImg} />
+      <TextComponent text={'Coming Soon...'} styles={styles.noDataText} />
       <ThemeButton title={'Refresh'} style={styles.btnSt} />
     </View>
   );
