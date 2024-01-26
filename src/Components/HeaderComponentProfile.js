@@ -38,12 +38,15 @@ export const HeaderComponentProfile = ({
       <View style={{...styles.headerTop, ...headerShow}}>
         <View style={styles.headerInner}>
           <Touchable onPress={goBack}>
-            <Image
-              source={backIcon}
-              style={styles.backBtn}
-              resizeMode="contain"
-            />
+            {goBack && (
+              <Image
+                source={backIcon}
+                style={styles.backBtn}
+                resizeMode="contain"
+              />
+            )}
           </Touchable>
+
           <TextComponent
             text={title}
             numberOfLines={1}

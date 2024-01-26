@@ -196,6 +196,7 @@ const demoKitSchema = yup.object().shape({
   state: yup.string().required('Please enter your state.'),
   zip_code: yup.string().required('Please enter zip code.'),
   address: yup.string().required('Please enter Your address.'),
+  city: yup.string().required('Please enter Your city.'),
 });
 
 const Schemas = {

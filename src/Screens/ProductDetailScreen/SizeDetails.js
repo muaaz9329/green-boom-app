@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {TextComponent} from '../../Components/TextComponent';
 import {hp, wp} from '../../Config/responsive';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from '../../Theme/Variables';
 
 export const SizeDetails = ({sizeName, sizeValue}) => (
   <View style={styles.sizeMain}>

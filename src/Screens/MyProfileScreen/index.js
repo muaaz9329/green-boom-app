@@ -32,7 +32,7 @@ const MyProfileScreen = ({navigation}) => {
       <HeaderComponentProfile
         title={'My Profile'}
         search={true}
-        goBack={() => navigation.goBack()}
+        // goBack={() => navigation.goBack()}
         edit={() => navigation.navigate('EditProfileScreen')}
       />
       <BlurImage

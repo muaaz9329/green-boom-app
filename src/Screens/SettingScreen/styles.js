@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
   cardBtn: {
     flex: 1,
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
     marginHorizontal: wp('4'),
     marginBottom: hp('2'),
     alignItems: 'center',
