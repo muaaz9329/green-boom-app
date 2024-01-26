@@ -10,7 +10,7 @@ export const SizeDetails = ({sizeName, sizeValue}) => (
     <TextComponent
       text={sizeValue}
       styles={styles.sizeValue}
-      numberOfLines={1}
+      // numberOfLines={1}
     />
   </View>
 );
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   size: {
-    width: wp('60'),
+    width: wp('50'),
     fontSize: hp('1.6'),
     textTransform: 'uppercase',
     fontWeight: '500',
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     fontSize: hp('1.6'),
     marginTop: hp('0.5'),
     color: Colors.textGray,
-    width: wp('33.8'),
+    width: wp('43.8'),
     textAlign: 'right',
     // alignSelf: 'flex-end',
   },

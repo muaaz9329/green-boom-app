@@ -16,13 +16,13 @@ export const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   titleInner: {
-    width: wp('64'),
+    width: wp('62'),
     fontSize: hp('2.5'),
     fontWeight: '600',
     color: Colors.primaryColor,
   },
   sku: {
-    width: wp('29'),
+    width: wp('32'),
     textAlign: 'right',
     fontSize: hp('1.9'),
   },

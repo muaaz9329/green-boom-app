@@ -39,6 +39,8 @@ const ProductDetailScreen = ({route, navigation}) => {
   // Remove newline characters
   let remTitle = text?.replace(/\r?\n|\r/g, ' ');
 
+  // console.log('sze', size);
+
   const renderItem = useCallback(({item, index}) => {
     return (
       <View style={styles.lastSection}>
@@ -92,7 +94,7 @@ const ProductDetailScreen = ({route, navigation}) => {
         <View style={styles.title}>
           <TextComponent
             text={productData?.product_data?.product_name}
-            numberOfLines={1}
+            // numberOfLines={1}
             styles={styles.titleInner}
           />
           <TextComponent
