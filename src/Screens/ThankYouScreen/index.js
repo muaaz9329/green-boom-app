@@ -4,14 +4,14 @@ import {TextComponent} from '../../Components/TextComponent';
 import useThankYouScreen from './useThankYouScreen';
 import {styles} from './styles';
 import {Touchable} from '../../Components/Touchable';
-import {arrowLeft, thumbUp} from '../../Assets';
+import {arrowLeft, comingSoon, thumbUp} from '../../Assets';
 
 const ThankYouScreen = ({navigation}) => {
   const {} = useThankYouScreen(navigation);
 
   return (
     <View style={styles.main}>
-      <Image source={thumbUp} style={styles.thumbImg} />
+      <Image source={comingSoon} style={styles.thumbImg} />
       <TextComponent text={'Thanks!'} styles={styles.title} />
       <TextComponent
         text={'We will send you a price quote shortly.'}

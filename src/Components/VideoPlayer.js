@@ -327,7 +327,7 @@ class VideoPlayer extends React.Component {
                   ? {uri: this.props.videoSource}
                   : this.props.videoSource
               }
-              resizeMode="contain"
+              resizeMode="cover"
               fullscreen={Platform.OS == 'ios' ? fullScreen : undefined}
               fullscreenOrientation="all"
               // fullscreenAutorotate

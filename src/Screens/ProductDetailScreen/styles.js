@@ -5,7 +5,7 @@ import {Colors} from '../../Theme/Variables';
 export const styles = StyleSheet.create({
   productMain: {
     marginTop: hp('3'),
-    marginBottom: hp('3'),
+    paddingBottom: hp('5'),
     paddingHorizontal: wp('3'),
   },
   title: {

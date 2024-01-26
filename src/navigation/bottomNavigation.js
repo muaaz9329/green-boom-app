@@ -92,6 +92,7 @@ function MybottomTabs() {
           // zIndex: -1,
           // overflow: 'hidden',
           display: !isPortrait ? 'none' : 'flex',
+          paddingBottom: Platform.OS == 'ios' ? hp('3') : 0,
         },
       })}>
       <Tab.Screen

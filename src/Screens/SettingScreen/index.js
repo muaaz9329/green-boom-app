@@ -18,7 +18,12 @@ const SettingScreen = ({navigation}) => {
       <Touchable style={styles.cardBtn} onPress={() => tabScreen(item)}>
         <Image source={item?.image} style={styles.iconStyle} />
         <TextComponent text={item?.title} styles={styles.titleStyle} />
-        <Icon name="chevron-right" size={25} style={styles.arrowRight} />
+        <Icon
+          name="chevron-right"
+          size={25}
+          color={'black'}
+          style={styles.arrowRight}
+        />
       </Touchable>
     );
   });
