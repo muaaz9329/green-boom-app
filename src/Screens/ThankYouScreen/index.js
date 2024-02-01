@@ -12,9 +12,11 @@ const ThankYouScreen = ({navigation}) => {
   return (
     <View style={styles.main}>
       <Image source={comingSoon} style={styles.thumbImg} />
-      <TextComponent text={'Thanks!'} styles={styles.title} />
+      <TextComponent text={'Thank you for your order.'} styles={styles.title} />
       <TextComponent
-        text={'We will send you a price quote shortly.'}
+        text={
+          'You will receive a confirmation via email when it has been processed.'
+        }
         styles={styles.subTitle}
       />
       <View style={styles.btnMain}>

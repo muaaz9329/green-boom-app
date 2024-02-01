@@ -105,17 +105,20 @@ export const styles = StyleSheet.create({
     width: wp('43'),
     height: hp('5.5'),
     marginRight: wp('1.8'),
-    paddingLeft: wp('1'),
+    // paddingLeft: wp('1'),
+    paddingHorizontal: wp('0'),
   },
   inputRight: {
     width: wp('43'),
     height: hp('5.5'),
     marginLeft: wp('1.8'),
-    paddingLeft: wp('1'),
+    // paddingLeft: wp('1'),
+    paddingHorizontal: wp('0'),
   },
   address: {
     height: hp('5.5'),
-    paddingLeft: wp('1'),
+    // paddingLeft: wp('1'),
+    paddingHorizontal: wp('0'),
   },
   kitBtn: {
     marginTop: hp('.5'),

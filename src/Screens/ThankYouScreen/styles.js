@@ -19,12 +19,15 @@ export const styles = StyleSheet.create({
     fontSize: hp('3'),
     color: Colors.themeRed,
     fontWeight: '500',
-    marginTop: hp('4'),
+    marginTop: hp('2'),
   },
   subTitle: {
     fontSize: hp('1.8'),
     color: Colors.gray,
-    marginTop: hp('3'),
+    lineHeight: 20,
+    marginTop: hp('1'),
+    textAlign: 'center',
+    paddingHorizontal: wp('15'),
   },
   btnMain: {
     position: 'absolute',
