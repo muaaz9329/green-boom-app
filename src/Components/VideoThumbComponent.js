@@ -3,16 +3,22 @@ import {StyleSheet, View, Image, TouchableWithoutFeedback} from 'react-native';
 import {TextComponent} from './TextComponent';
 import {hp, wp} from '../Config/responsive';
 import {Colors} from '../Theme/Variables';
+import {playBtn} from '../Assets';
 
 const VideoThumbComponent = ({videoTitle, videoDesc, videoThumb, onPress}) => {
   return (
     <View style={styles.mainThumb}>
       <TouchableWithoutFeedback onPress={onPress}>
-        <Image
-          source={videoThumb}
-          style={styles.videoThumbnail}
-          resizeMode="contain"
-        />
+        <View style={styles.pBtnMain}>
+          <View style={styles.plyBtn}>
+            <Image source={playBtn} resizeMode="contain" />
+          </View>
+          <Image
+            source={videoThumb}
+            style={styles.videoThumbnail}
+            resizeMode="contain"
+          />
+        </View>
       </TouchableWithoutFeedback>
       <View style={styles.videoMainComp}>
         <TextComponent text={videoTitle} styles={styles.videoTitle} />
@@ -66,5 +72,18 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     width: '100%',
     marginHorizontal: '0%',
+  },
+  pBtnMain: {
+    position: 'relative',
+  },
+  plyBtn: {
+    position: 'absolute',
+    zIndex: 99,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

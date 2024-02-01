@@ -18,6 +18,8 @@ export {default as bg5} from './Images/bg5.png';
 export {default as bg6} from './Images/bg6.png';
 export {default as boom} from './Images/boom.png';
 export {default as videoThumb} from './Images/videoThumb.png';
+export {default as videoThumbWithPlay} from './Images/videoThumbWithPlay.png';
+export {default as playBtn} from './Images/playBtn.png';
 export {default as demokit} from './Images/demokit.png';
 export {default as pBoom} from './Images/pBoom.png';
 export {default as pPillow} from './Images/pPillow.png';
@@ -33,6 +35,8 @@ export {default as ProfileFive} from './Images/5c.png';
 export {default as ProfileSix} from './Images/6c.png';
 export {default as profileBg} from './Images/profileBg1.png';
 export {default as product} from './Images/product.png';
+export {default as Sample} from './Images/Sample.png';
+export {default as Demo} from './Images/Demo.png';
 
 //  Icons
 

@@ -1,11 +1,13 @@
 // import {splashTwo} from '../Assets';
 import {
+  Demo,
   ProfileFive,
   ProfileFour,
   ProfileOne,
   ProfileSix,
   ProfileThree,
   ProfileTwo,
+  Sample,
   about,
   asenaProfile,
   bg1,
@@ -18,6 +20,7 @@ import {
   biomass,
   callS,
   contact,
+  demo,
   demokit,
   downloadIcon,
   emailS,
@@ -46,6 +49,7 @@ import {
   profile,
   rapid,
   remediation,
+  sample,
   splashIndustrial,
   splashLand,
   splashMarine,
@@ -410,3 +414,8 @@ export const kitList = [
   'Sample of Loose Sorbent',
   'Information',
 ];
+
+export const kitImages = {
+  1: Sample,
+  2: Demo,
+};

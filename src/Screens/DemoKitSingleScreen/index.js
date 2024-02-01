@@ -5,7 +5,7 @@ import {styles} from './styles';
 import useDemoKitSingleScreen from './useDemoKitSingleScreen';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import {Touchable} from '../../Components/Touchable';
-import {demoKit, kitList} from '../../Utils/localDB';
+import {demoKit, kitImages, kitList} from '../../Utils/localDB';
 import {arrowrightblack, demokit, videoCircle} from '../../Assets';
 import {InputComponent} from '../../Components/InputComponent';
 import ThemeButton from '../../Components/ThemeButton';
@@ -60,7 +60,11 @@ const DemoKitSingleScreen = ({route, navigation}) => {
       <KeyBoardWrapper showsVerticalScrollIndicator={false}>
         <View style={styles.cardBtn}>
           <Image
-            source={{uri: imageUrl(kitInnerData?.image)}}
+            source={
+              kitImages[kitInnerData?.id] ?? {
+                uri: imageUrl(kitInnerData?.image),
+              }
+            }
             style={styles.iconStyle}
           />
           <View style={styles.imageStyle}>

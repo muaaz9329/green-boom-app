@@ -8,19 +8,20 @@ import {Touchable} from '../../Components/Touchable';
 import {arrowrightblack} from '../../Assets';
 import {imageUrl} from '../../Utils/Urls';
 import DataNotFound from '../../Components/DataNotFound';
+import {kitImages} from '../../Utils/localDB';
 
 const DemoKitScreen = ({route, navigation}) => {
   const {title, kitData} = useDemoKitScreen(navigation, route);
 
   const renderMSDSItem = useCallback(({item, index}) => {
-    // console.log('img',imageUrl(item?.image))
+    console.log('img', item);
     return (
       <View style={styles.card}>
         <Touchable
           style={styles.cardBtn}
           onPress={() => navigation.navigate('DemoKitSingleScreen', item)}>
           <Image
-            source={{uri: imageUrl(item?.image)}}
+            source={kitImages[item?.id] ?? {uri: imageUrl(item?.image)}}
             style={styles.iconStyle}
           />
           <View style={styles.imageStyle}>

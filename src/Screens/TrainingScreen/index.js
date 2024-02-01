@@ -14,6 +14,7 @@ import {
   dataNotFound,
   emailIcon,
   videoThumb,
+  videoThumbWithPlay,
 } from '../../Assets';
 import {CategoryIntro} from '../../Components/CategoryIntro';
 import VideoThumbComponent from '../../Components/VideoThumbComponent';
@@ -72,7 +73,9 @@ const TrainingScreen = ({route, navigation}) => {
       <VideoThumbComponent
         videoTitle={item?.title}
         // videoDesc={item?.description}
-        videoThumb={videoThumb}
+        videoThumb={videoThumbWithPlay}
+        // videoThumb={videoThumb}
+
         onPress={() => navigation.navigate('SingleVideoScreen', item)}
       />
     );
