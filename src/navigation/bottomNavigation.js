@@ -109,11 +109,11 @@ function MybottomTabs() {
         component={Screens.MyProfileScreen}
       />
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="ChatScreen"
         options={tabarComponent(notification2, notification1)}
         component={Screens.HomeScreen}
-      />
+      /> */}
       <Tab.Screen
         name="SettingScreen"
         options={tabarComponent(setting2, setting1)}

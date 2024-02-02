@@ -39,3 +39,4 @@ export const singleProduct = '/customer/product-data/';
 export const orderKit = '/customer/order-kit-list/';
 export const kitForm = '/customer/add-order-kit/';
 export const welcomeVideo = '/customer/welcome-video/';
+export const faqHtml = '/customer/faqs-list/';

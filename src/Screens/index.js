@@ -18,5 +18,5 @@ export {default as ForgetPasswordScreen} from './ForgetPasswordScreen';
 export {default as DemoKitSingleScreen} from './DemoKitSingleScreen';
 export {default as DemoKitVideoScreen} from './DemoKitVideoScreen';
 export {default as ThankYouScreen} from './ThankYouScreen';
-export {default as SkeletonScreen} from './SkeletonScreen';
+export {default as FaqsHtmlScreen} from './FaqsHtmlScreen';
 export {default as flash} from './flash';

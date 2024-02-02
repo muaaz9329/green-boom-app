@@ -14,9 +14,9 @@ const VideoThumbComponent = ({videoTitle, videoDesc, videoThumb, onPress}) => {
             <Image source={playBtn} resizeMode="contain" />
           </View>
           <Image
-            source={videoThumb}
+            source={{uri: videoThumb}}
             style={styles.videoThumbnail}
-            resizeMode="contain"
+            // resizeMode="contain"
           />
         </View>
       </TouchableWithoutFeedback>

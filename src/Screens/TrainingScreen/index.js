@@ -18,7 +18,7 @@ import {
 } from '../../Assets';
 import {CategoryIntro} from '../../Components/CategoryIntro';
 import VideoThumbComponent from '../../Components/VideoThumbComponent';
-import {imageUrl} from '../../Utils/Urls';
+import {imageURL, imageUrl} from '../../Utils/Urls';
 import Accordion from 'react-native-collapsible/Accordion';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import ThemeButton from '../../Components/ThemeButton';
@@ -46,7 +46,11 @@ const TrainingScreen = ({route, navigation}) => {
     return (
       <Touchable
         style={styles.pdfMain}
-        onPress={() => Linking.openURL(imageUrl(item?.file))}>
+        onPress={() =>
+          item?.file_type == 'word'
+            ? navigation.navigate('FaqsHtmlScreen', item)
+            : Linking.openURL(imageUrl(item?.file))
+        }>
         <Image
           source={iconType[item?.file_type]}
           style={styles.PDFImage}
@@ -61,7 +65,7 @@ const TrainingScreen = ({route, navigation}) => {
   });
 
   const renderVideos = useCallback(({item, index}) => {
-    // console.log('duurruru', item);
+    console.log('duurruru', item);
     return (
       // <VideoComponent
       //   videoUrl={item?.category[index]?.videoUrl}
@@ -73,7 +77,7 @@ const TrainingScreen = ({route, navigation}) => {
       <VideoThumbComponent
         videoTitle={item?.title}
         // videoDesc={item?.description}
-        videoThumb={videoThumbWithPlay}
+        videoThumb={imageUrl(item?.thumbnail)}
         // videoThumb={videoThumb}
 
         onPress={() => navigation.navigate('SingleVideoScreen', item)}
@@ -95,7 +99,7 @@ const TrainingScreen = ({route, navigation}) => {
   };
   const renderContentInner = useCallback(item => {
     const itemData = item?.item;
-    // console.log('ren item', item);
+    console.log('ren item', item);
     return (
       <View style={styles.card}>
         <Touchable

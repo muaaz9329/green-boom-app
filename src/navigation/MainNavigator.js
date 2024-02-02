@@ -106,6 +106,10 @@ function MainNavigator() {
               name="ProductDetailScreen"
               component={Screens.ProductDetailScreen}
             />
+            <Stack.Screen
+              name="FaqsHtmlScreen"
+              component={Screens.FaqsHtmlScreen}
+            />
           </>
         )}
       </Stack.Navigator>
