@@ -110,7 +110,7 @@ const DemoKitSingleScreen = ({route, navigation}) => {
               );
             })}
         </View>
-        <View style={styles.form}>
+        <ScrollView contentContainerStyle={styles.form}>
           <View style={styles.inputCol}>
             <View>
               <InputComponent
@@ -277,7 +277,7 @@ const DemoKitSingleScreen = ({route, navigation}) => {
             title={'Order a Kit'}
             style={styles.kitBtn}
           />
-        </View>
+        </ScrollView>
       </KeyBoardWrapper>
     </View>
   );

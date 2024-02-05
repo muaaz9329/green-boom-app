@@ -60,12 +60,14 @@ export const styles = StyleSheet.create({
   },
 
   iconStyle: {
-    width: wp('13'),
-    height: hp('6'),
+    width: wp('20'),
+    height: hp('10'),
     resizeMode: 'contain',
     marginBottom: hp('2'),
   },
   titleStyle: {
+    marginTop: hp('-1.5'),
+    marginBottom: hp('1'),
     fontSize: hp('1.8'),
     textAlign: 'center',
     // height: hp('5'),

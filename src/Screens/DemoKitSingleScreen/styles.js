@@ -3,6 +3,9 @@ import {hp, wp} from '../../Config/responsive';
 import {Colors} from '../../Theme/Variables';
 
 export const styles = StyleSheet.create({
+  trainingMain: {
+    flex: 1,
+  },
   cardBtn: {
     flex: 1,
     flexDirection: 'row',
@@ -97,6 +100,7 @@ export const styles = StyleSheet.create({
   },
   form: {
     marginHorizontal: wp('5'),
+    paddingBottom: hp('2'),
   },
   inputCol: {
     flexDirection: 'row',
