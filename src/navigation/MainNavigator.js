@@ -51,6 +51,11 @@ function MainNavigator() {
               name="SkeletonScreen"
               component={Screens.SkeletonScreen}
             /> */}
+
+            {/* <Stack.Screen
+              name="SkeletonScreen"
+              component={Screens.SkeletonScreen}
+            /> */}
             <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
             <Stack.Screen
               name="TrainingScreen"

@@ -1,5 +1,13 @@
-import React, {useCallback} from 'react';
-import {FlatList, Image, Platform, StyleSheet, Text, View} from 'react-native';
+import React, {useCallback, useEffect} from 'react';
+import {
+  BackHandler,
+  FlatList,
+  Image,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {hp, wp} from '../Config/responsive';
 import {Colors} from '../Theme/Variables';
 import {TextComponent} from './TextComponent';
@@ -30,6 +38,20 @@ export const HeaderComponent = ({
       </View>
     );
   });
+
+  useEffect(() => {
+    const backAction = () => {
+      goBack(); // Call your goBack function when the back button is pressed
+      return true; // Prevent default behavior (exit the app)
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove(); // Remove event listener on component unmount
+  }, [goBack]);
 
   return (
     <View style={{...styles.headerTop, ...headerShow}}>

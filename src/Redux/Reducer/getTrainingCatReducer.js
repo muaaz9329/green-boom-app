@@ -8,8 +8,8 @@ const initial_state = {
   Video: {
     subCat: new Set([]),
   },
-  msdSheets: new Set([]),
-  catalog: new Set([]),
+  msdSheets: [],
+  catalog: [],
   salespitch: {
     cat: [],
     subCat: new Set([]),

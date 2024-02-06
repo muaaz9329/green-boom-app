@@ -150,6 +150,7 @@ const TrainingScreen = ({route, navigation}) => {
     );
   });
   console.log('test', subCategory);
+
   return (
     <View style={styles.trainingMain}>
       <HeaderComponent

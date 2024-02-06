@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
   },
   loginTop: {
     alignItems: 'center',
-    marginBottom: hp('4'),
+    marginTop: hp('3'),
+    marginBottom: hp('2'),
   },
   mainImage: {
     width: wp('100'),
@@ -21,7 +22,7 @@ export const styles = StyleSheet.create({
   },
   signInText: {
     textAlign: 'center',
-    marginTop: hp('1'),
+    marginTop: hp('-1.5'),
     fontSize: hp('1.8'),
   },
   loginBottom: {
