@@ -82,7 +82,7 @@ const MSDScreen = ({route, navigation}) => {
           </View>
         </ScrollView>
       ) : (
-        <DataNotFound />
+        !isloading && kitData.length == 0 && <DataNotFound />
       )}
     </View>
   );

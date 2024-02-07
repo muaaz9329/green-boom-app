@@ -74,7 +74,7 @@ const CatalogScreen = ({navigation}) => {
           </View>
         </ScrollView>
       ) : (
-        <DataNotFound />
+        !isloading && category.length == 0 && <DataNotFound />
       )}
     </View>
   );
