@@ -268,7 +268,7 @@ export const contactData = [
     name: 'Lina Nashabat',
     subDesignation: 'Sales Executive',
     email: 'Lina.Nashabat@greenboom.com',
-    phone: '+1 (470) 830-2859',
+    phone: '+1 (470) 830-2859 ',
     available: '(Available East American office hours)',
   },
   {
@@ -277,16 +277,16 @@ export const contactData = [
     name: 'Parker Pruett',
     subDesignation: 'Sales Director',
     email: 'Parker.Pruett@greenboom.com',
-    phone: '+1 (470) 830-4517',
+    phone: '+1 (470) 830-4517 ',
     available: '(Available East American office hours)',
   },
   {
     image: ProfileThree,
     designation: 'Sales Support Middle East',
-    name: 'Hedyl Harbiye',
+    name: 'Hadyl Harbiye',
     subDesignation: 'Regional Sales Manager',
     email: 'Hadyl.Harbiye@greenboom.com',
-    phone: '+974 33251000',
+    phone: '+974 33251000 ',
     available: '(Available Middle Eastern office hours)',
   },
   {
@@ -295,7 +295,7 @@ export const contactData = [
     name: 'Asena Kir',
     subDesignation: 'Regional Sales Manager',
     email: 'Asena.Kir@greenboom.com',
-    phone: '+974 3325 8000',
+    phone: '+974 3325 8000 ',
     available: '(Available Middle Eastern office hours)',
   },
   {
@@ -304,7 +304,7 @@ export const contactData = [
     name: 'Tindra Falk',
     subDesignation: 'Global Marketing Lead',
     email: 'Tindra.Falk@greenboom.com',
-    phone: '+1 (404)786-8003',
+    phone: '+1 (404)786-8003 ',
     available: '(Available European office hours)',
   },
   {

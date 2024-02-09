@@ -24,6 +24,11 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import ThemeButton from '../../Components/ThemeButton';
 import NoDataFound from '../../Components/DataNotFound';
 import DataNotFound from '../../Components/DataNotFound';
+import {
+  PdfSkeletonScreen,
+  ProductSkeletonScreen,
+  VideoSkeletonScreen,
+} from '../SkeletonScreen';
 const TrainingScreen = ({route, navigation}) => {
   const {
     isCategory,
@@ -40,6 +45,7 @@ const TrainingScreen = ({route, navigation}) => {
     accordionBool,
     scriptIconType,
     setAccordionBool,
+    isloading,
   } = useTraining(navigation, route);
   // console.log('first', isVideo);
   const renderItem = useCallback(({item, index}) => {
@@ -149,7 +155,19 @@ const TrainingScreen = ({route, navigation}) => {
       </>
     );
   });
-  console.log('test', subCategory);
+
+  const loadingVal = Boolean(subCategory.length == 0 && isloading);
+
+  console.log(
+    'testsdvsdvsdvsdds',
+    Boolean(subCategory.length == 0 && isloading),
+  );
+  const renderSkeleton = useCallback(({item, index}) => {
+    return <VideoSkeletonScreen />;
+  });
+  const renderPDFSkeleton = useCallback(({item, index}) => {
+    return <PdfSkeletonScreen />;
+  });
   return (
     <View style={styles.trainingMain}>
       <HeaderComponent
@@ -167,8 +185,24 @@ const TrainingScreen = ({route, navigation}) => {
           showsHorizontalScrollIndicator={false}>
           {(title == 'Videos' && activeBtn?.title == undefined) ||
           activeBtn?.title == 'Videos' ? (
-            <View style={styles.videoMain}>
-              {/* <CategoryIntro
+            (subCategory == undefined ||
+              subCategory == null ||
+              subCategory.length == 0) &&
+            isloading ? (
+              <View style={{marginTop: hp('1.2'), flex: 1}}>
+                <FlatList
+                  refreshing={false}
+                  data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                  renderItem={renderSkeleton}
+                  contentContainerStyle={{
+                    // alignItems: 'center',
+                    flex: 1,
+                  }}
+                />
+              </View>
+            ) : (
+              <View style={styles.videoMain}>
+                {/* <CategoryIntro
               introImage={boom}
               introTitle={'Booms'}
               introDescription={
@@ -176,29 +210,46 @@ const TrainingScreen = ({route, navigation}) => {
               }
             /> */}
 
-              <FlatList
-                refreshing={false}
-                data={subCategory}
-                renderItem={renderVideos}
-                contentContainerStyle={
-                  {
-                    // alignItems: 'center',
-                  }
-                }
-              />
-            </View>
-          ) : (
-            <>
-              {activeBtn.title !== 'Scripts' && (
                 <FlatList
                   refreshing={false}
                   data={subCategory}
-                  renderItem={renderItem}
-                  contentContainerStyle={{
-                    // alignItems: 'center',
-                    marginTop: hp('2'),
-                  }}
+                  renderItem={renderVideos}
+                  contentContainerStyle={
+                    {
+                      // alignItems: 'center',
+                    }
+                  }
                 />
+              </View>
+            )
+          ) : (
+            <>
+              {loadingVal ? (
+                <View style={{marginTop: hp('1.2'), flex: 1}}>
+                  <FlatList
+                    refreshing={false}
+                    data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                    renderItem={renderPDFSkeleton}
+                    contentContainerStyle={{
+                      // alignItems: 'center',
+                      flex: 1,
+                    }}
+                  />
+                </View>
+              ) : (
+                activeBtn.title !== 'Scripts' && (
+                  <>
+                    <FlatList
+                      refreshing={false}
+                      data={subCategory}
+                      renderItem={renderItem}
+                      contentContainerStyle={{
+                        // alignItems: 'center',
+                        marginTop: hp('2'),
+                      }}
+                    />
+                  </>
+                )
               )}
               <View style={styles.script}>
                 {activeBtn.title == 'Scripts' && renderAccordion()}
@@ -207,7 +258,7 @@ const TrainingScreen = ({route, navigation}) => {
           )}
         </ScrollView>
       ) : (
-        <DataNotFound />
+        !isloading && subCategory.length == 0 && <DataNotFound />
       )}
     </View>
   );

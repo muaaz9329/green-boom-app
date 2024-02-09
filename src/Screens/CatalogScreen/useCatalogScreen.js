@@ -10,6 +10,7 @@ const useCatalogScreen = ({navigate, goBack}) => {
   };
   const {dispatch, getState} = useReduxStore();
   const titleData = getState('getCategory');
+  const {isloading} = getState('isloading');
   const category = titleData['catalog'] ?? [];
   console.log('cat', category);
 
@@ -20,6 +21,7 @@ const useCatalogScreen = ({navigate, goBack}) => {
   return {
     category,
     iconType,
+    isloading,
   };
 };
 

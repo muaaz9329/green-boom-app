@@ -640,10 +640,6 @@ PODS:
     - Firebase/Auth (= 10.18.0)
     - React-Core
     - RNFBApp
-  - RNFileViewer (2.1.5):
-    - React-Core
-  - RNFS (2.20.0):
-    - React-Core
   - RNScreens (3.27.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
@@ -740,8 +736,6 @@ DEPENDENCIES:
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
-  - RNFileViewer (from `../node_modules/react-native-file-viewer`)
-  - RNFS (from `../node_modules/react-native-fs`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -879,10 +873,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
     :path: "../node_modules/@react-native-firebase/auth"
-  RNFileViewer:
-    :path: "../node_modules/react-native-file-viewer"
-  RNFS:
-    :path: "../node_modules/react-native-fs"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNVectorIcons:
@@ -966,8 +956,6 @@ SPEC CHECKSUMS:
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNFBApp: faf815f60546ca522eb9ef09d21dfd3fc70d3e27
   RNFBAuth: 57a133db67b7d37d84c7d15a41c9a665489290e8
-  RNFileViewer: ce7ca3ac370e18554d35d6355cffd7c30437c592
-  RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
   RNScreens: 3c2d122f5e08c192e254c510b212306da97d2581
   RNVectorIcons: 23b6e11af4aaf104d169b1b0afa7e5cf96c676ce
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d

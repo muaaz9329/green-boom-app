@@ -3,16 +3,16 @@ import {types} from '../types';
 const initial_state = {
   Training: {
     cat: [],
-    subCat: new Set([]),
+    subCat: [],
   },
   Video: {
-    subCat: new Set([]),
+    subCat: [],
   },
-  msdSheets: new Set([]),
-  catalog: new Set([]),
+  msdSheets: [],
+  catalog: [],
   salespitch: {
     cat: [],
-    subCat: new Set([]),
+    subCat: [],
   },
 };
 

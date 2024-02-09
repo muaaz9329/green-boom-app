@@ -10,6 +10,7 @@ const useMSDS = ({navigate, goBack}, {params}) => {
     word: wordIcon,
   };
   const {dispatch, getState} = useReduxStore();
+  const {isloading} = getState('isloading');
   const titleData = getState('getCategory');
   const category = titleData['msdSheets'] ?? [];
   const isCategory = Boolean(params.category);
@@ -26,6 +27,7 @@ const useMSDS = ({navigate, goBack}, {params}) => {
     isVideo: params?.isVideo,
     category,
     iconType,
+    isloading,
   };
 };
 

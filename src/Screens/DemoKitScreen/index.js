@@ -9,9 +9,11 @@ import {arrowrightblack} from '../../Assets';
 import {imageUrl} from '../../Utils/Urls';
 import DataNotFound from '../../Components/DataNotFound';
 import {kitImages} from '../../Utils/localDB';
+import {DemoSkeletonScreen} from '../SkeletonScreen';
+import {hp} from '../../Config/responsive';
 
 const DemoKitScreen = ({route, navigation}) => {
-  const {title, kitData} = useDemoKitScreen(navigation, route);
+  const {title, kitData, isloading} = useDemoKitScreen(navigation, route);
 
   const renderMSDSItem = useCallback(({item, index}) => {
     console.log('img', item);
@@ -41,10 +43,27 @@ const DemoKitScreen = ({route, navigation}) => {
     );
   });
 
+  const renderSkeleton = useCallback(({item, index}) => {
+    return <DemoSkeletonScreen />;
+  });
+
   return (
     <View style={styles.trainingMain}>
       <HeaderComponent title={title} goBack={() => navigation.goBack()} />
-      {kitData.length > 0 ? (
+      {isloading && kitData.length == 0 ? (
+        <View style={{marginTop: hp('1')}}>
+          <FlatList
+            refreshing={false}
+            data={[1, 2]}
+            renderItem={renderSkeleton}
+            contentContainerStyle={
+              {
+                // alignItems: 'center',
+              }
+            }
+          />
+        </View>
+      ) : kitData.length > 0 ? (
         <ScrollView
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
@@ -63,7 +82,7 @@ const DemoKitScreen = ({route, navigation}) => {
           </View>
         </ScrollView>
       ) : (
-        <DataNotFound />
+        !isloading && kitData.length == 0 && <DataNotFound />
       )}
     </View>
   );

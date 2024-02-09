@@ -17,6 +17,7 @@ import {
 const useTraining = ({navigate, goBack}, {params}) => {
   const {dispatch, getState} = useReduxStore();
   const titleData = getState('getCategory');
+  const {isloading} = getState('isloading');
   const category = titleData[params?.id]?.cat ?? [];
   const subCategory = titleData[params?.id]?.subCat ?? [];
   console.log('cat subcat', subCategory);
@@ -81,6 +82,7 @@ const useTraining = ({navigate, goBack}, {params}) => {
     accordionItem,
     setAccordionItem,
     scriptIconType,
+    isloading,
   };
 };
 

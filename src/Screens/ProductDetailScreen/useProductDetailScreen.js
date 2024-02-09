@@ -1,15 +1,17 @@
 import {useEffect, useState} from 'react';
 import API from '../../Utils/helperFunc';
 import {singleProduct} from '../../Utils/Urls';
+import useReduxStore from '../../Hooks/UseReduxStore';
 
 const useProductDetailScreen = ({navigate, goBack}, {params}) => {
   const [productData, setProductData] = useState();
   const [selectedSize, setSelectedSize] = useState({id: '', index: 0});
   const [remOption, setRemOption] = useState(false);
+  const {getState} = useReduxStore();
+  const {isloading} = getState('isloading');
 
   const getSingleProduct = async () => {
     const {ok, data} = await API.get(singleProduct + params);
-
     console.log('all data', data);
 
     if (ok) {
@@ -20,7 +22,14 @@ const useProductDetailScreen = ({navigate, goBack}, {params}) => {
   useEffect(() => {
     getSingleProduct();
   }, []);
-  return {productData, selectedSize, setSelectedSize, remOption, setRemOption};
+  return {
+    productData,
+    selectedSize,
+    setSelectedSize,
+    remOption,
+    setRemOption,
+    isloading,
+  };
 };
 
 export default useProductDetailScreen;

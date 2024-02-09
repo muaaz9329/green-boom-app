@@ -1,7 +1,6 @@
 import React, {memo, useCallback, useEffect, useState} from 'react';
 import {useFaqsHtmlScreen} from './useFaqsHtmlScreen';
 import {ScrollView, View} from 'react-native';
-import FileViewerComponent from '../../Components/FileViewerComponent';
 import {useWindowDimensions} from 'react-native';
 import RenderHtml from 'react-native-render-html';
 import {faqHtml} from '../../Utils/Urls';

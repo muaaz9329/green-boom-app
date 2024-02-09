@@ -18,10 +18,17 @@ import {
 import {SizeDetails} from './SizeDetails';
 import SelectDropdown from 'react-native-select-dropdown';
 import {arrDown} from '../../Assets';
+import {ProductInnerSkeletonScreen} from '../SkeletonScreen';
 
 const ProductDetailScreen = ({route, navigation}) => {
-  const {productData, selectedSize, setSelectedSize, remOption, setRemOption} =
-    useProductDetailScreen(navigation, route);
+  const {
+    productData,
+    selectedSize,
+    setSelectedSize,
+    remOption,
+    setRemOption,
+    isloading,
+  } = useProductDetailScreen(navigation, route);
 
   const size = productData?.[selectedSize.id][0]?.size[0];
   const dimension = productData?.[selectedSize.id][0]?.dimension[0];
@@ -86,126 +93,129 @@ const ProductDetailScreen = ({route, navigation}) => {
         title={'Product Details'}
         goBack={() => navigation.goBack()}
       />
-      <ScrollView
-        contentContainerStyle={styles.productMain}
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}>
-        <HorizontalCarousal data={productData?.image ?? []} isUri={true} />
-        <View style={styles.title}>
-          <TextComponent
-            text={productData?.product_data?.product_name}
-            // numberOfLines={1}
-            styles={styles.titleInner}
-          />
-          <TextComponent
-            text={`SKU: ${remOption ? title?.sku_rem : size?.sku_num}`}
-            styles={styles.sku}
-            numberOfLines={2}
-          />
-        </View>
-
-        <TextComponent
-          text={remOption ? remTitle : productData?.product_data?.title}
-          styles={styles.pTitle}
-        />
-        <TextComponent
-          text={productData?.product_data?.description}
-          styles={styles.pDesc}
-        />
-        <TextComponent
-          text={'Select Size'}
-          styles={{...styles.pTitle, ...styles.dropTitle}}
-        />
-        <View>
-          <SizePickerView />
-        </View>
-        <View style={styles.destyles}>
-          {desc && (
-            <TextComponent text={'Description'} styles={styles.pTitle} />
-          )}
-          {desc &&
-            descArry?.map(res => {
-              // console.log('res', res);
-              return (
-                <View style={styles.subDes}>
-                  <View style={styles.dotSt}></View>
-                  <TextComponent
-                    text={res}
-                    styles={{...styles.pDesc, ...styles.pDescLast}}
-                  />
-                </View>
-              );
-            })}
-        </View>
-        {size &&
-          Object.entries(size).map(([key, value]) => {
-            // console.log('sz', size);
-            return (
-              !notRequired.includes(key) &&
-              value !== 'undefined' &&
-              value !== null && (
-                <SizeDetails
-                  sizeName={key.replace(/_/g, ' / ')}
-                  sizeValue={value}
-                />
-              )
-            );
-          })}
-
-        {size?.added_remediation_material && title?.sku_rem != 'undefined' && (
-          <View style={styles.remed}>
+      {isloading ? null : (
+        <ScrollView
+          contentContainerStyle={styles.productMain}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}>
+          <HorizontalCarousal data={productData?.image ?? []} isUri={true} />
+          <View style={styles.title}>
             <TextComponent
-              text={'ADDED REMEDIATION MATERIAL'}
-              styles={styles.size}
+              text={productData?.product_data?.product_name}
+              // numberOfLines={1}
+              styles={styles.titleInner}
             />
-            <SelectDropdown
-              buttonStyle={styles.remedSelectIcon}
-              buttonTextStyle={styles.selectText}
-              rowTextStyle={styles.selected}
-              renderDropdownIcon={() => (
-                <Image source={arrDown} style={styles.arrowStyle} />
-              )}
-              defaultValueByIndex={0}
-              drop
-              dropdownIconPosition="right"
-              data={remedidationOption}
-              onSelect={(selectedItem, index) => {
-                setRemOption(selectedItem == 'Yes' ? true : false);
-              }}
-              buttonTextAfterSelection={(selectedItem, index) => {
-                return selectedItem;
-              }}
-              rowTextForSelection={(item, index) => {
-                return item;
-              }}
+            <TextComponent
+              text={`SKU: ${remOption ? title?.sku_rem : size?.sku_num}`}
+              styles={styles.sku}
+              numberOfLines={2}
             />
           </View>
-        )}
-        {dimension &&
-          Object.entries(dimension).map(([key, value]) => {
-            // console.log('asdd', dimension);
-            return (
-              !notReqDimension.includes(key) &&
-              value !== 'undefined' &&
-              value !== null && (
-                <SizeDetails
-                  sizeName={key.replace(/_/g, ' / ').replace(/\d/g, '')}
-                  sizeValue={value}
-                />
-              )
-            );
-          })}
 
-        <FlatList
-          refreshing={false}
-          data={productBottom}
-          renderItem={renderItem}
-          numColumns={2}
-          contentContainerStyle={{
-            alignItems: 'center',
-          }}
-        />
-      </ScrollView>
+          <TextComponent
+            text={remOption ? remTitle : productData?.product_data?.title}
+            styles={styles.pTitle}
+          />
+          <TextComponent
+            text={productData?.product_data?.description}
+            styles={styles.pDesc}
+          />
+          <TextComponent
+            text={'Select Size'}
+            styles={{...styles.pTitle, ...styles.dropTitle}}
+          />
+          <View>
+            <SizePickerView />
+          </View>
+          <View style={styles.destyles}>
+            {desc && (
+              <TextComponent text={'Description'} styles={styles.pTitle} />
+            )}
+            {desc &&
+              descArry?.map(res => {
+                // console.log('res', res);
+                return (
+                  <View style={styles.subDes}>
+                    <View style={styles.dotSt}></View>
+                    <TextComponent
+                      text={res}
+                      styles={{...styles.pDesc, ...styles.pDescLast}}
+                    />
+                  </View>
+                );
+              })}
+          </View>
+          {size &&
+            Object.entries(size).map(([key, value]) => {
+              // console.log('sz', size);
+              return (
+                !notRequired.includes(key) &&
+                value !== 'undefined' &&
+                value !== null && (
+                  <SizeDetails
+                    sizeName={key.replace(/_/g, ' / ')}
+                    sizeValue={value}
+                  />
+                )
+              );
+            })}
+
+          {size?.added_remediation_material &&
+            title?.sku_rem != 'undefined' && (
+              <View style={styles.remed}>
+                <TextComponent
+                  text={'ADDED REMEDIATION MATERIAL'}
+                  styles={styles.size}
+                />
+                <SelectDropdown
+                  buttonStyle={styles.remedSelectIcon}
+                  buttonTextStyle={styles.selectText}
+                  rowTextStyle={styles.selected}
+                  renderDropdownIcon={() => (
+                    <Image source={arrDown} style={styles.arrowStyle} />
+                  )}
+                  defaultValueByIndex={0}
+                  drop
+                  dropdownIconPosition="right"
+                  data={remedidationOption}
+                  onSelect={(selectedItem, index) => {
+                    setRemOption(selectedItem == 'Yes' ? true : false);
+                  }}
+                  buttonTextAfterSelection={(selectedItem, index) => {
+                    return selectedItem;
+                  }}
+                  rowTextForSelection={(item, index) => {
+                    return item;
+                  }}
+                />
+              </View>
+            )}
+          {dimension &&
+            Object.entries(dimension).map(([key, value]) => {
+              // console.log('asdd', dimension);
+              return (
+                !notReqDimension.includes(key) &&
+                value !== 'undefined' &&
+                value !== null && (
+                  <SizeDetails
+                    sizeName={key.replace(/_/g, ' / ').replace(/\d/g, '')}
+                    sizeValue={value}
+                  />
+                )
+              );
+            })}
+
+          <FlatList
+            refreshing={false}
+            data={productBottom}
+            renderItem={renderItem}
+            numColumns={2}
+            contentContainerStyle={{
+              alignItems: 'center',
+            }}
+          />
+        </ScrollView>
+      )}
     </>
   );
 };

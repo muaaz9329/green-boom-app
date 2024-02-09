@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
     fontSize: hp('1.8'),
     fontWeight: '400',
     color: Colors.black,
+    textTransform: 'capitalize',
   },
   descStyle: {
     fontSize: hp('1.7'),

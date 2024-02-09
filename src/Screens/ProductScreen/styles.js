@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
   videoMain: {
     // paddingHorizontal: wp('2'),
     flex: 1,
-    marginTop: hp('4'),
+    marginTop: hp('3'),
     alignItems: 'center',
   },
   // msds card
