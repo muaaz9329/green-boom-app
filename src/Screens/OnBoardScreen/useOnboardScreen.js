@@ -6,21 +6,9 @@ import {types} from '../../Redux/types';
 
 const useOnboardingScreen = ({navigate, params}) => {
   const {dispatch} = useReduxStore();
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  // const width = Dimensions.get('window').width;
+  
   const flatListRef = useRef(null);
 
-  // const onSnapToItem = e => {
-  //   console.log('first');
-  //   const contentOffsetX = e.nativeEvent.contentOffset.x;
-  //   const currentIndex = Math.round(contentOffsetX / width);
-  //   setCurrentIndex(currentIndex);
-  // };
-
-  // const goNext = () => {
-  //   if (currentIndex == 2) getStart();
-  //   setCurrentIndex(pre => pre + 1);
-  // };
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const width = Dimensions.get('window').width;
@@ -33,12 +21,6 @@ const useOnboardingScreen = ({navigate, params}) => {
     setCurrentIndex(currentIndex);
   };
 
-  // if (Platform.OS == 'android') {
-  //   setCurrentIndex(prev => prev + 1);
-  //   flatListRef.current.scrollToIndex({index: currentIndex + 1});
-  // } else {
-  //   flatListRef.current.scrollToIndex({index: currentIndex + 1});
-  // }
 
   const goNext = () => {
     if (currentIndex == 2) getStart();

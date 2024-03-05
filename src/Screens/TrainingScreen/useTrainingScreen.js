@@ -20,7 +20,7 @@ const useTraining = ({navigate, goBack}, {params}) => {
   const {isloading} = getState('isloading');
   const category = titleData[params?.id]?.cat ?? [];
   const subCategory = titleData[params?.id]?.subCat ?? [];
-  console.log('cat subcat', subCategory);
+
   const isCategory = Boolean(category.length > 0);
   const iconType = {
     pdf: trainingPDFIcon,
@@ -37,24 +37,16 @@ const useTraining = ({navigate, goBack}, {params}) => {
 
   const [subCat, setSubCat] = useState(null);
   const [activeBtn, setActiveBtn] = useState({});
-  // console.log(
-  //   'st',
 
-  //   titleData[params?.id]?.cat[0]?.id,
-  //   'nam',
-  //   titleData[params?.id]?.cat[0]?.title,
-  // );
   const onCategory = async item => {
     setActiveBtn(item);
     const {ok, data} = await API.post(tabButtonType, {
       id: item?.id,
       type: params.id,
     });
-    // console.log('dd', data);
     if (ok) {
       setSubCat(data.data);
       subCategory = data.data;
-      // console.log('asdtest', data.data);
     }
   };
   useEffect(() => {

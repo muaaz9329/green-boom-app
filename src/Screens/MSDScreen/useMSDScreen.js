@@ -14,7 +14,6 @@ const useMSDS = ({navigate, goBack}, {params}) => {
   const titleData = getState('getCategory');
   const category = titleData['msdSheets'] ?? [];
   const isCategory = Boolean(params.category);
-  // console.log('cat', category);
 
   useEffect(() => {
     dispatch(getmsds());

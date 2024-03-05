@@ -102,8 +102,10 @@ export const styles = StyleSheet.create({
   },
   imgStyle: {
     width: wp('10'),
-    marginRight: wp('0'),
-    marginLeft: wp('-4'),
+    marginRight: wp('2'),
+    // marginLeft: wp('-2'),
+    resizeMode: 'contain',
+    height: hp('5'),
   },
   addImageIcon: {
     alignSelf: 'center',

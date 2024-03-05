@@ -22,17 +22,9 @@ const useHomeScreen = ({navigate}) => {
   useEffect(() => {
     if (videoPlayerRef.current && !videoPlayerRef.current.state.paused) {
       videoPlayerRef.current.handlePlayer();
-      // console.log('fi', videoPlayerRef.current.state.paused);
     }
   }, [isVideo]);
 
-  // if (NavigationService.ref) {
-  //   const callHandlePlayer = () => {
-  //     console.log('skjdbjksbdjkbsdsdsdsdjkbjfk', NavigationService.ref);
-
-  //   };
-  //   callHandlePlayer();
-  // }
 
   const VideoData = async () => {
     const {ok, data} = await API.get(welcomeVideo);
@@ -44,7 +36,6 @@ const useHomeScreen = ({navigate}) => {
 
   useEffect(() => {
     VideoData();
-    console.log('wrking asd');
   }, []);
 
   return {

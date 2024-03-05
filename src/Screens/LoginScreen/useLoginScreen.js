@@ -36,17 +36,6 @@ const useLogin = ({navigate, goBack}) => {
   const loginUserFun = ({email, password}) => {
     dispatch(registerUser({datas: {email, password}}));
   };
-  // const loginUser = () => navigate('MybottomTabs');
-
-  // const googleLoginFunc = async () => {
-  //   dispatch(loginUser({type: 'Google', datas: {}}));
-  // };
-  // const facebookLoginFunc = async () => {
-  //   dispatch(loginUser({type: 'facebook', datas: {}}));
-  // };
-  // const appleIdlogin = async () => {
-  //   dispatch(loginUser({type: 'appleID', datas: {}}));
-  // };
 
   return {
     handleSubmit,
