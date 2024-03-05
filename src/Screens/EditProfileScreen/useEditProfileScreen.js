@@ -10,6 +10,17 @@ import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {types} from '../../Redux/types';
 import {updateUser} from '../../Utils/Urls';
 
+/**
+ * The `useEditProfileScreen` function in JavaScript is a custom hook that handles editing user profile
+ * data, including uploading profile images and updating the profile information.
+ * @returns The `useEditProfileScreen` function returns an object with the following properties:
+ * - `handleSubmit`: Function for handling form submission
+ * - `errors`: Errors object for form validation
+ * - `reset`: Function for resetting form fields
+ * - `control`: Control object for managing form inputs
+ * - `getValues`: Function for getting current form field values
+ * - `userData`: User data from the Redux store
+ */
 const useEditProfileScreen = ({navigate, goBack}) => {
   const {dispatch, getState} = useReduxStore();
 
@@ -21,6 +32,10 @@ const useEditProfileScreen = ({navigate, goBack}) => {
 
   //GET IMAGE From Mobile
   const [profileData, setProfileData] = useState(null);
+  /**
+   * The function `uploadFromGalary` launches the image library to select a photo with specific
+   * constraints and sets the selected image as profile data.
+   */
   const uploadFromGalary = () => {
     launchImageLibrary(
       {
@@ -31,7 +46,7 @@ const useEditProfileScreen = ({navigate, goBack}) => {
       },
       res => {
         if (!res?.didCancel) {
-          console.log('imag222e', res.assets);
+          // console.log('imag222e', res.assets);
           setProfileData(res?.assets[0]);
         }
       },
@@ -39,6 +54,10 @@ const useEditProfileScreen = ({navigate, goBack}) => {
   };
 
   //UPDATE PROFILE
+  /**
+   * The function `updateProfileFunction` is an asynchronous function that updates a user's profile
+   * data and handles success and error messages accordingly.
+   */
   const updateProfileFunction = async currentValue => {
     try {
       dispatch(loadingTrue());
@@ -48,7 +67,7 @@ const useEditProfileScreen = ({navigate, goBack}) => {
         {...currentValue, profileData},
         'profile_image',
       );
-      console.log(ok, data, 'uueueue');
+      // console.log(ok, data, 'uueueue');
       if (ok && data?.user) {
         dispatch(loadingFalse());
         successMessage(data.message);

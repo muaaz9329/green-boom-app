@@ -78,13 +78,6 @@ const LoginScreen = ({navigation}) => {
           }}
         />
         <View style={styles.rememberSec}>
-          <Touchable style={styles.rememberInner} onPress={rememberValue}>
-            <Image
-              source={remember ? rememberEmpty : rememberImg}
-              style={styles.tickIcon}
-            />
-            <Text style={styles.tickText}>Remember me</Text>
-          </Touchable>
           <TextComponent
             text={'Forgot Password?'}
             styles={styles.forgetText}

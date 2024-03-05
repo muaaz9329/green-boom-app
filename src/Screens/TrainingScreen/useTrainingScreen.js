@@ -14,6 +14,11 @@ import {
   wordIcon,
 } from '../../Assets';
 
+/**
+ * The function `useTraining` retrieves and manages training data for a specific category and
+ * subcategory, including handling API calls and state updates.
+ * @returns The function `useTraining` is returning an object with the following properties:
+ */
 const useTraining = ({navigate, goBack}, {params}) => {
   const {dispatch, getState} = useReduxStore();
   const titleData = getState('getCategory');
@@ -38,6 +43,10 @@ const useTraining = ({navigate, goBack}, {params}) => {
   const [subCat, setSubCat] = useState(null);
   const [activeBtn, setActiveBtn] = useState({});
 
+  /**
+   * The function `onCategory` sets an active button, makes a POST request to an API, and updates the
+   * subcategory data based on the response.
+   */
   const onCategory = async item => {
     setActiveBtn(item);
     const {ok, data} = await API.post(tabButtonType, {
@@ -49,6 +58,9 @@ const useTraining = ({navigate, goBack}, {params}) => {
       subCategory = data.data;
     }
   };
+  /* The `useEffect` hook in the provided code snippet is responsible for dispatching an action to get
+  category data and setting an active button based on the retrieved data. Here's a breakdown of what
+  it does: */
   useEffect(() => {
     dispatch(getCategory(params?.id));
     if (titleData[params?.id]?.cat?.length > 0) {

@@ -1,13 +1,3 @@
-// import {errorMessage} from '../../Components/NotificationMessage';
-// import {loginUser} from '../../Redux/Actions/AuthAction';
-// import API from '../../Utils/helperFunction';
-// import {
-//   faceBookLogin,
-//   googleLogin,
-//   PhoneNumberLogin,
-//   verifyCode,
-// } from '../../Utils/SocialLogin';
-// import {loginUrl} from '../../Utils/Url';
 import {useState} from 'react';
 import {loginUser} from '../../Redux/Action/AuthAction';
 import useReduxStore from '../../Hooks/UseReduxStore';
@@ -16,6 +6,12 @@ import {errorMessage} from '../../Config/NotificationMessage';
 const {default: useFormHook} = require('../../Hooks/UseFormHooks');
 const {default: Schemas} = require('../../Utils/Validation');
 
+/**
+ * The function `useRegister` handles form submission, user registration, navigation, and policy
+ * agreement in a React application.
+ * @returns The `useRegister` function is returning an object with the following properties and
+ * methods:
+ */
 const useRegister = ({navigate, goBack}) => {
   const {handleSubmit, errors, reset, control, getValues} = useFormHook(
     Schemas.signUp,

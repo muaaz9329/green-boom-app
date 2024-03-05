@@ -1,18 +1,3 @@
-// import {errorMessage} from '../../Components/NotificationMessage';
-// import {loginUser} from '../../Redux/Actions/AuthAction';
-// import API from '../../Utils/helperFunction';
-// import {
-//   faceBookLogin,
-//   googleLogin,
-//   PhoneNumberLogin,
-//   verifyCode,
-// } from '../../Utils/SocialLogin';
-// import {loginUrl} from '../../Utils/Url';
-// import {
-//   appleIdlogin,
-//   faceBookLogin,
-//   googleLogin,
-// } from '../../Utils/SocialLogin';
 import {useState} from 'react';
 import {getFbResult, logOutFirebase} from '../../Services/AuthServices';
 import useReduxStore from '../../Hooks/UseReduxStore';
@@ -21,6 +6,11 @@ import {loginUser, registerUser} from '../../Redux/Action/AuthAction';
 const {default: useFormHook} = require('../../Hooks/UseFormHooks');
 const {default: Schemas} = require('../../Utils/Validation');
 
+/**
+ * The `useLogin` function is a custom hook in JavaScript that handles user login functionality,
+ * including form validation, state management, and navigation.
+ * @returns The `useLogin` function is returning an object with the following properties and methods:
+ */
 const useLogin = ({navigate, goBack}) => {
   const {handleSubmit, errors, reset, control, getValues} = useFormHook(
     Schemas.logIn,
@@ -33,6 +23,10 @@ const useLogin = ({navigate, goBack}) => {
 
   const onPress = () => navigate('RegisterScreen');
 
+  /**
+   * The `loginUserFun` function dispatches an action to register a user with the provided email and
+   * password.
+   */
   const loginUserFun = ({email, password}) => {
     dispatch(registerUser({datas: {email, password}}));
   };
@@ -43,15 +37,12 @@ const useLogin = ({navigate, goBack}) => {
     reset,
     control,
     getValues,
-    // facebookLoginFunc,
-    // googleLoginFunc,
     PhoneNumberLoginFuc: () => {},
     remember,
     setRemember,
     rememberValue,
     onPress,
     loginUser: loginUserFun,
-    // appleIdlogin,
   };
 };
 

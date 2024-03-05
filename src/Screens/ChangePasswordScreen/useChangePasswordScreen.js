@@ -6,6 +6,12 @@ import {firebase} from '@react-native-firebase/auth';
 import {loadingFalse, loadingTrue} from '../../Redux/Action/isloadingAction';
 import {successMessage, errorMessage} from '../../Config/NotificationMessage';
 
+/**
+ * The function `useChangePasswordScreen` handles the process of changing a user's password, including
+ * form validation, reauthentication, and updating the password in a JavaScript application.
+ * @returns The function `useChangePasswordScreen` is returning an object with the following properties
+ * and values:
+ */
 const useChangePasswordScreen = ({navigate, goBack}) => {
   const {handleSubmit, errors, reset, control, getValues} = useFormHook(
     Schemas.newPassword,

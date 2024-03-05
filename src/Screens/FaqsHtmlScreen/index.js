@@ -8,31 +8,10 @@ import API from '../../Utils/helperFunc';
 import {HeaderComponent} from '../../Components/HeaderComponent';
 import {hp} from '../../Config/responsive';
 
-// const source = {
-//   html: `
-// <h1 style='text-align:center;'>
-//   Hello World!
-// </h1>`,
-// };
-
 const FaqsHtmlScreen = ({route, navigation}) => {
   // const {} = useFaqsHtmlScreen(navigation, route);
   console.log('asd', route.params);
   const item = route?.params;
-  // const [faqData, setFaqData] = useState({});
-
-  // const faqDataFunc = async () => {
-  //   const {ok, data} = await API.get(faqHtml);
-
-  //   if (ok) {
-  //     setFaqData({html: data?.all_faqs[0]?.faq_text});
-  //     console.log('test', clearContent(data?.all_faqs[0]?.faq_text));
-  //   } else {
-  //   }
-  // };
-  // useEffect(() => {
-  //   faqDataFunc();
-  // }, []);
 
   const clearContent = item => {
     if (item) {
