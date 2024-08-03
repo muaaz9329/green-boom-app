@@ -4,15 +4,25 @@ import MainNavigator from './src/navigation/MainNavigator';
 import {logoScreen} from './src/Assets';
 import Overlay from './src/Components/Overlay';
 import useReduxStore from './src/Hooks/UseReduxStore';
+import {LoadingProvider, useLoading} from './src/providers/LoadingProvider';
 
 const App = () => {
+  return (
+    <LoadingProvider>
+      <Navigator />
+    </LoadingProvider>
+  );
+};
+
+const Navigator = () => {
   const [isVisible, setIsVisible] = useState(true);
   const Hide_Splash_Screen = () => {
     setIsVisible(false);
   };
-  const {getState, dispatch} = useReduxStore();
-  const {isloading} = getState('isloading');
-  console.log('load', isloading);
+  // const {getState, dispatch} = useReduxStore();
+  // const {isloading} = getState('isloading');
+  // console.log('load', isloading);
+  const {loading} = useLoading();
   const time = () => {
     return 3000;
   };
@@ -45,7 +55,8 @@ const App = () => {
   return (
     <>
       {isVisible === true ? Splash_Screen : <MainNavigator />}
-      {isloading && <Overlay />}
+      {loading && <Overlay />}
+
       {/* <StackNavigatior />; */}
     </>
   );

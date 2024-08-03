@@ -6,6 +6,7 @@ import {Platform} from 'react-native';
 import {logOutUser} from '../Redux/Action/AuthAction';
 import {types} from '../Redux/types';
 import moment from 'moment';
+import {showMessage} from 'react-native-flash-message';
 
 const API = create({
   baseURL,
@@ -229,3 +230,50 @@ const durationAsString = date => {
 export {formDataFunc, contentTime};
 
 export default API;
+
+export const SuccessFlashMessage = (title, message) => {
+  if (title && message) {
+    showMessage({
+      message: title,
+      description: message,
+      type: 'success',
+
+      duration: 2000,
+    });
+  } else if (title) {
+    showMessage({
+      message: title,
+      type: 'success',
+
+      duration: 2000,
+    });
+  } else {
+    showMessage({
+      message: 'Success',
+      description: 'Operation Successfully',
+      type: 'success',
+
+      duration: 3000,
+    });
+  }
+};
+
+export const ErrorFlashMessage = (title, message) => {
+  if (title && message) {
+    showMessage({
+      message: title,
+      description: message,
+      type: 'danger',
+
+      duration: 3000,
+    });
+  } else {
+    showMessage({
+      message: 'Error',
+      description: 'Operation Failed',
+      type: 'danger',
+
+      duration: 3000,
+    });
+  }
+};

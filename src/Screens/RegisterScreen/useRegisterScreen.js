@@ -2,6 +2,16 @@ import {useState} from 'react';
 import {loginUser} from '../../Redux/Action/AuthAction';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {errorMessage} from '../../Config/NotificationMessage';
+import {apiService} from '../../network';
+import routes from '../../network/routes';
+import {useLoading} from '../../providers/LoadingProvider';
+import {ErrorFlashMessage, SuccessFlashMessage} from '../../Utils/helperFunc';
+import {useDispatch} from 'react-redux';
+import {
+  refreshToken,
+  setAccessToken,
+  setUserData,
+} from '../../Redux/Slices/userDataSlice';
 
 const {default: useFormHook} = require('../../Hooks/UseFormHooks');
 const {default: Schemas} = require('../../Utils/Validation');
@@ -16,12 +26,12 @@ const useRegister = ({navigate, goBack}) => {
   const {handleSubmit, errors, reset, control, getValues} = useFormHook(
     Schemas.signUp,
   );
-  const {dispatch} = useReduxStore();
+  const dispatch = useDispatch();
   const [remember, setRemember] = useState(false);
   const rememberValue = () => {
     setRemember(!remember);
   };
-
+  const {loading, setLoading} = useLoading();
   const signUpButton = ({
     name,
     last_name,
@@ -32,12 +42,29 @@ const useRegister = ({navigate, goBack}) => {
     company_name,
   }) => {
     if (!policy) {
-      dispatch(
-        loginUser({
-          type: 'email',
-          datas: {name, email, number, password, company_name, last_name},
-        }),
-      );
+      apiService.Post({
+        url: routes.signUp,
+        setLoading,
+        body: {
+          name: name + ' ' + last_name,
+          email,
+          password,
+          companyType: company_name,
+          accountType: 'user',
+          number: '',
+        },
+        OnSuccess: res => {
+          SuccessFlashMessage('User Registered Successfully');
+          dispatch(setAccessToken(res?.data?.token));
+          dispatch(refreshToken(res?.data?.refreshToken));
+          dispatch(setUserData(res?.data?.user));
+          loginNav();
+        },
+        OnError: res => {
+          ErrorFlashMessage('User Registration Failed', res);
+          console.log(res);
+        },
+      });
     } else errorMessage('Please agree terms & conditions.');
   };
   const loginNav = () => navigate('LoginScreen');

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import useReduxStore from '../Hooks/UseReduxStore';
@@ -6,6 +6,7 @@ import NavigationService from '../Services/NavigationService';
 import * as Screens from '../Screens/index';
 import MybottomTabs from './bottomNavigation';
 import Orientation from 'react-native-orientation-locker';
+import {MyContext} from '../../App';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,7 @@ function MainNavigator() {
   const {getState} = useReduxStore();
   const {onboarding} = getState('onboarding');
   const {isLogin} = getState('Auth');
+  // const {value, setValue} = useContext(MyContext);
 
   return (
     <NavigationContainer
