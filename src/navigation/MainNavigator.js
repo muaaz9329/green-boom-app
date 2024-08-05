@@ -7,13 +7,19 @@ import * as Screens from '../Screens/index';
 import MybottomTabs from './bottomNavigation';
 import Orientation from 'react-native-orientation-locker';
 import {MyContext} from '../../App';
+import {useSelector} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 
 function MainNavigator() {
-  const {getState} = useReduxStore();
-  const {onboarding} = getState('onboarding');
-  const {isLogin} = getState('Auth');
+  // const {getState} = useReduxStore();
+  // const {onboarding} = getState('onboarding');
+  const {haveSeenOnBoard: onboarding} = useSelector(state => state?.userData);
+  console.log({
+    onboarding,
+  });
+  // const {isLogin} = getState('Auth');
+  const {isLoggedIn: isLogin} = useSelector(state => state?.userData);
   // const {value, setValue} = useContext(MyContext);
 
   return (

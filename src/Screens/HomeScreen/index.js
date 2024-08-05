@@ -29,7 +29,7 @@ const HomeScreen = ({navigation}) => {
     videoOn,
     setVideoOn,
     videoP,
-    videoUrl,
+    // videoUrl,
     videoPlayerRef,
   } = useHomeScreen(navigation);
 
@@ -64,7 +64,7 @@ const HomeScreen = ({navigation}) => {
     <View
       style={{flex: 1, paddingTop: Platform.OS == 'ios' ? hp('5') : hp('1.5')}}>
       <VideoPlayer
-        videoSource={{uri: imageURL + videoUrl?.welcome_video?.file}}
+        videoSource={require('./test.mp4')}
         VideoThumb={introVideo}
         ref={videoPlayerRef}
       />

@@ -3,6 +3,7 @@ import {Dimensions} from 'react-native';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {onBoardingData} from '../../Utils/localDB';
 import {types} from '../../Redux/types';
+import {setHaveSeenOnBoard} from '../../Redux/Slices/userDataSlice';
 
 /**
  * The function `useOnboardingScreen` manages the onboarding screen navigation and state in a React
@@ -50,9 +51,8 @@ const useOnboardingScreen = ({navigate, params}) => {
    * The `getStart` function dispatches an action of type `onBoardFinished`.
    */
   const getStart = () => {
-    dispatch({
-      type: types.onBoardFinished,
-    });
+    console.log('i ran');
+    dispatch(setHaveSeenOnBoard(true));
   };
   return {
     onBoardingData,

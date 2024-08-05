@@ -39,7 +39,7 @@ const Tab = createBottomTabNavigator();
 function MybottomTabs() {
   const {getState, dispatch} = useReduxStore();
 
-  const {isVideo} = getState('isVideo');
+  const {isVideo} = {};
 
   const [isPortrait, setIsPortrait] = useState(true);
   useEffect(() => {
@@ -99,9 +99,9 @@ function MybottomTabs() {
         name="HomeScreen"
         options={tabarComponent(home2, home1)}
         component={Screens.HomeScreen}
-        listeners={{
-          blur: () => dispatch({type: types.isVideo, payload: !isVideo}),
-        }}
+        // listeners={{
+        //   blur: () => dispatch({type: types.isVideo, payload: !isVideo}),
+        // }}
       />
       <Tab.Screen
         name="MyProfileScreen"

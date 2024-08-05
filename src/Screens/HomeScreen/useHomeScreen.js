@@ -22,7 +22,7 @@ const useHomeScreen = ({navigate}) => {
   const [videoUrl, setVideoUrl] = useState([]);
   const {getState} = useReduxStore();
 
-  const {isVideo} = getState('isVideo');
+  const {isVideo} = {};
 
   const videoP = () => {
     console.log('test1');
@@ -36,7 +36,7 @@ const useHomeScreen = ({navigate}) => {
     if (videoPlayerRef.current && !videoPlayerRef.current.state.paused) {
       videoPlayerRef.current.handlePlayer();
     }
-  }, [isVideo]);
+  }, []);
 
   /**
    * The function `VideoData` asynchronously fetches a welcome video using an API and sets the video

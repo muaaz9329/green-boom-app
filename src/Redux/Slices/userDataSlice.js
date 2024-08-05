@@ -12,6 +12,7 @@ const initialState = {
   isLoggedIn: false,
   themeColor: '',
   isSocial: false,
+  haveSeenOnBoard: false,
 };
 
 export const userDataSlice = createSlice({
@@ -52,6 +53,9 @@ export const userDataSlice = createSlice({
     },
     setIsSocial: (state, action) => {
       state.isSocial = action.payload;
+    },
+    setHaveSeenOnBoard: (state, action) => {
+      state.haveSeenOnBoard = action.payload;
     },
     setLogout: (state, action) => {
       state.userData = {};
@@ -99,6 +103,7 @@ export const {
   userSurveySave,
   setRole,
   setIsSocial,
+  setHaveSeenOnBoard,
 } = userDataSlice.actions;
 
 export default userDataSlice.reducer;
