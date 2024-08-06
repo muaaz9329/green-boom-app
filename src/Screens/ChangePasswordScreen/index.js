@@ -81,4 +81,4 @@ const ChangePasswordScreen = ({navigation}) => {
     </KeyBoardWrapper>
   );
 };
-export default memo(ChangePasswordScreen);
+export default ChangePasswordScreen;

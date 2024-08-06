@@ -27,6 +27,7 @@ export default {
   signIn: BASE_URL + '/user/login',
   socialLogin: BASE_URL + '/user/socialLogin',
   updateMe: BASE_URL + '/user/updateProfile',
+  updatePassword: BASE_URL + '/user/updateMyPassword',
 
   // -----Service------//-----Service Provider
   createService: BASE_URL + '/service',

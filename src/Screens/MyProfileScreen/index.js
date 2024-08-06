@@ -26,7 +26,9 @@ import {hp, wp} from '../../Config/responsive';
 
 const MyProfileScreen = ({navigation}) => {
   const {onCancel, onConfirm, alert, userData} = useMyProfileScreen(navigation);
-
+  console.log({
+    userData,
+  });
   return (
     <View style={styles.catMain}>
       <HeaderComponentProfile
@@ -36,12 +38,12 @@ const MyProfileScreen = ({navigation}) => {
         edit={() => navigation.navigate('EditProfileScreen')}
       />
       <BlurImage
-        blurhash={'LKK1wP_3yYIU4.jsWrt7_NRjMdt7'}
-        radius={75}
+        // blurhash={'LKK1wP_3yYIU4.jsWrt7_NRjMdt7'}
+        // radius={75}
         isURI={true}
         styles={styles.ProfileImage}
         blurStyle={styles.blurMain}
-        uri={imageUrl(userData?.profile_image)}
+        uri={userData?.image}
       />
       <View style={styles.names}>
         <TextComponent text={userData?.name + ' '} styles={styles.name} />
@@ -55,9 +57,7 @@ const MyProfileScreen = ({navigation}) => {
       <View style={styles.cardBtn}>
         <Image source={profileCompany} style={styles.iconStyle} />
         <TextComponent
-          text={
-            userData?.company_name ? userData?.company_name : 'Company Name'
-          }
+          text={userData?.companyType ? userData?.companyType : 'Company Name'}
           styles={styles.titleStyle}
         />
       </View>

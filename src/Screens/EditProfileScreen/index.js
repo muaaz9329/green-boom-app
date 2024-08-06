@@ -37,7 +37,7 @@ const EditProfileScreen = ({navigation}) => {
     uploadFromGalary,
     profileData,
   } = useEditProfileScreen(navigation);
-
+  console.log(profileData);
   return (
     <KeyBoardWrapper>
       <HeaderComponentProfile
@@ -52,7 +52,7 @@ const EditProfileScreen = ({navigation}) => {
             isURI={true}
             styles={styles.ProfileImage}
             blurStyle={styles.blurMain}
-            uri={profileData?.uri ?? imageUrl(userData?.profile_image)}
+            uri={profileData}
           />
           <Touchable
             onPress={uploadFromGalary}
@@ -78,7 +78,7 @@ const EditProfileScreen = ({navigation}) => {
               getValues,
               isImage: username,
               placeholder: 'First Name',
-              defaultValue: userData?.name,
+              defaultValue: userData?.name?.split(' ')[0],
               viewStyle: {...styles.nameSt},
             }}
           />
@@ -93,7 +93,7 @@ const EditProfileScreen = ({navigation}) => {
               getValues,
               isImage: username,
               placeholder: 'last Name',
-              defaultValue: userData?.last_name,
+              defaultValue: userData?.name?.split(' ')[1],
               viewStyle: {...styles.nameSt},
             }}
           />
@@ -108,7 +108,7 @@ const EditProfileScreen = ({navigation}) => {
               isImage: company,
               getValues,
               placeholder: 'Green Boom Corp',
-              defaultValue: userData?.company_name,
+              defaultValue: userData?.companyType,
               viewStyle: {...styles.inputStyle},
             }}
           />
@@ -155,4 +155,4 @@ const EditProfileScreen = ({navigation}) => {
     </KeyBoardWrapper>
   );
 };
-export default memo(EditProfileScreen);
+export default EditProfileScreen;

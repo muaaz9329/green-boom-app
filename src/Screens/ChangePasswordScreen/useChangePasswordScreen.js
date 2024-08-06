@@ -5,6 +5,10 @@ import useReduxStore from '../../Hooks/UseReduxStore';
 import {firebase} from '@react-native-firebase/auth';
 import {loadingFalse, loadingTrue} from '../../Redux/Action/isloadingAction';
 import {successMessage, errorMessage} from '../../Config/NotificationMessage';
+import {useLoading} from '../../providers/LoadingProvider';
+import {apiService} from '../../network';
+import routes from '../../network/routes';
+import {ErrorFlashMessage, SuccessFlashMessage} from '../../Utils/helperFunc';
 
 /**
  * The function `useChangePasswordScreen` handles the process of changing a user's password, including
@@ -18,32 +22,26 @@ const useChangePasswordScreen = ({navigate, goBack}) => {
   );
 
   const {dispatch} = useReduxStore();
+  const {loading, setLoading} = useLoading();
   const changePassword = async currentPassword => {
     console.log('pass');
-    dispatch(loadingTrue());
+    setLoading(true);
     const {password, new_password} = currentPassword;
-    console.log(password, new_password, 'asasadasd');
-    var user = firebase.auth().currentUser;
-    try {
-      const reauthenticate = password => {
-        // Pass only the password as an argument
-        var crd = firebase.auth.EmailAuthProvider.credential(
-          user.email,
-          password,
-        );
-        console.log('credential:', crd);
-        return user.reauthenticateWithCredential(crd);
-      };
-      await reauthenticate(password); // Pass only the password
-      await user.updatePassword(new_password);
-      successMessage('Your password has been changed');
-      goBack();
-    } catch (error) {
-      console.log('error:', error);
-      errorMessage('Current password is wrong');
-    } finally {
-      dispatch(loadingFalse());
-    }
+    apiService.Patch({
+      url: routes.updatePassword,
+      setLoading,
+      body: {
+        currentPassword: password,
+        password: new_password,
+      },
+      OnSuccess: res => {
+        SuccessFlashMessage('Password Updated Successfully');
+        goBack();
+      },
+      OnError: err => {
+        ErrorFlashMessage('Error', err);
+      },
+    });
   };
 
   return {

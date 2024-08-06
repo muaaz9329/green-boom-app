@@ -2,6 +2,8 @@ import {useState} from 'react';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {logOutUser} from '../../Redux/Action/AuthAction';
 import {logoutService} from '../../Services/AuthServices';
+import {useSelector} from 'react-redux';
+import {setLogout} from '../../Redux/Slices/userDataSlice';
 
 /**
  * The function `useMyProfileScreen` returns values and functions related to user profile management,
@@ -17,13 +19,14 @@ const useMyProfileScreen = ({navigate, goBack}) => {
   const [alert, setAlert] = useState(false);
   const {dispatch, getState} = useReduxStore();
 
-  const {userData} = getState('Auth');
-  // console.log('userData', userData);
+  const {userData} = useSelector(state => state?.userData);
+
+  console.log('userData', userData);
   const onConfirm = () => {
     setAlert(false);
     setTimeout(async () => {
       await logoutService();
-      dispatch(logOutUser());
+      dispatch(setLogout());
     }, 900);
   };
   const onCancel = () => {
