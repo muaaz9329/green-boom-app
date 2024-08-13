@@ -14,26 +14,40 @@ const useMSDS = ({navigate, goBack}, {params}) => {
     pdf: trainingPDFIcon,
     word: wordIcon,
   };
-  const {dispatch, getState} = useReduxStore();
-  const {isloading} = getState('isloading');
-  const titleData = getState('getCategory');
-  const category = titleData['msdSheets'] ?? [];
-  const isCategory = Boolean(params.category);
+
+  const msdsDummyData = [
+    {
+      title: 'MSDS Sheet 1',
+      file_type: 'pdf',
+      file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+      image: 'https://img.icons8.com/color/452/pdf.png',
+    },
+    {
+      title: 'MSDS Sheet 2',
+      file_type: 'word',
+      file: 'https://file-examples-com.github.io/uploads/2017/02/file-sample_100kB.doc',
+      image: 'https://img.icons8.com/color/452/ms-word.png',
+    },
+  ];
+  // const {dispatch, getState} = useReduxStore();
+  const {isloading} = {
+    isloading: false,
+  };
 
   /* The `useEffect` hook in the provided code snippet is used to perform side effects in a functional
   component. In this case, it is making use of the `dispatch` function to trigger the `getmsds`
   action when the component mounts for the first time. */
-  useEffect(() => {
-    dispatch(getmsds());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getmsds());
+  // }, []);
+
+  const [category, setCategory] = useState(msdsDummyData);
 
   return {
-    isCategory,
     categoryData: params?.category,
     title: params?.title,
     isVideo: params?.isVideo,
     category,
-    iconType,
     isloading,
   };
 };

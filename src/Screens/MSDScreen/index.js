@@ -11,7 +11,7 @@ import {ProductSkeletonScreen} from '../SkeletonScreen';
 import {hp} from '../../Config/responsive';
 
 const MSDScreen = ({route, navigation}) => {
-  const {title, category, iconType, isloading} = useMSDS(navigation, route);
+  const {title, category, isloading} = useMSDS(navigation, route);
 
   const renderMSDSItem = useCallback(({item, index}) => {
     console.log('first', item);
@@ -19,16 +19,13 @@ const MSDScreen = ({route, navigation}) => {
       <View style={styles.card}>
         <Touchable
           style={styles.cardBtn}
-          onPress={() => Linking.openURL(imageUrl(item?.file))}>
+          onPress={() => Linking.openURL(item?.file)}>
           <View style={styles.imageStyle}>
             {/* <Image
               source={iconType[item?.file_type]}
               style={styles.iconStyle}
             /> */}
-            <Image
-              source={{uri: imageUrl(item?.image)}}
-              style={styles.iconStyle}
-            />
+            <Image source={{uri: item?.image}} style={styles.iconStyle} />
             <TextComponent
               text={item?.title}
               numberOfLines={2}
@@ -51,7 +48,7 @@ const MSDScreen = ({route, navigation}) => {
         // search={true}
         goBack={() => navigation.goBack()}
       />
-      {isloading && category.length == 0 ? (
+      {isloading && category.length == 0 && (
         <View style={{marginTop: hp('1.2'), flex: 1}}>
           <FlatList
             refreshing={false}
@@ -63,7 +60,8 @@ const MSDScreen = ({route, navigation}) => {
             }}
           />
         </View>
-      ) : category.length > 0 ? (
+      )}
+      {category.length > 0 && (
         <ScrollView
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}>
@@ -81,10 +79,52 @@ const MSDScreen = ({route, navigation}) => {
             />
           </View>
         </ScrollView>
-      ) : (
-        !isloading && category.length == 0 && <DataNotFound />
       )}
+      {!isloading && category.length == 0 && <DataNotFound />}
     </View>
   );
 };
 export default memo(MSDScreen);
+
+// return (
+//   <View style={styles.trainingMain}>
+//     <HeaderComponent
+//       title={title}
+//       // search={true}
+//       goBack={() => navigation.goBack()}
+//     />
+//     {isloading && category.length == 0 ? (
+//       <View style={{marginTop: hp('1.2'), flex: 1}}>
+//         <FlatList
+//           refreshing={false}
+//           data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+//           renderItem={renderSkeleton}
+//           contentContainerStyle={{
+//             // alignItems: 'center',
+//             flex: 1,
+//           }}
+//         />
+//       </View>
+//     ) : category.length > 0 ? (
+//       <ScrollView
+//         showsVerticalScrollIndicator={false}
+//         showsHorizontalScrollIndicator={false}>
+//         <View style={styles.videoMain}>
+//           <FlatList
+//             refreshing={false}
+//             data={category}
+//             numColumns={2}
+//             renderItem={renderMSDSItem}
+//             contentContainerStyle={
+//               {
+//                 // alignItems: 'center',
+//               }
+//             }
+//           />
+//         </View>
+//       </ScrollView>
+//     ) : (
+//       !isloading && category.length == 0 && <DataNotFound />
+//     )}
+//   </View>
+// );
