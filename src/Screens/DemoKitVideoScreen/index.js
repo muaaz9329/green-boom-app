@@ -21,9 +21,10 @@ const DemoKitVideoScreen = ({route, navigation}) => {
         goBack={() => navigation.goBack()}
       />
       <VideoComponent
-        videoUrl={imageUrl(item?.file)}
+        videoUrl={item?.videoUrl}
         uri={true}
         videoTitle={item?.title}
+        videoDesc={item?.description}
       />
     </View>
   );

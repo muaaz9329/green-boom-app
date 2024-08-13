@@ -18,11 +18,15 @@ const DemoKitSingleScreen = ({route, navigation}) => {
   const {handleSubmit, errors, reset, control, getValues, submitData} =
     useDemoKitSingleScreen(navigation, route);
   const kitInnerData = route.params;
+  console.log('kitInnerData', kitInnerData);
   console.log('testttt', kitInnerData);
-  const sentencesArray =
-    kitInnerData?.kit_includes && JSON.parse(kitInnerData?.kit_includes);
-  const descArry = kitInnerData?.kit_includes && JSON.parse([sentencesArray]);
+  // const sentencesArray =
+  //   kitInnerData?.kit_includes && kitInnerData?.kit_includes.split(',');
+  // const descArry = sentencesArray?.map(res => res.trim());
 
+  // const sentencesArray = kitInnerData?.kit_includes;
+  // const descArry = kitInnerData?.kit_includes;
+  console.log('descArry', kitInnerData?.kit_includes);
   // const onSubmit = data => {
   //   submitData(data); // Call the function from the separate file
   //   console.log('asd', data);
@@ -30,25 +34,7 @@ const DemoKitSingleScreen = ({route, navigation}) => {
 
   const onSubmit = async datas => {
     console.log('dtaaa', datas);
-    try {
-      // Perform the API call to post data
-      const {ok, data} = await API.post(kitForm, {
-        ...datas,
-        order_kit_id: kitInnerData?.id,
-      });
-
-      if (ok) {
-        // Handle success
-        console.log('Data posted successfully:', data);
-        reset();
-        navigation.navigate('ThankYouScreen');
-      } else {
-        // Handle error
-        console.error('Error posting data:', data);
-      }
-    } catch (error) {
-      console.error('Unexpected error:', error);
-    }
+    navigation.navigate('ThankYouScreen');
   };
 
   return (
@@ -59,14 +45,7 @@ const DemoKitSingleScreen = ({route, navigation}) => {
       />
       <KeyBoardWrapper showsVerticalScrollIndicator={false}>
         <View style={styles.cardBtn}>
-          <Image
-            source={
-              kitImages[kitInnerData?.id] ?? {
-                uri: imageUrl(kitInnerData?.image),
-              }
-            }
-            style={styles.iconStyle}
-          />
+          <Image source={kitImages['2']} style={styles.iconStyle} />
           <View style={styles.imageStyle}>
             <View style={styles.titleArea}>
               <TextComponent
@@ -96,19 +75,18 @@ const DemoKitSingleScreen = ({route, navigation}) => {
             text={'The kit includes:'}
             styles={styles.kitInclude}
           />
-          {descArry &&
-            descArry.map(res => {
-              console.log('res', res);
-              return (
-                <View style={styles.subDes}>
-                  <View style={styles.dotSt}></View>
-                  <TextComponent
-                    text={res}
-                    styles={{...styles.pDesc, ...styles.pDescLast}}
-                  />
-                </View>
-              );
-            })}
+
+          {kitInnerData?.kit_includes.map((res, index) => {
+            return (
+              <View style={styles.subDes}>
+                <View style={styles.dotSt}></View>
+                <TextComponent
+                  text={res}
+                  styles={{...styles.pDesc, ...styles.pDescLast}}
+                />
+              </View>
+            );
+          })}
         </View>
         <ScrollView contentContainerStyle={styles.form}>
           <View style={styles.inputCol}>
@@ -282,4 +260,4 @@ const DemoKitSingleScreen = ({route, navigation}) => {
     </View>
   );
 };
-export default memo(DemoKitSingleScreen);
+export default DemoKitSingleScreen;

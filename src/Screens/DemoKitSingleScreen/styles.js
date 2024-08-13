@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
     color: Colors.black,
     width: wp('34'),
-    height: hp('3.5'),
+    // height: hp('3.5'),
     alignItems: 'center',
     justifyContent: 'center',
   },

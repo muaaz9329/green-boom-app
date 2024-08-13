@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
   },
   videoDesc: {
     fontSize: hp('1.8'),
-    color: Colors.lightGray,
+    color: '#000',
+    textAlign: 'center',
     fontWeight: '300',
     lineHeight: 20,
   },

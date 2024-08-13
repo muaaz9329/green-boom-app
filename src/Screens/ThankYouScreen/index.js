@@ -20,7 +20,9 @@ const ThankYouScreen = ({navigation}) => {
         styles={styles.subTitle}
       />
       <View style={styles.btnMain}>
-        <Touchable onPress={() => navigation.goBack()} style={styles.btnstyle}>
+        <Touchable
+          onPress={() => navigation.navigate('MybottomTabs')}
+          style={styles.btnstyle}>
           <Image source={arrowLeft} style={styles.btnImg} />
           <TextComponent text={'Back to Home'} styles={styles.btnText} />
         </Touchable>

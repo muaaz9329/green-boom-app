@@ -23,11 +23,7 @@ export const styles = StyleSheet.create({
   inputStyle: {
     marginTop: hp('3'),
   },
-  buttonStyle: {
-    // position: 'absolute',
-    // bottom: 0,
-    // left: wp('4'),
-  },
+
   Cpass: {
     color: Colors.primaryColor,
     fontSize: hp('3.5'),
