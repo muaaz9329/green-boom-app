@@ -128,7 +128,7 @@ export const homeScreenBtns = [
     title: 'Videos',
     image: bg2,
     icon: icon2,
-    routeName: 'SingleVideoScreen',
+    routeName: 'TrainingScreen',
     isVideo: true,
     category: [
       {

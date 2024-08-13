@@ -13,6 +13,8 @@ import {
   trainingPDFIcon,
   wordIcon,
 } from '../../Assets';
+import {apiService} from '../../network';
+import routes from '../../network/routes';
 
 /**
  * The function `useTraining` retrieves and manages training data for a specific category and
@@ -20,72 +22,63 @@ import {
  * @returns The function `useTraining` is returning an object with the following properties:
  */
 const useTraining = ({navigate, goBack}, {params}) => {
-  const {dispatch, getState} = useReduxStore();
-  const titleData = getState('getCategory');
-  const {isloading} = getState('isloading');
-  const category = titleData[params?.id]?.cat ?? [];
-  const subCategory = titleData[params?.id]?.subCat ?? [];
-
-  const isCategory = Boolean(category.length > 0);
-  const iconType = {
-    pdf: trainingPDFIcon,
-    word: wordIcon,
-    ppt: ppt,
-  };
-  const scriptIconType = {
-    email: emailS,
-    call: callS,
-    voicemail: microphoneS,
-    sms: messageS,
-  };
-  const [accordionItem, setAccordionItem] = useState('');
-
-  const [subCat, setSubCat] = useState(null);
-  const [activeBtn, setActiveBtn] = useState({});
-
-  /**
-   * The function `onCategory` sets an active button, makes a POST request to an API, and updates the
-   * subcategory data based on the response.
-   */
-  const onCategory = async item => {
-    setActiveBtn(item);
-    const {ok, data} = await API.post(tabButtonType, {
-      id: item?.id,
-      type: params.id,
-    });
-    if (ok) {
-      setSubCat(data.data);
-      subCategory = data.data;
-    }
-  };
-  /* The `useEffect` hook in the provided code snippet is responsible for dispatching an action to get
-  category data and setting an active button based on the retrieved data. Here's a breakdown of what
-  it does: */
+  const [isloading, setLoading] = useState(false);
+  const [videosData, setVideosData] = useState([]);
   useEffect(() => {
-    dispatch(getCategory(params?.id));
-    if (titleData[params?.id]?.cat?.length > 0) {
-      setActiveBtn({
-        id: titleData[params?.id]?.cat[0]?.id,
-        title: titleData[params?.id]?.cat[0]?.title,
-      });
-    }
-  }, [
-    titleData[params?.id]?.cat?.length > 0 && titleData[params?.id]?.cat[0]?.id,
-  ]);
+    // apiService.Get({
+    //   url:routes
+    // })
+
+    const dummyData = [
+      {
+        name: 'Learn JavaScript in 1 Hour',
+        price: 0.0,
+        thumb: 'https://img.youtube.com/vi/W6NZfCO5SIk/maxresdefault.jpg',
+        videoUrl: 'https://www.youtube.com/watch?v=W6NZfCO5SIk',
+        content:
+          'A beginner-friendly introduction to JavaScript covering the basics of programming.',
+      },
+      {
+        name: 'React JS Crash Course',
+        price: 0.0,
+        thumb: 'https://img.youtube.com/vi/Dorf8i6lCuk/maxresdefault.jpg',
+        videoUrl: 'https://www.youtube.com/watch?v=Dorf8i6lCuk',
+        content:
+          'Comprehensive React crash course covering hooks, components, and state management.',
+      },
+      {
+        name: 'Node.js Tutorial for Beginners',
+        price: 0.0,
+        thumb: 'https://img.youtube.com/vi/TlB_eWDSMt4/maxresdefault.jpg',
+        videoUrl: 'https://www.youtube.com/watch?v=TlB_eWDSMt4',
+        content:
+          'An in-depth guide to getting started with Node.js, including server creation and modules.',
+      },
+      {
+        name: 'Build a MERN Stack App',
+        price: 0.0,
+        thumb: 'https://img.youtube.com/vi/7CqJlxBYj-M/maxresdefault.jpg',
+        videoUrl: 'https://www.youtube.com/watch?v=7CqJlxBYj-M',
+        content:
+          'Step-by-step tutorial on building a full-stack application using MongoDB, Express, React, and Node.js.',
+      },
+      {
+        name: 'Introduction to Cloud Computing',
+        price: 0.0,
+        thumb: 'https://img.youtube.com/vi/gu4FYSFeWqg/maxresdefault.jpg',
+        videoUrl: 'https://www.youtube.com/watch?v=gu4FYSFeWqg',
+        content:
+          'An introductory course on cloud computing, exploring various cloud service models and providers.',
+      },
+    ];
+
+    setVideosData(dummyData);
+  }, []);
 
   return {
-    isCategory,
-    categoryData: params?.category,
     title: params?.title,
     isVideo: params?.isVideo,
-    category,
-    subCategory: subCat ?? subCategory,
-    iconType,
-    onCategory,
-    activeBtn,
-    accordionItem,
-    setAccordionItem,
-    scriptIconType,
+    videosData,
     isloading,
   };
 };

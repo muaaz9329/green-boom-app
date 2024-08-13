@@ -13,7 +13,7 @@ const SingleVideoScreen = ({route, navigation}) => {
   const item = route.params;
 
   console.log('first port', isPortrait);
-  console.log('asddd', imageUrl(item?.file));
+  console.log('asddd', item);
 
   return (
     <View style={styles.trainingMain}>
@@ -24,9 +24,9 @@ const SingleVideoScreen = ({route, navigation}) => {
         goBack={() => navigation.goBack()}
       />
       <VideoComponent
-        videoUrl={imageUrl(item?.file)}
+        videoUrl={item?.videoUrl}
         uri={true}
-        videoTitle={item?.title}
+        videoTitle={item?.name}
         // videoDesc={item?.description}
       />
     </View>

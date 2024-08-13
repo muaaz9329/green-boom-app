@@ -30,23 +30,12 @@ import {
   VideoSkeletonScreen,
 } from '../SkeletonScreen';
 const TrainingScreen = ({route, navigation}) => {
-  const {
-    isCategory,
-    categoryData,
-    title,
-    isVideo,
-    category,
-    subCategory,
-    iconType,
-    onCategory,
-    activeBtn,
-    accordionItem,
-    setAccordionItem,
-    accordionBool,
-    scriptIconType,
-    setAccordionBool,
-    isloading,
-  } = useTraining(navigation, route);
+  const {title, isVideo, videosData, isloading} = useTraining(
+    navigation,
+    route,
+  );
+
+  // const isloading = false;
   // console.log('first', isVideo);
   const renderItem = useCallback(({item, index}) => {
     return (
@@ -81,9 +70,9 @@ const TrainingScreen = ({route, navigation}) => {
       //   videoDesc={item?.videoDesc}
       // />
       <VideoThumbComponent
-        videoTitle={item?.title}
+        videoTitle={item?.name}
         // videoDesc={item?.description}
-        videoThumb={imageUrl(item?.thumbnail)}
+        videoThumb={item?.thumb}
         // videoThumb={videoThumb}
 
         onPress={() => navigation.navigate('SingleVideoScreen', item)}
@@ -103,65 +92,7 @@ const TrainingScreen = ({route, navigation}) => {
       </>
     );
   };
-  const renderContentInner = useCallback(item => {
-    const itemData = item?.item;
-    console.log('ren item', item);
-    return (
-      <View style={styles.card}>
-        <Touchable
-          style={styles.cardBtn}
-          onPress={() => Linking.openURL(imageUrl(itemData?.file))}>
-          <View style={styles.imageStyle}>
-            <Image
-              source={scriptIconType[itemData?.icon_type]}
-              style={styles.iconStyle}
-            />
-            <TextComponent text={itemData?.title} styles={styles.titleStyle} />
-          </View>
-        </Touchable>
-      </View>
-    );
-  });
-  const renderContent = item => {
-    // console.log('check asd', item.script_media);
-    return (
-      <FlatList
-        refreshing={false}
-        data={item?.script_media}
-        numColumns={2}
-        renderItem={renderContentInner}
-        contentContainerStyle={{
-          // alignItems: 'center',
-          marginHorizontal: wp('2'),
-        }}
-      />
-    );
-  };
-  const renderAccordion = useCallback(() => {
-    return (
-      <>
-        <Accordion
-          underlayColor="transparent"
-          activeSections={accordionItem}
-          sections={subCategory}
-          // renderSectionTitle={this._renderSectionTitle}
-          renderHeader={renderHeader}
-          renderContent={renderContent}
-          onChange={(i, index) => {
-            setAccordionItem(i);
-            console.log('i', i);
-          }}
-        />
-      </>
-    );
-  });
 
-  const loadingVal = Boolean(subCategory.length == 0 && isloading);
-
-  console.log(
-    'testsdvsdvsdvsdds',
-    Boolean(subCategory.length == 0 && isloading),
-  );
   const renderSkeleton = useCallback(({item, index}) => {
     return <VideoSkeletonScreen />;
   });
@@ -171,95 +102,46 @@ const TrainingScreen = ({route, navigation}) => {
   return (
     <View style={styles.trainingMain}>
       <HeaderComponent
-        title={title}
+        title={'Videos'}
         // search={true}
-        isCategory={isCategory}
-        categoryData={category}
-        activeBtn={activeBtn.id}
+        // isCategory={isCategory}
+        // categoryData={category}
+        // activeBtn={activeBtn.id}
         onPress={item => onCategory(item)}
         goBack={() => navigation.goBack()}
       />
-      {subCategory.length > 0 ? (
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}>
-          {(title == 'Videos' && activeBtn?.title == undefined) ||
-          activeBtn?.title == 'Videos' ? (
-            (subCategory == undefined ||
-              subCategory == null ||
-              subCategory.length == 0) &&
-            isloading ? (
-              <View style={{marginTop: hp('1.2'), flex: 1}}>
-                <FlatList
-                  refreshing={false}
-                  data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-                  renderItem={renderSkeleton}
-                  contentContainerStyle={{
-                    // alignItems: 'center',
-                    flex: 1,
-                  }}
-                />
-              </View>
-            ) : (
-              <View style={styles.videoMain}>
-                {/* <CategoryIntro
-              introImage={boom}
-              introTitle={'Booms'}
-              introDescription={
-                'Our awesome name-sake booms provide rapid absorption ideal for marine environments.'
-              }
-            /> */}
 
-                <FlatList
-                  refreshing={false}
-                  data={subCategory}
-                  renderItem={renderVideos}
-                  contentContainerStyle={
-                    {
-                      // alignItems: 'center',
-                    }
-                  }
-                />
-              </View>
-            )
-          ) : (
-            <>
-              {loadingVal ? (
-                <View style={{marginTop: hp('1.2'), flex: 1}}>
-                  <FlatList
-                    refreshing={false}
-                    data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-                    renderItem={renderPDFSkeleton}
-                    contentContainerStyle={{
-                      // alignItems: 'center',
-                      flex: 1,
-                    }}
-                  />
-                </View>
-              ) : (
-                activeBtn.title !== 'Scripts' && (
-                  <>
-                    <FlatList
-                      refreshing={false}
-                      data={subCategory}
-                      renderItem={renderItem}
-                      contentContainerStyle={{
-                        // alignItems: 'center',
-                        marginTop: hp('2'),
-                      }}
-                    />
-                  </>
-                )
-              )}
-              <View style={styles.script}>
-                {activeBtn.title == 'Scripts' && renderAccordion()}
-              </View>
-            </>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}>
+        <View style={{marginTop: hp('1.2'), flex: 1}}>
+          {videosData.length < 1 && (
+            <FlatList
+              refreshing={false}
+              data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+              renderItem={renderSkeleton}
+              contentContainerStyle={{
+                // alignItems: 'center',
+                flex: 1,
+              }}
+            />
           )}
-        </ScrollView>
-      ) : (
-        !isloading && subCategory.length == 0 && <DataNotFound />
-      )}
+
+          {videosData.length > 0 && (
+            <FlatList
+              refreshing={false}
+              data={videosData}
+              renderItem={renderVideos}
+              contentContainerStyle={{
+                // alignItems: 'center',
+                flex: 1,
+              }}
+            />
+          )}
+        </View>
+      </ScrollView>
+
+      {isloading && <DataNotFound />}
     </View>
   );
 };
