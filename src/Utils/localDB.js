@@ -90,45 +90,45 @@ export const onBoardingData = [
   },
 ];
 export const homeScreenBtns = [
-  {
-    id: 'Training',
-    title: 'Training',
-    image: bg1,
-    icon: icon1,
-    routeName: 'TrainingScreen',
-    category: [
-      {
-        id: 1,
-        title: 'Training 101',
-      },
-      {
-        id: 2,
-        title: 'Videos',
-      },
-      {
-        id: 3,
-        title: 'Content',
-      },
-      {
-        id: 4,
-        title: 'Training 101',
-      },
-      {
-        id: 5,
-        title: 'Videos',
-      },
-      {
-        id: 6,
-        title: 'Content',
-      },
-    ],
-  },
+  // {
+  //   id: 'Training',
+  //   title: 'Training',
+  //   image: bg1,
+  //   icon: icon1,
+  //   routeName: 'TrainingScreen',
+  //   category: [
+  //     {
+  //       id: 1,
+  //       title: 'Training 101',
+  //     },
+  //     {
+  //       id: 2,
+  //       title: 'Videos',
+  //     },
+  //     {
+  //       id: 3,
+  //       title: 'Content',
+  //     },
+  //     {
+  //       id: 4,
+  //       title: 'Training 101',
+  //     },
+  //     {
+  //       id: 5,
+  //       title: 'Videos',
+  //     },
+  //     {
+  //       id: 6,
+  //       title: 'Content',
+  //     },
+  //   ],
+  // },
   {
     id: 'Video',
     title: 'Videos',
     image: bg2,
     icon: icon2,
-    routeName: 'TrainingScreen',
+    routeName: 'SingleVideoScreen',
     isVideo: true,
     category: [
       {
@@ -179,13 +179,13 @@ export const homeScreenBtns = [
     icon: icon5,
     routeName: 'ProductScreen',
   },
-  {
-    id: 'salespitch',
-    title: 'Perfect Sales Pitch',
-    image: bg6,
-    icon: icon6,
-    routeName: 'TrainingScreen',
-  },
+  // {
+  //   id: 'salespitch',
+  //   title: 'Perfect Sales Pitch',
+  //   image: bg6,
+  //   icon: icon6,
+  //   routeName: 'TrainingScreen',
+  // },
 ];
 
 export const videosData = {

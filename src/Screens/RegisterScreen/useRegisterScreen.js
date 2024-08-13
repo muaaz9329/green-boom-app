@@ -55,9 +55,9 @@ const useRegister = ({navigate, goBack}) => {
         },
         OnSuccess: res => {
           SuccessFlashMessage('User Registered Successfully');
-          dispatch(setAccessToken(res?.data?.token));
-          dispatch(refreshToken(res?.data?.refreshToken));
-          dispatch(setUserData(res?.data?.user));
+          // dispatch(setAccessToken(res?.data?.token));
+          // dispatch(refreshToken(res?.data?.refreshToken));
+          // dispatch(setUserData(res?.data?.user));
           loginNav();
         },
         OnError: res => {

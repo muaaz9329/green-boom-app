@@ -1,13 +1,13 @@
 const getCredentials = () => {
   if (__DEV__)
     return {
-      baseURL: 'http://3.22.27.67/api/v1',
+      baseURL: 'http://192.168.18.9/api/v1',
       imageURL: 'https://virtualrealitycreators.com/green-boom/',
     };
   else {
     console.log = () => {};
     return {
-      baseURL: 'http://3.22.27.67/api/v1',
+      baseURL: 'http://192.168.18.9/api/v1',
       imageURL: 'https://virtualrealitycreators.com/green-boom/',
     };
   }
