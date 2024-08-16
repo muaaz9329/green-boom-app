@@ -17,7 +17,7 @@ import {ProductSkeletonScreen} from '../SkeletonScreen';
 import {hp} from '../../Config/responsive';
 
 const ProductScreen = ({route, navigation}) => {
-  const {title, productList} = useProductScreen(navigation, route);
+  const {title, productList, isLoading} = useProductScreen(navigation, route);
   // console.log('firstaa', productList?.all_products?.length);
   const renderMSDSItem = useCallback(({item, index}) => {
     // console.log('firstcd', imageUrl(item?.file));
@@ -27,10 +27,7 @@ const ProductScreen = ({route, navigation}) => {
           style={styles.cardBtn}
           onPress={() => navigation.navigate('ProductDetailScreen', item?.id)}>
           <View style={styles.imageStyle}>
-            <Image
-              source={{uri: imageUrl(item?.file)}}
-              style={styles.iconStyle}
-            />
+            <Image source={{uri: item?.file}} style={styles.iconStyle} />
             <TextComponent
               text={item?.product_name}
               styles={styles.titleStyle}
@@ -52,29 +49,7 @@ const ProductScreen = ({route, navigation}) => {
         // search={true}
         goBack={() => navigation.goBack()}
       />
-      {productList?.all_products ? (
-        productList?.all_products && productList?.all_products?.length > 0 ? (
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}>
-            <View style={styles.videoMain}>
-              <FlatList
-                refreshing={false}
-                data={productList?.all_products}
-                numColumns={2}
-                renderItem={renderMSDSItem}
-                contentContainerStyle={
-                  {
-                    // alignItems: 'center',
-                  }
-                }
-              />
-            </View>
-          </ScrollView>
-        ) : (
-          <DataNotFound />
-        )
-      ) : (
+      {isLoading && productList.length == 0 && (
         <View style={{marginTop: hp('1')}}>
           <FlatList
             refreshing={false}
@@ -88,7 +63,38 @@ const ProductScreen = ({route, navigation}) => {
           />
         </View>
       )}
+      {isLoading && productList.length > 0 && (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}>
+          <View style={styles.videoMain}>
+            <FlatList
+              refreshing={false}
+              data={productList}
+              numColumns={2}
+              renderItem={renderMSDSItem}
+              contentContainerStyle={
+                {
+                  // alignItems: 'center',
+                }
+              }
+            />
+          </View>
+        </ScrollView>
+      )}
+
+      {!isLoading && productList.length < 1 && <DataNotFound />}
     </View>
   );
 };
 export default memo(ProductScreen);
+
+// {productList?.all_products ? (
+//   productList?.all_products && productList?.all_products?.length > 0 ? (
+
+//   ) : (
+//     <DataNotFound />
+//   )
+// ) : (
+//
+// )}

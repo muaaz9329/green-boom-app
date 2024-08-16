@@ -30,16 +30,13 @@ const ProductDetailScreen = ({route, navigation}) => {
     isloading,
   } = useProductDetailScreen(navigation, route);
 
-  const size = productData?.[selectedSize.id][0]?.size[0];
-  const dimension = productData?.[selectedSize.id][0]?.dimension[0];
-  const title = productData?.[selectedSize.id][0]?.title[0];
-  const desc =
-    productData?.[selectedSize.id][0]?.desc == undefined
-      ? productData?.[productData?.sizePicker[0]?.id][0]?.desc[0]
-          .sub_description
-      : productData?.[selectedSize.id][0]?.desc[0].sub_description;
-  const sentencesArray = desc && JSON.parse(desc ?? '');
-  const descArry = desc && JSON.parse([sentencesArray]);
+  const {title, size, dimension, desc, descArry} = {
+    title: 'title',
+    size: 'size',
+    dimension: 'dimension',
+    desc: ['desc1', 'desc2', 'desc3'],
+    descArry: ['desc1', 'desc2', 'desc3'],
+  };
 
   let text = title?.title_remediation;
 
@@ -98,7 +95,7 @@ const ProductDetailScreen = ({route, navigation}) => {
           contentContainerStyle={styles.productMain}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}>
-          <HorizontalCarousal data={productData?.image ?? []} isUri={true} />
+          {/* <HorizontalCarousal data={productData?.image ?? []} isUri={true} /> */}
           <View style={styles.title}>
             <TextComponent
               text={productData?.product_data?.product_name}

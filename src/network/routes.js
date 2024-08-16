@@ -1,13 +1,13 @@
 const getCredentials = () => {
   if (__DEV__)
     return {
-      baseURL: 'http://192.168.18.9/api/v1',
+      baseURL: 'http://192.168.18.9:4500/api/v1',
       imageURL: 'https://virtualrealitycreators.com/green-boom/',
     };
   else {
     console.log = () => {};
     return {
-      baseURL: 'http://192.168.18.9/api/v1',
+      baseURL: 'http://192.168.18.9:4500/api/v1',
       imageURL: 'https://virtualrealitycreators.com/green-boom/',
     };
   }
@@ -28,6 +28,9 @@ export default {
   socialLogin: BASE_URL + '/user/socialLogin',
   updateMe: BASE_URL + '/user/updateProfile',
   updatePassword: BASE_URL + '/user/updateMyPassword',
+
+  //------Home tab ----//
+  getHomeData: BASE_URL + '/appItems',
 
   // -----Service------//-----Service Provider
   createService: BASE_URL + '/service',

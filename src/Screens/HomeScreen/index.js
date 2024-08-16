@@ -8,6 +8,8 @@ import {
   ImageBackground,
   TouchableWithoutFeedback,
   Platform,
+  TouchableOpacity,
+  Linking,
 } from 'react-native';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {hp, wp} from '../../Config/responsive';
@@ -20,6 +22,8 @@ import {Touchable} from '../../Components/Touchable';
 import {documentDownload, introVideo} from '../../Assets';
 import {baseURL, imageURL} from '../../Utils/Urls';
 import NavigationService from '../../Services/NavigationService';
+import YoutubePlayer from 'react-native-youtube-iframe';
+import Icon from 'react-native-vector-icons/Feather';
 
 const HomeScreen = ({navigation}) => {
   const {dispatch} = useReduxStore();
@@ -30,9 +34,11 @@ const HomeScreen = ({navigation}) => {
     setVideoOn,
     videoP,
     // videoUrl,
-    videoPlayerRef,
-  } = useHomeScreen(navigation);
 
+    homeData,
+  } = useHomeScreen(navigation);
+  const [play, setPlay] = useState(false);
+  const [showThumbnail, setShowThumbnail] = useState(true);
   const renderItem = useCallback(({item, index}) => {
     return (
       <View style={styles.card}>
@@ -63,11 +69,51 @@ const HomeScreen = ({navigation}) => {
 
     <View
       style={{flex: 1, paddingTop: Platform.OS == 'ios' ? hp('5') : hp('1.5')}}>
-      <VideoPlayer
-        videoSource={require('./test.mp4')}
-        VideoThumb={introVideo}
-        ref={videoPlayerRef}
-      />
+      <View
+        style={{
+          height: 210,
+          width: wp('90'),
+          alignSelf: 'center',
+          marginTop: hp('2'),
+          borderRadius: 20,
+          overflow: 'hidden',
+          position: 'relative',
+        }}>
+        {showThumbnail && (
+          <>
+            <TouchableOpacity
+              style={{
+                position: 'absolute',
+                top: '40%',
+                left: '45%',
+                zIndex: 1,
+              }}
+              onPress={() => {
+                setShowThumbnail(false);
+                setPlay(true);
+              }}>
+              <Icon name="play-circle" size={35} color={'white'} />
+            </TouchableOpacity>
+            <Image
+              source={{
+                uri: homeData?.dashboardVideoThumb,
+              }}
+              style={{
+                height: 210,
+                width: wp('90'),
+                alignSelf: 'center',
+                borderRadius: 20,
+              }}
+            />
+          </>
+        )}
+        <YoutubePlayer
+          height={250}
+          width={wp('90')}
+          play={play}
+          videoId={String(homeData?.dashboardVideoUrl).split('v=')[1]}
+        />
+      </View>
 
       <View>
         <FlatList
@@ -82,8 +128,8 @@ const HomeScreen = ({navigation}) => {
         />
         <View style={styles.button}>
           <ThemeButtonWithIcon
-            onPress={() => navigation.navigate('CatalogScreen')}
-            title={'Download Catalogs & Brochures'}
+            onPress={() => Linking.openURL(homeData?.dashboardCatalog)}
+            title={'Download Catalog & Brochures'}
             image={documentDownload}
           />
         </View>
