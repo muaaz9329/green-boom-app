@@ -29,50 +29,17 @@ const useTraining = ({navigate, goBack}, {params}) => {
     //   url:routes
     // })
 
-    const dummyData = [
-      {
-        name: 'Learn JavaScript in 1 Hour',
-        price: 0.0,
-        thumb: 'https://img.youtube.com/vi/W6NZfCO5SIk/maxresdefault.jpg',
-        videoUrl: 'https://www.youtube.com/watch?v=W6NZfCO5SIk',
-        content:
-          'A beginner-friendly introduction to JavaScript covering the basics of programming.',
+    apiService.Get({
+      url: routes.video,
+      setLoading,
+      onError: error => {
+        console.log('error', error);
       },
-      {
-        name: 'React JS Crash Course',
-        price: 0.0,
-        thumb: 'https://img.youtube.com/vi/Dorf8i6lCuk/maxresdefault.jpg',
-        videoUrl: 'https://www.youtube.com/watch?v=Dorf8i6lCuk',
-        content:
-          'Comprehensive React crash course covering hooks, components, and state management.',
+      OnSuccess: response => {
+        console.log('response', response);
+        setVideosData(response?.data?.video);
       },
-      {
-        name: 'Node.js Tutorial for Beginners',
-        price: 0.0,
-        thumb: 'https://img.youtube.com/vi/TlB_eWDSMt4/maxresdefault.jpg',
-        videoUrl: 'https://www.youtube.com/watch?v=TlB_eWDSMt4',
-        content:
-          'An in-depth guide to getting started with Node.js, including server creation and modules.',
-      },
-      {
-        name: 'Build a MERN Stack App',
-        price: 0.0,
-        thumb: 'https://img.youtube.com/vi/7CqJlxBYj-M/maxresdefault.jpg',
-        videoUrl: 'https://www.youtube.com/watch?v=7CqJlxBYj-M',
-        content:
-          'Step-by-step tutorial on building a full-stack application using MongoDB, Express, React, and Node.js.',
-      },
-      {
-        name: 'Introduction to Cloud Computing',
-        price: 0.0,
-        thumb: 'https://img.youtube.com/vi/gu4FYSFeWqg/maxresdefault.jpg',
-        videoUrl: 'https://www.youtube.com/watch?v=gu4FYSFeWqg',
-        content:
-          'An introductory course on cloud computing, exploring various cloud service models and providers.',
-      },
-    ];
-
-    setVideosData(dummyData);
+    });
   }, []);
 
   return {
