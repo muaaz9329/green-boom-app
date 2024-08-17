@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react';
 import API from '../../Utils/helperFunc';
 import {orderKit} from '../../Utils/Urls';
 import useReduxStore from '../../Hooks/UseReduxStore';
+import {apiService} from '../../network';
+import routes from '../../network/routes';
 
 /**
  * The function `useDemoKitScreen` retrieves kit data and loading status from Redux store and returns
@@ -15,11 +17,23 @@ import useReduxStore from '../../Hooks/UseReduxStore';
 const useDemoKitScreen = ({navigate, goBack}, {params}) => {
   const {dispatch, getState} = useReduxStore();
 
-  const {isloading} = {
-    isloading: false,
-  };
+  const [isloading, setLoading] = useState(false);
 
   const [kitData, setKitData] = useState([]);
+
+  useEffect(() => {
+    apiService.Get({
+      url: routes.kit,
+      setLoading,
+      onError: error => {
+        console.log('error', error);
+      },
+      OnSuccess: response => {
+        console.log('response', response);
+        setKitData(response?.data?.orderKit);
+      },
+    });
+  }, []);
 
   return {
     title: params?.title,

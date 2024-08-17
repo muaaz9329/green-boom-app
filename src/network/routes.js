@@ -32,6 +32,7 @@ export default {
   //------Home tab ----//
   getHomeData: BASE_URL + '/appItems',
   video: BASE_URL + '/video',
+  kit: BASE_URL + '/orderKit',
 
   // -----Service------//-----Service Provider
   createService: BASE_URL + '/service',

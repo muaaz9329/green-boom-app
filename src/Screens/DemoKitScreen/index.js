@@ -22,11 +22,16 @@ const DemoKitScreen = ({route, navigation}) => {
         <Touchable
           style={styles.cardBtn}
           onPress={() => navigation.navigate('DemoKitSingleScreen', item)}>
-          <Image source={kitImages['1']} style={styles.iconStyle} />
+          <Image
+            source={{
+              uri: item?.image,
+            }}
+            style={styles.iconStyle}
+          />
           <View style={styles.imageStyle}>
             <TextComponent text={item?.title} styles={styles.titleStyle} />
             <TextComponent
-              text={item?.short_description}
+              text={item?.description?.slice(0, 50) + '...'}
               styles={styles.descStyle}
             />
           </View>
@@ -110,23 +115,26 @@ const DemoKitScreen = ({route, navigation}) => {
         </View>
       )}
 
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.main}>
-        <View style={styles.proMain}>
-          <FlatList
-            refreshing={false}
-            data={dummyMsds}
-            renderItem={renderMSDSItem}
-            contentContainerStyle={
-              {
-                // alignItems: 'center',
+      {kitData.length > 0 && !isloading && (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.main}>
+          <View style={styles.proMain}>
+            <FlatList
+              refreshing={false}
+              data={kitData}
+              renderItem={renderMSDSItem}
+              contentContainerStyle={
+                {
+                  // alignItems: 'center',
+                }
               }
-            }
-          />
-        </View>
-      </ScrollView>
+            />
+          </View>
+        </ScrollView>
+      )}
+      {!isloading && kitData.length == 0 && <DataNotFound />}
     </View>
   );
 };
