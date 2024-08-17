@@ -3,6 +3,8 @@ import {videosData} from '../../Utils/localDB';
 import useReduxStore from '../../Hooks/UseReduxStore';
 import {getCategory, getmsds} from '../../Redux/Action/contentAction';
 import {trainingPDFIcon, wordIcon} from '../../Assets';
+import {apiService} from '../../network';
+import routes from '../../network/routes';
 
 /**
  * The function `useMSDS` retrieves data related to MSDS sheets and returns relevant information for
@@ -30,9 +32,7 @@ const useMSDS = ({navigate, goBack}, {params}) => {
     },
   ];
   // const {dispatch, getState} = useReduxStore();
-  const {isloading} = {
-    isloading: false,
-  };
+  const [isloading, setLoading] = useState(false);
 
   /* The `useEffect` hook in the provided code snippet is used to perform side effects in a functional
   component. In this case, it is making use of the `dispatch` function to trigger the `getmsds`
@@ -41,7 +41,21 @@ const useMSDS = ({navigate, goBack}, {params}) => {
   //   dispatch(getmsds());
   // }, []);
 
-  const [category, setCategory] = useState(msdsDummyData);
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    apiService.Get({
+      url: routes.msds,
+      setLoading,
+      onError: error => {
+        console.log('error', error);
+      },
+      OnSuccess: response => {
+        console.log('response', response);
+        setCategory(response?.data?.mSDS);
+      },
+    });
+  }, []);
 
   return {
     categoryData: params?.category,

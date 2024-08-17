@@ -33,6 +33,7 @@ export default {
   getHomeData: BASE_URL + '/appItems',
   video: BASE_URL + '/video',
   kit: BASE_URL + '/orderKit',
+  msds: BASE_URL + '/mSDS',
 
   // -----Service------//-----Service Provider
   createService: BASE_URL + '/service',
