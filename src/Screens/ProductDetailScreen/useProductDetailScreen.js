@@ -96,7 +96,17 @@ const useProductDetailScreen = ({navigate, goBack}, {params}) => {
     {icon: 'https://via.placeholder.com/50', name: 'Sustainable'},
   ];
 
-  const [productData, setProductData] = useState(dummyProductData);
+  const [productData, setProductData] = useState({
+    __v: 0,
+    _id: '66c0245594d96b49c129221c',
+    description: 'this is description of content',
+    features: ['feature 1', 'feature 2'],
+    images: [
+      'https://greenboom-bucket.s3.us-east-2.amazonaws.com/1723868243903.png',
+    ],
+    productcode: 'ru456',
+    title: 'test product 1',
+  });
 
   /**
    * The function `getSingleProduct` makes an asynchronous API call to retrieve a single product and
@@ -117,6 +127,11 @@ const useProductDetailScreen = ({navigate, goBack}, {params}) => {
   // useEffect(() => {
   //   getSingleProduct();
   // }, []);
+
+  useEffect(() => {
+    console.log('params', params);
+    setProductData(params);
+  }, []);
   return {
     productData,
     selectedSize,

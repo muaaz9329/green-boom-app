@@ -34,6 +34,7 @@ export default {
   video: BASE_URL + '/video',
   kit: BASE_URL + '/orderKit',
   msds: BASE_URL + '/mSDS',
+  product: BASE_URL + '/product',
 
   // -----Service------//-----Service Provider
   createService: BASE_URL + '/service',

@@ -19,24 +19,22 @@ import {hp} from '../../Config/responsive';
 const ProductScreen = ({route, navigation}) => {
   const {title, productList, isLoading} = useProductScreen(navigation, route);
   // console.log('firstaa', productList?.all_products?.length);
-  const renderMSDSItem = useCallback(({item, index}) => {
+  const renderMSDSItem = ({item, index}) => {
     // console.log('firstcd', imageUrl(item?.file));
+
     return (
       <View style={styles.card}>
         <TouchableWithoutFeedback
           style={styles.cardBtn}
-          onPress={() => navigation.navigate('ProductDetailScreen', item?.id)}>
+          onPress={() => navigation.navigate('ProductDetailScreen', item)}>
           <View style={styles.imageStyle}>
-            <Image source={{uri: item?.file}} style={styles.iconStyle} />
-            <TextComponent
-              text={item?.product_name}
-              styles={styles.titleStyle}
-            />
+            <Image source={{uri: item?.images[0]}} style={styles.iconStyle} />
+            <TextComponent text={item?.title} styles={styles.titleStyle} />
           </View>
         </TouchableWithoutFeedback>
       </View>
     );
-  });
+  };
 
   const renderSkeleton = useCallback(({item, index}) => {
     return <ProductSkeletonScreen />;
@@ -63,7 +61,7 @@ const ProductScreen = ({route, navigation}) => {
           />
         </View>
       )}
-      {isLoading && productList.length > 0 && (
+      {!isLoading && productList.length > 0 && (
         <ScrollView
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}>
@@ -87,7 +85,7 @@ const ProductScreen = ({route, navigation}) => {
     </View>
   );
 };
-export default memo(ProductScreen);
+export default ProductScreen;
 
 // {productList?.all_products ? (
 //   productList?.all_products && productList?.all_products?.length > 0 ? (

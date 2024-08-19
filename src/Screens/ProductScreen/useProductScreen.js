@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react';
 import {videosData} from '../../Utils/localDB';
 import {productListApi} from '../../Utils/Urls';
 import API from '../../Utils/helperFunc';
+import {apiService} from '../../network';
+import routes from '../../network/routes';
 
 /**
  * The function `useMSDS` fetches a list of products and returns the product list along with the title
@@ -41,7 +43,7 @@ const useMSDS = ({navigate, goBack}, {params}) => {
     },
   ];
 
-  const [productList, setProductList] = useState(dummyProductList);
+  const [productList, setProductList] = useState([]);
   // const productListing = async () => {
   //   const {ok, data} = await API.get(productListApi);
   //   // console.log('productlist data', data);
@@ -55,6 +57,20 @@ const useMSDS = ({navigate, goBack}, {params}) => {
   // useEffect(() => {
   //   productListing();
   // }, []);
+
+  useEffect(() => {
+    apiService.Get({
+      url: routes.product,
+      setLoading: setIsLoading,
+      onError: error => {
+        console.log('error', error);
+      },
+      OnSuccess: response => {
+        console.log('response', response?.data?.product);
+        setProductList(response?.data?.product);
+      },
+    });
+  }, []);
 
   return {
     title: params?.title,
