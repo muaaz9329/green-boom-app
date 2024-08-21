@@ -1,4 +1,4 @@
-import auth from '@react-native-firebase/auth';
+//import auth from '@react-native-firebase/auth';
 
 /**
  * The function `PhoneNumberLogin` asynchronously handles the button press for signing in with a phone
@@ -6,21 +6,21 @@ import auth from '@react-native-firebase/auth';
  * @returns The `PhoneNumberLogin` function is returning the `confirm` object which is obtained from
  * the `signInWithPhoneNumber` method.
  */
-export const PhoneNumberLogin = async phoneNumber => {
-  // Handle the button press
-  try {
-    const {confirm} = await auth().signInWithPhoneNumber(phoneNumber);
-    return confirm;
-  } catch (error) {
-    console.log('eror', error);
-  }
-};
+// export const PhoneNumberLogin = async phoneNumber => {
+//   // Handle the button press
+//   try {
+//     const {confirm} = await auth().signInWithPhoneNumber(phoneNumber);
+//     return confirm;
+//   } catch (error) {
+//     console.log('eror', error);
+//   }
+// };
 
 /**
  * The function `verifyCode` takes a confirmation function and a code as parameters, then calls the
  * confirmation function with the code and logs 'Invalid code' if an error occurs.
  */
-export const verifyCode = async ({confirm, code}) => {
+export const verifyCode = async ({ confirm, code }) => {
   try {
     await confirm(code);
   } catch (error) {
@@ -35,7 +35,7 @@ export const verifyCode = async ({confirm, code}) => {
  * with the provided email and password using the `createUserWithEmailAndPassword` method from the
  * `auth()` object.
  */
-export const emailSignUp = async ({email, password}) => {
+export const emailSignUp = async ({ email, password }) => {
   console.log('dffs', email, password);
   const data = await auth().createUserWithEmailAndPassword(email, password);
   return data;
@@ -47,7 +47,7 @@ export const emailSignUp = async ({email, password}) => {
  * @returns The `emailLogin` function is returning the data received after signing in with the provided
  * email and password using Firebase authentication.
  */
-export const emailLogin = async ({email, password}) => {
+export const emailLogin = async ({ email, password }) => {
   const data = await auth().signInWithEmailAndPassword(email, password);
   return data;
 };
