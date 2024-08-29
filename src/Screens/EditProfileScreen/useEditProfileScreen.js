@@ -98,6 +98,7 @@ const useEditProfileScreen = ({ navigate, goBack }) => {
           image: image,
         },
         OnSuccess: res => {
+          console.log(res)
           dispatch(setUserData(res?.data?.user));
           SuccessFlashMessage('Profile Updated Successfully');
           goBack();
