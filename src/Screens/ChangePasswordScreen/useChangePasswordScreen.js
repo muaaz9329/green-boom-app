@@ -1,14 +1,13 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import Schemas from '../../Utils/Validation';
 import useFormHook from '../../Hooks/UseFormHooks';
 import useReduxStore from '../../Hooks/UseReduxStore';
-import {firebase} from '@react-native-firebase/auth';
-import {loadingFalse, loadingTrue} from '../../Redux/Action/isloadingAction';
-import {successMessage, errorMessage} from '../../Config/NotificationMessage';
-import {useLoading} from '../../providers/LoadingProvider';
-import {apiService} from '../../network';
+import { loadingFalse, loadingTrue } from '../../Redux/Action/isloadingAction';
+import { successMessage, errorMessage } from '../../Config/NotificationMessage';
+import { useLoading } from '../../providers/LoadingProvider';
+import { apiService } from '../../network';
 import routes from '../../network/routes';
-import {ErrorFlashMessage, SuccessFlashMessage} from '../../Utils/helperFunc';
+import { ErrorFlashMessage, SuccessFlashMessage } from '../../Utils/helperFunc';
 
 /**
  * The function `useChangePasswordScreen` handles the process of changing a user's password, including
@@ -16,17 +15,17 @@ import {ErrorFlashMessage, SuccessFlashMessage} from '../../Utils/helperFunc';
  * @returns The function `useChangePasswordScreen` is returning an object with the following properties
  * and values:
  */
-const useChangePasswordScreen = ({navigate, goBack}) => {
-  const {handleSubmit, errors, reset, control, getValues} = useFormHook(
+const useChangePasswordScreen = ({ navigate, goBack }) => {
+  const { handleSubmit, errors, reset, control, getValues } = useFormHook(
     Schemas.newPassword,
   );
 
-  const {dispatch} = useReduxStore();
-  const {loading, setLoading} = useLoading();
+  const { dispatch } = useReduxStore();
+  const { loading, setLoading } = useLoading();
   const changePassword = async currentPassword => {
     console.log('pass');
     setLoading(true);
-    const {password, new_password} = currentPassword;
+    const { password, new_password } = currentPassword;
     apiService.Patch({
       url: routes.updatePassword,
       setLoading,

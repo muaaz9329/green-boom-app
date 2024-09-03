@@ -1,18 +1,17 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import useFormHook from '../../Hooks/UseFormHooks';
 import Schemas from '../../Utils/Validation';
 import useReduxStore from '../../Hooks/UseReduxStore';
-import {loadingFalse, loadingTrue} from '../../Redux/Action/isloadingAction';
-import {successMessage} from '../../Config/NotificationMessage';
-import {formDataFunc, SuccessFlashMessage} from '../../Utils/helperFunc';
-import {launchImageLibrary} from 'react-native-image-picker';
-import {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {types} from '../../Redux/types';
-import {updateUser} from '../../Utils/Urls';
-import {useSelector} from 'react-redux';
-import {useLoading} from '../../providers/LoadingProvider';
-import {apiService} from '../../network';
-import {setUserData} from '../../Redux/Slices/userDataSlice';
+import { loadingFalse, loadingTrue } from '../../Redux/Action/isloadingAction';
+import { successMessage } from '../../Config/NotificationMessage';
+import { formDataFunc, SuccessFlashMessage } from '../../Utils/helperFunc';
+import { launchImageLibrary } from 'react-native-image-picker';
+import { types } from '../../Redux/types';
+import { updateUser } from '../../Utils/Urls';
+import { useSelector } from 'react-redux';
+import { useLoading } from '../../providers/LoadingProvider';
+import { apiService } from '../../network';
+import { setUserData } from '../../Redux/Slices/userDataSlice';
 import routes from '../../network/routes';
 import useS3 from '../../Hooks/useS3';
 
@@ -27,15 +26,15 @@ import useS3 from '../../Hooks/useS3';
  * - `getValues`: Function for getting current form field values
  * - `userData`: User data from the Redux store
  */
-const useEditProfileScreen = ({navigate, goBack}) => {
-  const {dispatch, getState} = useReduxStore();
+const useEditProfileScreen = ({ navigate, goBack }) => {
+  const { dispatch, getState } = useReduxStore();
 
-  const {userData} = useSelector(state => state?.userData);
-  const {loading, setLoading} = useLoading();
-  const {handleSubmit, errors, reset, control, getValues} = useFormHook(
+  const { userData } = useSelector(state => state?.userData);
+  const { loading, setLoading } = useLoading();
+  const { handleSubmit, errors, reset, control, getValues } = useFormHook(
     Schemas.editProfile,
   );
-  const {uploadImageOnS3, uploadImage} = useS3();
+  const { uploadImageOnS3, uploadImage } = useS3();
 
   //GET IMAGE From Mobile
   const [profileData, setProfileData] = useState(null);
@@ -81,7 +80,7 @@ const useEditProfileScreen = ({navigate, goBack}) => {
       setImage(userData?.image);
     }
     console.log('I ran');
-    const {name, last_name, email, company_name} = currentValue;
+    const { name, last_name, email, company_name } = currentValue;
     if (
       userData?.name != name + ' ' + last_name ||
       userData?.email != email ||
@@ -99,6 +98,7 @@ const useEditProfileScreen = ({navigate, goBack}) => {
           image: image,
         },
         OnSuccess: res => {
+          console.log(res)
           dispatch(setUserData(res?.data?.user));
           SuccessFlashMessage('Profile Updated Successfully');
           goBack();
