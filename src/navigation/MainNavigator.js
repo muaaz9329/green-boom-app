@@ -104,6 +104,10 @@ function MainNavigator() {
               component={Screens.ContactScreen}
             />
             <Stack.Screen
+              name="DeleteAccount"
+              component={Screens.DeleteAccount}
+            />
+            <Stack.Screen
               name="ChangePasswordScreen"
               component={Screens.ChangePasswordScreen}
             />

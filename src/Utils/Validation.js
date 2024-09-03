@@ -15,6 +15,17 @@ const passwordSchema = {
     .required('Confirm password is required.')
     .oneOf([yup.ref('password'), null], 'Password must match.'),
 };
+
+const deleteAccountSchema = {
+  password: yup
+    .string()
+    .required('Please Enter your password.')
+    .max(25, 'Password must be less than 25 characters.')
+    .matches(
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+      'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character',
+    ),
+};
 const number = yup.object().shape({
   number: yup.string().required('Please Enter your number.'),
   // .typeError('Please Enter your number'),
@@ -151,6 +162,7 @@ const Schemas = {
   username: yupResolver(addUsernameScheme),
   editProfile: yupResolver(editProfileScheme),
   demoKit: yupResolver(demoKitSchema),
+  deleteAccount: yupResolver(deleteAccountSchema),
 };
 
 export default Schemas;

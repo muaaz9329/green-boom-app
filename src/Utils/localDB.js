@@ -234,6 +234,11 @@ export const settingData = [
     screenUrl: 'ChangePasswordScreen',
   },
   {
+    title: 'Delete Account',
+    image: profile,
+    screenUrl: 'DeleteAccount',
+  },
+  {
     title: 'About Green Boom',
     image: about,
     pageUrl: 'https://www.greenboom.com/about',

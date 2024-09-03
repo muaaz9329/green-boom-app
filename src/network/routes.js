@@ -55,6 +55,7 @@ export default {
   getSinglePrivacy: BASE_URL + '/privacy',
   getNotifications: BASE_URL + '/user/mynotifications',
   getInfo: BASE_URL + '/user/getInfo',
+  deleteUser: BASE_URL + '/user/deleteMe',
 
   // reviews
 
